@@ -1,0 +1,573 @@
+
+run starts!
+
+
+- Trial 1 Start -
+
+** Encoding **
+Current run: 1, Current trial: 1
+Animal: [1 3 5], Location: [3 5 6], Context: 1
+
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?¤ë“œ??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 1
+Condition: XO, Number of category: 1, Category 12 12 
+Word:8 9 2 5 7 6 4 3 1 
+Category:12 12 12 12 12 12 12 12 12 
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 5
+Response: 2, RT: 1.500696e+00, Correct: 1
+
+Current trial: 2, Current image: 7
+Response: 1, RT: 1.919592e+00, Correct: 1
+
+Current trial: 3, Current image: 8
+Response: 1, RT: 1.331193e+00, Correct: 1
+
+Current trial: 4, Current image: 4
+Response: 2, RT: 8.597381e-01, Correct: 1
+
+Current trial: 5, Current image: 9
+Response: 1, RT: 7.149568e-01, Correct: 1
+
+Current trial: 6, Current image: 6
+Response: 2, RT: 9.597216e-01, Correct: 1
+
+** retrieval **
+Current run: 1, Current trial: 1
+
+** retrieval **
+Context: 1
+
+** reenactment **
+Order: 1
+Animal: 1, Response: 1, Correct: 1
+Location: 3, Response: 3, Correct: 1
+
+Order: 2
+Animal: 3, Response: 5, Correct: 0
+Location: 5, Response: 6, Correct: 0
+
+Order: 3
+Animal: 5, Response: 3, Correct: 0
+Location: 6, Response: 5, Correct: 0
+
+- Trial 1 End -
+
+Trial retrieval accuracy: animal - 3.333333e-01, location - 3.333333e-01
+Trial interference accuracy: interference - 1, no response - 0
+
+
+
+- Trial 2 Start -
+
+** Encoding **
+Current run: 1, Current trial: 2
+Animal: [4 3 2], Location: [3 6 5], Context: 2
+
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?¤ë“œ??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 2
+Condition: OX, Number of category: 2, Category 8 2 
+Word:7 3 2 3 8 8 5 2 4 
+Category:8 8 2 2 2 8 8 8 2 
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 4
+Response: 1, RT: 1.796202e+00, Correct: 1
+
+Current trial: 2, Current image: 7
+Response: 2, RT: 2.130582e+00, Correct: 1
+
+Current trial: 3, Current image: 6
+Response: 1, RT: 1.177112e+00, Correct: 1
+
+Current trial: 4, Current image: 9
+Response: 2, RT: 1.055536e+00, Correct: 1
+
+Current trial: 5, Current image: 8
+Response: 2, RT: 1.008755e+00, Correct: 1
+
+Current trial: 6, Current image: 5
+Response: 1, RT: 7.364789e-01, Correct: 1
+
+** retrieval **
+Current run: 1, Current trial: 2
+
+** retrieval **
+Context: 2
+
+** reenactment **
+Order: 1
+Animal: 4, Response: 4, Correct: 1
+Location: 3, Response: 2, Correct: 0
+
+Order: 2
+Animal: 3, Response: 3, Correct: 1
+Location: 6, Response: 6, Correct: 1
+
+Order: 3
+Animal: 2, Response: 2, Correct: 1
+Location: 5, Response: 5, Correct: 1
+
+- Trial 2 End -
+
+Trial retrieval accuracy: animal - 1, location - 6.666667e-01
+Trial interference accuracy: interference - 1, no response - 0
+
+
+
+run starts!
+
+
+- Trial 3 Start -
+
+** Encoding **
+Current run: 2, Current trial: 3
+Animal: [2 5 4], Location: [5 3 4], Context: 1
+
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?¤ë“œ??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 2, Current trial: 3
+Condition: XO, Number of category: 2, Category 4 3 
+Word:7 1 5 1 9 3 6 2 3 
+Category:4 4 3 3 3 4 4 4 3 
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 4
+Response: 2, RT: 1.581319e+00, Correct: 1
+
+Current trial: 2, Current image: 8
+Response: 2, RT: 7.124788e-01, Correct: 0
+
+Current trial: 3, Current image: 6
+Response: 2, RT: 1.120135e+00, Correct: 1
+
+Current trial: 4, Current image: 9
+Response: 1, RT: 1.482560e+00, Correct: 1
+
+Current trial: 5, Current image: 5
+Response: 2, RT: 1.136820e+00, Correct: 1
+
+Current trial: 6, Current image: 7
+Response: 1, RT: 1.385383e+00, Correct: 1
+
+** retrieval **
+Current run: 2, Current trial: 3
+
+** retrieval **
+Context: 1
+
+** reenactment **
+Order: 1
+Animal: 2, Response: 2, Correct: 1
+Location: 5, Response: 3, Correct: 0
+
+Order: 2
+Animal: 5, Response: 4, Correct: 0
+Location: 3, Response: 4, Correct: 0
+
+Order: 3
+Animal: 4, Response: 5, Correct: 0
+Location: 4, Response: 5, Correct: 0
+
+- Trial 3 End -
+
+Trial retrieval accuracy: animal - 3.333333e-01, location - 0
+Trial interference accuracy: interference - 9.444444e-01, no response - 0
+
+
+
+- Trial 4 Start -
+
+** Encoding **
+Current run: 2, Current trial: 4
+Animal: [5 4 1], Location: [6 4 5], Context: 2
+
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?¤ë“œ??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 2, Current trial: 4
+Condition: OX, Number of category: 1, Category 9 9 
+Word:4 8 9 5 3 6 7 1 2 
+Category:9 9 9 9 9 9 9 9 9 
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 8
+Response: 2, RT: 1.209507e+00, Correct: 1
+
+Current trial: 2, Current image: 5
+Response: 1, RT: 8.907211e-01, Correct: 1
+
+Current trial: 3, Current image: 9
+Response: 2, RT: 2.122311e+00, Correct: 1
+
+Current trial: 4, Current image: 4
+Response: 1, RT: 1.574103e+00, Correct: 1
+
+Current trial: 5, Current image: 7
+Response: 2, RT: 1.941193e+00, Correct: 1
+
+Current trial: 6, Current image: 6
+Response: 1, RT: 8.202834e-01, Correct: 1
+
+** retrieval **
+Current run: 2, Current trial: 4
+
+** retrieval **
+Context: 2
+
+** reenactment **
+Order: 1
+Animal: 5, Response: 5, Correct: 1
+Location: 6, Response: 5, Correct: 0
+
+Order: 2
+Animal: 4, Response: 4, Correct: 1
+Location: 4, Response: 4, Correct: 1
+
+Order: 3
+Animal: 1, Response: 1, Correct: 1
+Location: 5, Response: 6, Correct: 0
+
+- Trial 4 End -
+
+Trial retrieval accuracy: animal - 1, location - 3.333333e-01
+Trial interference accuracy: interference - 9.583333e-01, no response - 0
+
+
+
+run starts!
+
+
+- Trial 5 Start -
+
+** Encoding **
+Current run: 3, Current trial: 5
+Animal: [3 2 5], Location: [1 5 2], Context: 2
+
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?¤ë“œ??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 3, Current trial: 5
+Condition: OX, Number of category: 2, Category 5 10 
+Word:1 5 7 8 3 3 2 9 5 
+Category:5 5 10 10 10 5 5 5 10 
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 9
+Response: 2, RT: 8.717737e-01, Correct: 1
+
+Current trial: 2, Current image: 8
+Response: 2, RT: 9.504198e-01, Correct: 1
+
+Current trial: 3, Current image: 4
+Response: 1, RT: 6.418640e-01, Correct: 1
+
+Current trial: 4, Current image: 7
+Response: 2, RT: 1.056014e+00, Correct: 1
+
+Current trial: 5, Current image: 6
+Response: 1, RT: 7.339491e-01, Correct: 1
+
+Current trial: 6, Current image: 5
+Response: 1, RT: 8.146051e-01, Correct: 1
+
+** retrieval **
+Current run: 3, Current trial: 5
+
+** retrieval **
+Context: 2
+
+** reenactment **
+Order: 1
+Animal: 3, Response: 3, Correct: 1
+Location: 1, Response: 1, Correct: 1
+
+Order: 2
+Animal: 2, Response: 2, Correct: 1
+Location: 5, Response: 5, Correct: 1
+
+Order: 3
+Animal: 5, Response: 5, Correct: 1
+Location: 2, Response: 6, Correct: 0
+
+- Trial 5 End -
+
+Trial retrieval accuracy: animal - 1, location - 6.666667e-01
+Trial interference accuracy: interference - 9.666667e-01, no response - 0
+
+
+
+- Trial 6 Start -
+
+** Encoding **
+Current run: 3, Current trial: 6
+Animal: [2 5 1], Location: [4 3 1], Context: 1
+
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?¤ë“œ??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 3, Current trial: 6
+Condition: XO, Number of category: 1, Category 7 7 
+Word:1 4 9 7 2 8 5 3 6 
+Category:7 7 7 7 7 7 7 7 7 
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 7
+Response: 2, RT: 1.126508e+00, Correct: 0
+
+Current trial: 2, Current image: 4
+Response: 2, RT: 1.077531e+00, Correct: 1
+
+Current trial: 3, Current image: 5
+Response: 2, RT: 1.106449e+00, Correct: 1
+
+Current trial: 4, Current image: 9
+Response: 2, RT: 8.170270e-01, Correct: 0
+
+Current trial: 5, Current image: 8
+Response: 1, RT: 1.964803e+00, Correct: 1
+
+Current trial: 6, Current image: 6
+Response: 2, RT: 9.176352e-01, Correct: 1
+
+** retrieval **
+Current run: 3, Current trial: 6
+
+** retrieval **
+Context: 1
+
+** reenactment **
+Order: 1
+Animal: 2, Response: 2, Correct: 1
+Location: 4, Response: 3, Correct: 0
+
+Order: 2
+Animal: 5, Response: 2, Correct: 0
+Location: 3, Response: 1, Correct: 0
+
+Order: 3
+Animal: 1, Response: 1, Correct: 1
+Location: 1, Response: 4, Correct: 0
+
+- Trial 6 End -
+
+Trial retrieval accuracy: animal - 6.666667e-01, location - 0
+Trial interference accuracy: interference - 9.166667e-01, no response - 0
+
+
+
+run starts!
+
+
+- Trial 7 Start -
+
+** Encoding **
+Current run: 4, Current trial: 7
+Animal: [5 3 4], Location: [1 2 5], Context: 2
+
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?¤ë“œ??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 4, Current trial: 7
+Condition: OX, Number of category: 1, Category 1 1 
+Word:9 5 2 7 4 8 1 3 6 
+Category:1 1 1 1 1 1 1 1 1 
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 4
+Response: 1, RT: 1.765570e+00, Correct: 1
+
+Current trial: 2, Current image: 6
+Response: 1, RT: 8.738968e-01, Correct: 1
+
+Current trial: 3, Current image: 9
+Response: 2, RT: 2.402431e+00, Correct: 1
+
+Current trial: 4, Current image: 8
+Response: 2, RT: 2.373697e+00, Correct: 1
+
+Current trial: 5, Current image: 7
+Response: 2, RT: 1.113133e+00, Correct: 1
+
+Current trial: 6, Current image: 5
+Response: 1, RT: 9.676058e-01, Correct: 1
+
+** retrieval **
+Current run: 4, Current trial: 7
+
+** retrieval **
+Context: 2
+
+** reenactment **
+Order: 1
+Animal: 5, Response: 3, Correct: 0
+Location: 1, Response: 1, Correct: 1
+
+Order: 2
+Animal: 3, Response: 4, Correct: 0
+Location: 2, Response: 2, Correct: 1
+
+Order: 3
+Animal: 4, Response: 2, Correct: 0
+Location: 5, Response: 5, Correct: 1
+
+- Trial 7 End -
+
+Trial retrieval accuracy: animal - 0, location - 1
+Trial interference accuracy: interference - 9.285714e-01, no response - 0
+
+
+
+- Trial 8 Start -
+
+** Encoding **
+Current run: 4, Current trial: 8
+Animal: [3 1 4], Location: [1 2 4], Context: 1
+
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?¤ë“œ??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 4, Current trial: 8
+Condition: XO, Number of category: 2, Category 11 6 
+Word:8 6 8 5 6 4 9 1 9 
+Category:11 11 6 6 6 11 11 11 6 
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 4
+Response: 2, RT: 1.290424e+00, Correct: 1
+
+Current trial: 2, Current image: 9
+Response: 2, RT: 1.107974e+00, Correct: 0
+
+Current trial: 3, Current image: 7
+Response: 1, RT: 1.242642e+00, Correct: 1
+
+Current trial: 4, Current image: 8
+Response: 1, RT: 1.030611e+00, Correct: 1
+
+Current trial: 5, Current image: 5
+Response: 1, RT: 2.098315e+00, Correct: 0
+
+Current trial: 6, Current image: 6
+Response: 2, RT: 1.315451e+00, Correct: 1
+
+** retrieval **
+Current run: 4, Current trial: 8
+
+** retrieval **
+Context: 1
+
+** reenactment **
+Order: 1
+Animal: 3, Response: 3, Correct: 1
+Location: 1, Response: 1, Correct: 1
+
+Order: 2
+Animal: 1, Response: 4, Correct: 0
+Location: 2, Response: 2, Correct: 1
+
+Order: 3
+Animal: 4, Response: 1, Correct: 0
+Location: 4, Response: 3, Correct: 0
+
+- Trial 8 End -
+
+Trial retrieval accuracy: animal - 3.333333e-01, location - 6.666667e-01
+Trial interference accuracy: interference - 8.958333e-01, no response - 0
+
+
+*** EXPERIMENT END ***
+
+Sbj retrieval accuracy: animal - 0.58, location - 0.46
+Sbj interference accuracy: interference - 0.95, no response - 0
+
+
+
+PTB-INFO: There are still 90549 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO: a total of 1505 times out of a total of 19082 flips during this session.
+
+INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO: If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO: of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO: deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO: examples in the PDF presentation in PsychDocumentation/Psychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.

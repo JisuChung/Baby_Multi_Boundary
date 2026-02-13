@@ -1,0 +1,321 @@
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+** Encoding **
+Animal: [5 3 1], Location: [5 6 1], Context: 2
+
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 1
+Word:1 7 4 9 2 3 6 8 5 
+Category:0 0 0 0 0 0 0 0 0 
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference test starts **
+Current trial: 1, Current image: 8
+Response: 1, RT: 2.894305e+00, Correct: 0
+
+Current trial: 2, Current image: 4
+Response: 1, RT: 2.184529e+00, Correct: 1
+
+Current trial: 3, Current image: 6
+Response: 1, RT: 9.035645e-01, Correct: 1
+
+Current trial: 4, Current image: 5
+Response: 1, RT: 5.805363e-01, Correct: 1
+
+Current trial: 5, Current image: 7
+Response: 1, RT: 5.491255e-01, Correct: 0
+
+Current trial: 6, Current image: 9
+Response: 1, RT: 2.212229e+00, Correct: 0
+
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+** retrieval **
+Context: 2
+
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+
+--------------------------------------------------------------------------------
+             Access violation detected at 2025-07-20 16:52:01 +0900
+--------------------------------------------------------------------------------
+
+Configuration:
+  Crash Decoding           : Disabled - No sandbox or build area path
+  Crash Mode               : continue (default)
+  Default Encoding         : UTF-8
+  Deployed                 : false
+  Graphics Driver          : Uninitialized hardware 
+  Graphics card 1          : Intel Corporation ( 0x8086 ) Intel(R) Iris(R) Xe Graphics Version 31.0.101.4314 (2023-4-18)
+  JAWT Patch Status:       : Patch applied
+  Java Version             : Java 1.8.0_202-b08 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
+  MATLAB Architecture      : win64
+  MATLAB Entitlement ID    : 2489961
+  MATLAB Root              : C:\Program Files\MATLAB\R2022b
+  MATLAB Version           : 9.13.0.2320565 (R2022b) Update 6
+  OpenGL                   : hardware
+  Operating System         : Microsoft Windows 11 Home
+  Process ID               : 17696
+  Processor ID             : x86 Family 6 Model 186 Stepping 2, GenuineIntel
+  Session Key              : a5ce4dba-f419-4772-8f57-3e9720d1b48f
+  Window System            : Version 10.0 (Build 22631)
+
+Fault Count: 1
+
+
+Abnormal termination:
+Access violation
+
+Current Thread: 'MCR 0 interpreter thread' id 25736
+
+Register State (from fault):
+  RAX = 0000000078080003  RBX = 0000000000000018
+  RCX = 0000000000000010  RDX = 0000000000000024
+  RSP = 0000001bc26ad830  RBP = 0000001bc26ad930
+  RSI = 0000000000000002  RDI = 0000014260fb74c0
+ 
+   R8 = 0000014260fe2588   R9 = 0000000000000100
+  R10 = 0000014248c89010  R11 = 0000000000000002
+  R12 = 0000000000000000  R13 = 0000014248c76020
+  R14 = 0000000000000000  R15 = 0000000000000001
+ 
+  RIP = 00007ffddc764b90  EFL = 00010206
+ 
+   CS = 0033   FS = 0053   GS = 002b
+
+Stack Trace (from fault):
+[  0] 0x00007ffddc764b90 C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_d99f14bc3bf33731\igxelpicd64.dll+02444176
+[  1] 0x00007ffddc54f6af C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_d99f14bc3bf33731\igxelpicd64.dll+00259759
+[  2] 0x00007ffddc52a383 C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_d99f14bc3bf33731\igxelpicd64.dll+00107395
+[  3] 0x00007ffddc80a7ba C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_d99f14bc3bf33731\igxelpicd64.dll+03123130
+[  4] 0x00007ffddc80b25b C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_d99f14bc3bf33731\igxelpicd64.dll+03125851
+[  5] 0x00007ffddc855966 C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_d99f14bc3bf33731\igxelpicd64.dll+03430758 DrvValidateVersion+00054934
+[  6] 0x00007ffddc87c388 C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_d99f14bc3bf33731\igxelpicd64.dll+03589000 RegisterProcTableCallback+00043000
+[  7] 0x00007ffddc87c4e7 C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_d99f14bc3bf33731\igxelpicd64.dll+03589351 RegisterProcTableCallback+00043351
+[  8] 0x00007ffdf2b15872 C:\Users\su119\OneDrive\문서\MATLAB\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\Screen.mexw64+00415858 mexFunction+00350018
+[  9] 0x00007ffdf2b16700 C:\Users\su119\OneDrive\문서\MATLAB\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\Screen.mexw64+00419584 mexFunction+00353744
+[ 10] 0x00007ffdf2b28f74 C:\Users\su119\OneDrive\문서\MATLAB\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\Screen.mexw64+00495476 mexFunction+00429636
+[ 11] 0x00007ffdf2ac04d3 C:\Users\su119\OneDrive\문서\MATLAB\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\Screen.mexw64+00066771 mexFunction+00000931
+[ 12] 0x00007ffe26169149 C:\Program Files\MATLAB\R2022b\bin\win64\libmex.dll+00561481 mexfile::Inspector::needs_upgrade+00027273
+[ 13] 0x00007ffe2616cb32 C:\Program Files\MATLAB\R2022b\bin\win64\libmex.dll+00576306 MexRetrieveVersion+00011746
+[ 14] 0x00007ffe2616cca7 C:\Program Files\MATLAB\R2022b\bin\win64\libmex.dll+00576679 MexRetrieveVersion+00012119
+[ 15] 0x00007ffe2616ce57 C:\Program Files\MATLAB\R2022b\bin\win64\libmex.dll+00577111 MexRetrieveVersion+00012551
+[ 16] 0x00007ffe2614b10e C:\Program Files\MATLAB\R2022b\bin\win64\libmex.dll+00438542 mexUnlock+00017022
+[ 17] 0x00007ffe25ddda32 C:\Program Files\MATLAB\R2022b\bin\win64\m_dispatcher.dll+01038898 Mfh_file::dispatch_file_common+00000178
+[ 18] 0x00007ffe25ddcd02 C:\Program Files\MATLAB\R2022b\bin\win64\m_dispatcher.dll+01035522 Mfh_error::lookup+00012722
+[ 19] 0x00007ffe25ddd96d C:\Program Files\MATLAB\R2022b\bin\win64\m_dispatcher.dll+01038701 Mfh_file::dispatch+00000045
+[ 20] 0x00007ffe23760c74 C:\Program Files\MATLAB\R2022b\bin\win64\libmwlxemainservices.dll+00330868 mwboost::archive::codecvt_null<wchar_t>::do_max_length+00234740
+[ 21] 0x00007ffe2376f1f0 C:\Program Files\MATLAB\R2022b\bin\win64\libmwlxemainservices.dll+00389616 mwboost::archive::codecvt_null<wchar_t>::do_max_length+00293488
+[ 22] 0x00007ffe18fd1ff1 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+05709809 MathWorks::lxe::ReadOnlyXvaluePtr::operator=+00006049
+[ 23] 0x00007ffe18fd35e9 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+05715433 MathWorks::lxe::ReadOnlyXvaluePtr::operator=+00011673
+[ 24] 0x00007ffe18f1e1f8 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+04973048 MathWorks::lxe::printLxeProfStatsForFeature+00300760
+[ 25] 0x00007ffe18f38249 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+05079625 MathWorks::lxe::printLxeProfStatsForFeature+00407337
+[ 26] 0x00007ffe18e0b7b7 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+03848119 MathWorks::lxe::GetTag+00006295
+[ 27] 0x00007ffe18e0b390 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+03847056 MathWorks::lxe::GetTag+00005232
+[ 28] 0x00007ffe18df678a C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+03762058 MathWorks::lxe::SetEngineImplUnlinkFlagForAllCallsOnStack+00040858
+[ 29] 0x00007ffe18dfaab0 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+03779248 MathWorks::lxe::SetEngineImplUnlinkFlagForAllCallsOnStack+00058048
+[ 30] 0x00007ffe23834a90 C:\Program Files\MATLAB\R2022b\bin\win64\libmwlxemainservices.dll+01198736 FeatureTestObservableWorkspace+00184240
+[ 31] 0x00007ffe23759d73 C:\Program Files\MATLAB\R2022b\bin\win64\libmwlxemainservices.dll+00302451 mwboost::archive::codecvt_null<wchar_t>::do_max_length+00206323
+[ 32] 0x00007ffe237594a3 C:\Program Files\MATLAB\R2022b\bin\win64\libmwlxemainservices.dll+00300195 mwboost::archive::codecvt_null<wchar_t>::do_max_length+00204067
+[ 33] 0x00007ffe2375baa2 C:\Program Files\MATLAB\R2022b\bin\win64\libmwlxemainservices.dll+00309922 mwboost::archive::codecvt_null<wchar_t>::do_max_length+00213794
+[ 34] 0x00007ffe25ddda32 C:\Program Files\MATLAB\R2022b\bin\win64\m_dispatcher.dll+01038898 Mfh_file::dispatch_file_common+00000178
+[ 35] 0x00007ffe25ddcd02 C:\Program Files\MATLAB\R2022b\bin\win64\m_dispatcher.dll+01035522 Mfh_error::lookup+00012722
+[ 36] 0x00007ffe25ddd96d C:\Program Files\MATLAB\R2022b\bin\win64\m_dispatcher.dll+01038701 Mfh_file::dispatch+00000045
+[ 37] 0x00007ffe23760c74 C:\Program Files\MATLAB\R2022b\bin\win64\libmwlxemainservices.dll+00330868 mwboost::archive::codecvt_null<wchar_t>::do_max_length+00234740
+[ 38] 0x00007ffe2376f1f0 C:\Program Files\MATLAB\R2022b\bin\win64\libmwlxemainservices.dll+00389616 mwboost::archive::codecvt_null<wchar_t>::do_max_length+00293488
+[ 39] 0x00007ffe18fd1ff1 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+05709809 MathWorks::lxe::ReadOnlyXvaluePtr::operator=+00006049
+[ 40] 0x00007ffe18fd35e9 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+05715433 MathWorks::lxe::ReadOnlyXvaluePtr::operator=+00011673
+[ 41] 0x00007ffe18f1e1f8 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+04973048 MathWorks::lxe::printLxeProfStatsForFeature+00300760
+[ 42] 0x00007ffe18f38249 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+05079625 MathWorks::lxe::printLxeProfStatsForFeature+00407337
+[ 43] 0x00007ffe18d2822b C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+02916907 MathWorks::lxe::LXEConstants::IsIfElse+00525851
+[ 44] 0x00007ffe18d2c834 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+02934836 MathWorks::lxe::LXEConstants::IsY+00012980
+[ 45] 0x00007ffe18d29c81 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+02923649 MathWorks::lxe::LXEConstants::IsY+00001793
+[ 46] 0x00007ffe18d2d975 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+02939253 MathWorks::lxe::LXEConstants::IsY+00017397
+[ 47] 0x00007ffe18d2dc23 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+02939939 MathWorks::lxe::LXEConstants::IsY+00018083
+[ 48] 0x00007ffe18d2d578 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+02938232 MathWorks::lxe::LXEConstants::IsY+00016376
+[ 49] 0x00007ffe18d29426 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+02921510 MathWorks::lxe::LxeTypes::GetTypeXvalueOf+00000598
+[ 50] 0x00007ffe18df6fa3 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+03764131 MathWorks::lxe::SetEngineImplUnlinkFlagForAllCallsOnStack+00042931
+[ 51] 0x00007ffe18dfaab0 C:\Program Files\MATLAB\R2022b\bin\win64\m_lxe.dll+03779248 MathWorks::lxe::SetEngineImplUnlinkFlagForAllCallsOnStack+00058048
+[ 52] 0x00007ffe23834a90 C:\Program Files\MATLAB\R2022b\bin\win64\libmwlxemainservices.dll+01198736 FeatureTestObservableWorkspace+00184240
+[ 53] 0x00007ffe2379e776 C:\Program Files\MATLAB\R2022b\bin\win64\libmwlxemainservices.dll+00583542 mwboost::archive::detail::pointer_oserializer<mwboost::archive::xml_oarchive,MathWorks::lxe::PreLineExecutionEvent>::save_object_ptr+00069206
+[ 54] 0x00007ffe237a018f C:\Program Files\MATLAB\R2022b\bin\win64\libmwlxemainservices.dll+00590223 mwboost::archive::detail::pointer_oserializer<mwboost::archive::xml_oarchive,MathWorks::lxe::PreLineExecutionEvent>::save_object_ptr+00075887
+[ 55] 0x00007ffe237fecb3 C:\Program Files\MATLAB\R2022b\bin\win64\libmwlxemainservices.dll+00978099 mwboost::archive::detail::iserializer<mwboost::archive::text_iarchive,MathWorks::MatlabComponents::ComponentIdentifier>::load_object_data+00303411
+[ 56] 0x00007ffe23800df7 C:\Program Files\MATLAB\R2022b\bin\win64\libmwlxemainservices.dll+00986615 mwboost::archive::detail::iserializer<mwboost::archive::text_iarchive,MathWorks::MatlabComponents::ComponentIdentifier>::load_object_data+00311927
+[ 57] 0x00007ffe23800090 C:\Program Files\MATLAB\R2022b\bin\win64\libmwlxemainservices.dll+00983184 mwboost::archive::detail::iserializer<mwboost::archive::text_iarchive,MathWorks::MatlabComponents::ComponentIdentifier>::load_object_data+00308496
+[ 58] 0x00007ffe3d1a4679 C:\Program Files\MATLAB\R2022b\bin\win64\libmwbridge.dll+00280185 mnGetPrompt+00014889
+[ 59] 0x00007ffe274261b6   C:\Program Files\MATLAB\R2022b\bin\win64\iqm.dll+00483766 iqm::Iqm::instance+00001110
+[ 60] 0x00007ffe274770cd   C:\Program Files\MATLAB\R2022b\bin\win64\iqm.dll+00815309 iqm::UserEvalPlugin::execute+00001357
+[ 61] 0x00007ffe27448a4c   C:\Program Files\MATLAB\R2022b\bin\win64\iqm.dll+00625228 iqm::Iqm::setupIqmFcnPtrs+00097324
+[ 62] 0x00007ffe2741a05f   C:\Program Files\MATLAB\R2022b\bin\win64\iqm.dll+00434271 iqm::Iqm::create+00008687
+[ 63] 0x00007ffe3d17311e C:\Program Files\MATLAB\R2022b\bin\win64\libmwbridge.dll+00078110 ioReadLine+00000430
+[ 64] 0x00007ffe3d172f35 C:\Program Files\MATLAB\R2022b\bin\win64\libmwbridge.dll+00077621 ioReadLine+00000165
+[ 65] 0x00007ffe3d1a4a10 C:\Program Files\MATLAB\R2022b\bin\win64\libmwbridge.dll+00281104 mnGetCommandLineBuffer+00000288
+[ 66] 0x00007ffe3d1a4ea2 C:\Program Files\MATLAB\R2022b\bin\win64\libmwbridge.dll+00282274 mnParser+00000466
+[ 67] 0x00007ffe27287c64   C:\Program Files\MATLAB\R2022b\bin\win64\mcr.dll+00425060
+[ 68] 0x00007ffe272387f3   C:\Program Files\MATLAB\R2022b\bin\win64\mcr.dll+00100339
+[ 69] 0x00007ffe27256050   C:\Program Files\MATLAB\R2022b\bin\win64\mcr.dll+00221264
+[ 70] 0x00007ffe274720ca   C:\Program Files\MATLAB\R2022b\bin\win64\iqm.dll+00794826 iqm::PackagedTaskPlugin::execute+00000074
+[ 71] 0x00007ffe27282350   C:\Program Files\MATLAB\R2022b\bin\win64\mcr.dll+00402256
+[ 72] 0x00007ffe27448a4c   C:\Program Files\MATLAB\R2022b\bin\win64\iqm.dll+00625228 iqm::Iqm::setupIqmFcnPtrs+00097324
+[ 73] 0x00007ffe2741ade1   C:\Program Files\MATLAB\R2022b\bin\win64\iqm.dll+00437729 iqm::Iqm::create+00012145
+[ 74] 0x00007ffe2741a529   C:\Program Files\MATLAB\R2022b\bin\win64\iqm.dll+00435497 iqm::Iqm::create+00009913
+[ 75] 0x00007ffe272706dc   C:\Program Files\MATLAB\R2022b\bin\win64\mcr.dll+00329436
+[ 76] 0x00007ffe27271105   C:\Program Files\MATLAB\R2022b\bin\win64\mcr.dll+00332037
+[ 77] 0x00007ffe2726ea00   C:\Program Files\MATLAB\R2022b\bin\win64\mcr.dll+00322048
+[ 78] 0x00007ffeaf13855a C:\Program Files\MATLAB\R2022b\bin\win64\mwboost_thread-vc142-mt-x64-1_75.dll+00034138
+[ 79] 0x00007ffeca2e9333                   C:\Windows\System32\ucrtbase.dll+00168755
+[ 80] 0x00007ffecb76259d                   C:\Windows\System32\KERNEL32.DLL+00075165
+[ 81] 0x00007ffeccf0af58                      C:\Windows\SYSTEM32\ntdll.dll+00372568
+
+
+This error was detected while a MEX-file was running. If the MEX-file
+is not an official MathWorks function, please examine its source code
+for errors. Please consult the External Interfaces Guide for information
+on debugging MEX-files.
+** This crash report has been saved to disk as C:\Users\su119\AppData\Local\Temp\matlab_crash_dump.17696-1 **
+
+
+
+MATLAB is exiting because of fatal error
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+** Encoding **
+Animal: [4 5 1], Location: [1 2 4], Context: 1
+
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 1
+Word:7 8 3 2 6 9 4 5 1 
+Category:0 0 0 0 0 0 0 0 0 
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference test starts **
+Current trial: 1, Current image: 8
+Response: 1, RT: 1.012393e+00, Correct: 0
+
+Current trial: 2, Current image: 6
+Response: 1, RT: 6.836910e-01, Correct: 1
+
+Current trial: 3, Current image: 9
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 4, Current image: 5
+Response: 1, RT: 1.651260e+00, Correct: 1
+
+Current trial: 5, Current image: 4
+Response: 1, RT: 1.659279e+00, Correct: 1
+
+Current trial: 6, Current image: 7
+Response: 99, RT: 99, Correct: 99
+
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+** retrieval **
+Context: 1
+
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 4, Response: 1, Correct: 0
+Location: 1, Response: 4, Correct: 0
+
+Order: 2
+Animal: 5, Response: 3, Correct: 0
+Location: 2, Response: 2, Correct: 1
+
+Order: 3
+Animal: 1, Response: 5, Correct: 0
+Location: 4, Response: 4, Correct: 1
+
+***  PRACTICE END ***
+
+
+
+PTB-INFO: There are still 23987 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO: a total of 12 times out of a total of 4940 flips during this session.
+
+INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO: If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO: of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO: deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO: examples in the PDF presentation in PsychDocumentation/Psychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+
+ 
+ Sbj retrieval accuracy: animal - 0.00, location - 0.67
+Sbj interference accuracy: interference - 0.75, no response - 2
+

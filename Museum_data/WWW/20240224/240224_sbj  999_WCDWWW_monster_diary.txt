@@ -1,0 +1,8 @@
+0
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+* Press space bar to continue ** Press ESC to stop *
+

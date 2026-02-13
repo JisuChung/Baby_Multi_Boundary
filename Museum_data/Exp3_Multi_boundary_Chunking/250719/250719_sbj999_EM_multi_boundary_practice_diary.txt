@@ -1,0 +1,181 @@
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+** Encoding **
+Animal: [1 5 2], Location: [5 2 3], Context: 1
+
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+* Press space bar to continue ** Press ESC to stop *
+
+
+
+PTB-INFO: There are still 2051 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO: a total of 34 times out of a total of 461 flips during this session.
+
+INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO: If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO: of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO: deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO: examples in the PDF presentation in PsychDocumentation/Psychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+
+*** Experiment terminated ***
+Current run: 1, Current trial: 1
+Pause timing: Before interference
+
+Please save the data ............ 
+
+uiopen('C:\Users\Emotion\Desktop\Museum_Exp\exp_socDM_child_8020_250112\code_4contexts_8020_250112.m',1)
+code_4contexts_8020_250112
+
+ans =
+
+     1
+
+
+ans =
+
+  48×1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> 배열
+
+    {'26-1-2025 09:33:38'}
+    {'09-2-2025 09:12:28'}
+    {'16-2-2025 09:40:17'}
+    {'01-3-2025 09:59:13'}
+    {'26-1-2025 09:35:57'}
+    {'09-2-2025 09:30:53'}
+    {'16-2-2025 09:42:26'}
+    {'09-2-2025 10:50:29'}
+    {'09-2-2025 10:52:50'}
+    {'03-7-2025 10:19:09'}
+    {'13-7-2025 10:57:53'}
+    {'19-7-2025 10:39:38'}
+    {'09-2-2025 11:22:42'}
+    {'03-7-2025 10:36:18'}
+    {'13-7-2025 11:30:40'}
+    {'19-7-2025 11:16:27'}
+    {'01-7-2025 17:44:55'}
+    {'01-7-2025 17:54:14'}
+    {'06-7-2025 11:49:02'}
+    {'06-7-2025 12:32:15'}
+    {'01-7-2025 16:58:28'}
+    {'26-1-2025 12:42:02'}
+    {'03-7-2025 13:36:25'}
+    {'13-7-2025 12:40:30'}
+    {'26-1-2025 13:10:50'}
+    {'13-7-2025 13:26:55'}
+    {'01-7-2025 17:09:01'}
+    {'01-7-2025 15:52:30'}
+    {'09-2-2025 14:39:05'}
+    {'09-2-2025 15:04:36'}
+    {'26-1-2025 15:32:10'}
+    {'09-2-2025 15:40:21'}
+    {'06-7-2025 15:41:45'}
+    {'26-1-2025 16:00:07'}
+    {'09-2-2025 16:09:20'}
+    {'06-7-2025 16:12:33'}
+    {'26-1-2025 16:38:41'}
+    {'01-3-2025 16:45:53'}
+    {'13-7-2025 16:48:42'}
+    {'26-1-2025 17:09:04'}
+    {'01-3-2025 17:10:52'}
+    {'13-7-2025 17:27:46'}
+    {'26-1-2025 07:15:02'}
+    {'26-1-2025 07:12:16'}
+    {'26-1-2025 07:26:02'}
+    {'26-1-2025 07:23:12'}
+    {'26-1-2025 07:20:40'}
+    {'26-1-2025 07:18:20'}
+
+--- File Selection ---
+Press Enter to use the most recent file.
+Input 1 for the second most recent file, 2 for the third most recent file, etc.
+0: 103_seq2_PnpAnr_ABC_2025-07-19_10h41.15.836.csv (Last modified: 19-7-2025 11:16:27)
+1: 103_prac_PNA_BCA_2025-07-19_10h33.57.126.csv (Last modified: 19-7-2025 10:39:38)
+2: 603_seq2_AnpPnr_CAB_2025-07-13_16h50.29.685.csv (Last modified: 13-7-2025 17:27:46)
+3: 603_prac_PNA_BCA_2025-07-13_16h43.02.455.csv (Last modified: 13-7-2025 16:48:42)
+4: 303_seq2_AnpPnr_BCA_2025-07-13_12h41.21.421.csv (Last modified: 13-7-2025 13:26:55)
+Your choice: 0
+Using file: 103_seq2_PnpAnr_ABC_2025-07-19_10h41.15.836.csv
+[경고: 테이블에 대한 변수 이름을 생성하기 전에 파일의 열 제목이 유효한 MATLAB 식별자가 되도록 수정되었습니다. 원래 열 제목은 VariableDescriptions 속성에 저장되어 있습니다.
+원래 열 제목을 테이블 변수 이름으로 사용하려면 'VariableNamingRule'을 'preserve'로 설정하십시오.] 
+========================================================================================
+File: 103_seq2_PnpAnr_ABC_2025-07-19_10h41.15.836.csv
+Last modified: 19-7-2025 11:16:27
+========================================================================================
+
+ ==== Power 75 trials ==== 
+ A: 40.0%, B: 30.7%, C: 29.3%
+
+ ==== Affiliation 75 trials ==== 
+ A: 57.3%, B: 18.7%, C: 24.0%
+
+ ==== NonR 75 trials ==== 
+ A: 30.7%, B: 34.7%, C: 34.7%
+
+ ==== NonP 75 trials ==== 
+ A: 29.3%, B: 40.0%, C: 30.7%
+========================================================================================
+uiopen('C:\Users\Emotion\Desktop\Museum_Exp\4_exp_EM_multi_boundary_chunking\wcd_practice_em_multi_boundary_chunking.m',1)
+wcd_practice_em_multi_boundary_chunking
+Sbj Number: 203
+Experimenter: cyr
+
+
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.19 - Build date: Dec 14 2023).
+PTB-INFO: OS support status: Windows 11 (Version 11.0) is not supported.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO: For information about paid support, support memberships and other commercial services, please type
+PTB-INFO: 'PsychPaidSupportAndServices'.
+
+PTB-INFO: Proper timing and timestamping of visual stimulus onset is not reliably supported at all
+PTB-INFO: when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO: You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
+
+
+PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: NVIDIA GeForce RTX 3060 Laptop GPU/PCIe/SSE2 :: 4.6.0 NVIDIA 546.30
+PTB-INFO: VBL startline = 1080 , VBL Endline = -1
+PTB-INFO: Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
+PTB-INFO: Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 0.000000 ms [inf Hz]. (0 valid samples taken, stddev=0.000000 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING: ==============================================================================================================================
+PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING: ==============================================================================================================================
+PTB-INFO: All display tests and calibrations disabled. Assuming a refresh interval of 60.000000 Hz. Timing will be inaccurate!

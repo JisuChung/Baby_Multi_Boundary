@@ -1,0 +1,900 @@
+
+ set: 12
+ context 2: Chunking condition 
+ context 1: Multi boundary
+ BGM setting 
+  (chunking) B1_1: chunking_a.mp3  
+  B1_2: chunking_aa.mp3  
+ B2: chunking_b.mp3 
+   / (boundary) B1: cut2_sound_a.mp3 
+  B2: cut2_sound_d.mp3 
+
+0
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 1 Start -
+
+** Encoding **
+Current run: 1, Current trial: 1
+Animal: [2 4 3], Location: [3 2 5], Context: 2
+
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 2 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 3 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 4 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Chunking condition 
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 2: BGM #1 -> #1  time: 9523.043012 
+
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 3: BGM #1 -> #2  time: 9526.788114 
+
+ Chunking ON 
+PTB-INFO: New audio device -1 with handle 2 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 1
+Condition: XO, Number of category: 1, Category 9 9 
+Word:9 3 1 4 2 5 8 7 6 
+Category:9 9 9 9 9 9 9 9 9 
+PTB-INFO: New audio device -1 with handle 2 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 6
+Response: 2, RT: 1.774692e+00, Correct: 1
+
+Current trial: 2, Current image: 9
+Response: 1, RT: 1.262207e+00, Correct: 1
+
+Current trial: 3, Current image: 7
+Response: 1, RT: 1.497273e+00, Correct: 1
+
+Current trial: 4, Current image: 4
+Response: 2, RT: 6.656527e-01, Correct: 1
+
+Current trial: 5, Current image: 8
+Response: 1, RT: 1.078663e+00, Correct: 1
+
+Current trial: 6, Current image: 5
+Response: 2, RT: 1.008031e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 2 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 1, Current trial: 1
+
+** retrieval **
+Context: 2
+
+PTB-INFO: New audio device -1 with handle 2 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 2, Response: 2, Correct: 1
+Location: 3, Response: 3, Correct: 1
+
+Order: 2
+Animal: 4, Response: 4, Correct: 1
+Location: 2, Response: 2, Correct: 1
+
+Order: 3
+Animal: 3, Response: 3, Correct: 1
+Location: 5, Response: 5, Correct: 1
+
+- Trial 1 End -
+
+Trial retrieval accuracy: animal - 1, location - 1
+Trial interference accuracy: interference - 1, no response - 0
+
+
+6161
+PTB-INFO: New audio device -1 with handle 2 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 2 Start -
+
+** Encoding **
+Current run: 1, Current trial: 2
+Animal: [4 2 5], Location: [2 3 5], Context: 1
+
+PTB-INFO: New audio device -1 with handle 5 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 5 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 6 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 7 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 8 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 9 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Crossing ON 
+
+ Crossing at the pop up # 3: BGM #1 -> #2  time: 9643.689004 
+PTB-INFO: New audio device -1 with handle 9 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 2
+Condition: OX, Number of category: 2, Category 3 4 
+Word:7 2 7 8 6 4 9 3 3 
+Category:3 3 4 4 4 3 3 3 4 
+PTB-INFO: New audio device -1 with handle 9 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 4
+Response: 1, RT: 1.421967e+00, Correct: 1
+
+Current trial: 2, Current image: 6
+Response: 1, RT: 9.521458e-01, Correct: 1
+
+Current trial: 3, Current image: 9
+Response: 2, RT: 8.574080e-01, Correct: 1
+
+Current trial: 4, Current image: 5
+Response: 1, RT: 1.017162e+00, Correct: 1
+
+Current trial: 5, Current image: 7
+Response: 2, RT: 9.726220e-01, Correct: 1
+
+Current trial: 6, Current image: 8
+Response: 2, RT: 1.120415e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 9 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 1, Current trial: 2
+
+** retrieval **
+Context: 1
+
+PTB-INFO: New audio device -1 with handle 9 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 4, Response: 4, Correct: 1
+Location: 2, Response: 3, Correct: 0
+
+Order: 2
+Animal: 2, Response: 2, Correct: 1
+Location: 3, Response: 2, Correct: 0
+
+Order: 3
+Animal: 5, Response: 5, Correct: 1
+Location: 5, Response: 6, Correct: 0
+
+- Trial 2 End -
+
+Trial retrieval accuracy: animal - 1, location - 0
+Trial interference accuracy: interference - 1, no response - 0
+
+
+6826
+PTB-INFO: New audio device -1 with handle 9 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 3 Start -
+
+** Encoding **
+Current run: 2, Current trial: 3
+Animal: [3 4 5], Location: [6 4 5], Context: 1
+
+PTB-INFO: New audio device -1 with handle 9 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 9 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 10 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 11 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 12 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 13 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 13 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 2, Current trial: 3
+Condition: OX, Number of category: 2, Category 12 1 
+Word:6 1 5 9 6 2 5 9 2 
+Category:12 12 1 1 1 12 12 12 1 
+PTB-INFO: New audio device -1 with handle 13 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 5
+Response: 1, RT: 1.115261e+00, Correct: 1
+
+Current trial: 2, Current image: 7
+Response: 2, RT: 1.358698e+00, Correct: 1
+
+Current trial: 3, Current image: 9
+Response: 2, RT: 1.641131e+00, Correct: 1
+
+Current trial: 4, Current image: 4
+Response: 1, RT: 1.050067e+00, Correct: 1
+
+Current trial: 5, Current image: 8
+Response: 2, RT: 1.091460e+00, Correct: 1
+
+Current trial: 6, Current image: 6
+Response: 1, RT: 1.212982e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 13 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 2, Current trial: 3
+
+** retrieval **
+Context: 1
+
+PTB-INFO: New audio device -1 with handle 13 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 3, Response: 3, Correct: 1
+Location: 6, Response: 6, Correct: 1
+
+Order: 2
+Animal: 4, Response: 4, Correct: 1
+Location: 4, Response: 4, Correct: 1
+
+Order: 3
+Animal: 5, Response: 5, Correct: 1
+Location: 5, Response: 5, Correct: 1
+
+- Trial 3 End -
+
+Trial retrieval accuracy: animal - 1, location - 1
+Trial interference accuracy: interference - 1, no response - 0
+
+
+4501
+PTB-INFO: New audio device -1 with handle 13 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 4 Start -
+
+** Encoding **
+Current run: 2, Current trial: 4
+Animal: [5 1 2], Location: [2 4 6], Context: 2
+
+PTB-INFO: New audio device -1 with handle 14 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 14 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 15 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 16 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 17 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 18 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Chunking condition 
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 2: BGM #1 -> #2  time: 9883.928136 
+
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 3: BGM #2 -> #2  time: 9887.703811 
+
+ Chunking ON 
+PTB-INFO: New audio device -1 with handle 15 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 2, Current trial: 4
+Condition: XO, Number of category: 1, Category 6 6 
+Word:8 9 6 1 3 7 4 5 2 
+Category:6 6 6 6 6 6 6 6 6 
+PTB-INFO: New audio device -1 with handle 15 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 5
+Response: 2, RT: 1.344253e+00, Correct: 1
+
+Current trial: 2, Current image: 9
+Response: 1, RT: 8.833426e-01, Correct: 1
+
+Current trial: 3, Current image: 4
+Response: 2, RT: 8.342166e-01, Correct: 1
+
+Current trial: 4, Current image: 7
+Response: 1, RT: 9.118604e-01, Correct: 1
+
+Current trial: 5, Current image: 6
+Response: 2, RT: 8.308964e-01, Correct: 1
+
+Current trial: 6, Current image: 8
+Response: 1, RT: 1.546146e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 15 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 2, Current trial: 4
+
+** retrieval **
+Context: 2
+
+PTB-INFO: New audio device -1 with handle 15 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 5, Response: 5, Correct: 1
+Location: 2, Response: 2, Correct: 1
+
+Order: 2
+Animal: 1, Response: 1, Correct: 1
+Location: 4, Response: 4, Correct: 1
+
+Order: 3
+Animal: 2, Response: 2, Correct: 1
+Location: 6, Response: 6, Correct: 1
+
+- Trial 4 End -
+
+Trial retrieval accuracy: animal - 1, location - 1
+Trial interference accuracy: interference - 1, no response - 0
+
+
+4876
+PTB-INFO: New audio device -1 with handle 15 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 5 Start -
+
+** Encoding **
+Current run: 3, Current trial: 5
+Animal: [5 2 3], Location: [1 2 6], Context: 1
+
+PTB-INFO: New audio device -1 with handle 15 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 15 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 19 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 20 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 21 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 22 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Crossing ON 
+
+ Crossing at the pop up # 3: BGM #1 -> #2  time: 10013.280032 
+PTB-INFO: New audio device -1 with handle 22 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 3, Current trial: 5
+Condition: XO, Number of category: 2, Category 7 2 
+Word:8 6 3 1 2 1 5 2 4 
+Category:7 7 2 2 2 7 7 7 2 
+PTB-INFO: New audio device -1 with handle 22 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 8
+Response: 1, RT: 2.121828e+00, Correct: 1
+
+Current trial: 2, Current image: 4
+Response: 1, RT: 8.385963e-01, Correct: 0
+
+Current trial: 3, Current image: 5
+Response: 2, RT: 7.960417e-01, Correct: 1
+
+Current trial: 4, Current image: 6
+Response: 2, RT: 7.959947e-01, Correct: 1
+
+Current trial: 5, Current image: 9
+Response: 1, RT: 1.072158e+00, Correct: 1
+
+Current trial: 6, Current image: 7
+Response: 1, RT: 1.368176e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 22 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 3, Current trial: 5
+
+** retrieval **
+Context: 1
+
+PTB-INFO: New audio device -1 with handle 22 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 5, Response: 5, Correct: 1
+Location: 1, Response: 1, Correct: 1
+
+Order: 2
+Animal: 2, Response: 1, Correct: 0
+Location: 2, Response: 2, Correct: 1
+
+Order: 3
+Animal: 3, Response: 3, Correct: 1
+Location: 6, Response: 6, Correct: 1
+
+- Trial 5 End -
+
+Trial retrieval accuracy: animal - 6.666667e-01, location - 1
+Trial interference accuracy: interference - 9.666667e-01, no response - 0
+
+
+4696
+PTB-INFO: New audio device -1 with handle 22 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 6 Start -
+
+** Encoding **
+Current run: 3, Current trial: 6
+Animal: [1 5 4], Location: [1 5 2], Context: 2
+
+PTB-INFO: New audio device -1 with handle 23 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 23 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 24 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 25 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 26 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 27 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Chunking condition 
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 2: BGM #1 -> #2  time: 10116.623981 
+
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 3: BGM #2 -> #1  time: 10120.369939 
+
+ Chunking ON 
+PTB-INFO: New audio device -1 with handle 24 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 3, Current trial: 6
+Condition: OX, Number of category: 1, Category 8 8 
+Word:6 9 3 2 4 5 8 7 1 
+Category:8 8 8 8 8 8 8 8 8 
+PTB-INFO: New audio device -1 with handle 24 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 4
+Response: 1, RT: 1.304209e+00, Correct: 1
+
+Current trial: 2, Current image: 5
+Response: 1, RT: 9.617003e-01, Correct: 1
+
+Current trial: 3, Current image: 9
+Response: 2, RT: 1.427459e+00, Correct: 1
+
+Current trial: 4, Current image: 8
+Response: 2, RT: 1.442086e+00, Correct: 1
+
+Current trial: 5, Current image: 6
+Response: 1, RT: 9.424299e-01, Correct: 1
+
+Current trial: 6, Current image: 7
+Response: 2, RT: 1.094228e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 24 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 3, Current trial: 6
+
+** retrieval **
+Context: 2
+
+PTB-INFO: New audio device -1 with handle 24 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 1, Response: 1, Correct: 1
+Location: 1, Response: 1, Correct: 1
+
+Order: 2
+Animal: 5, Response: 5, Correct: 1
+Location: 5, Response: 5, Correct: 1
+
+Order: 3
+Animal: 4, Response: 4, Correct: 1
+Location: 2, Response: 2, Correct: 1
+
+- Trial 6 End -
+
+Trial retrieval accuracy: animal - 1, location - 1
+Trial interference accuracy: interference - 9.722222e-01, no response - 0
+
+
+6146
+PTB-INFO: New audio device -1 with handle 24 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 7 Start -
+
+** Encoding **
+Current run: 4, Current trial: 7
+Animal: [1 3 5], Location: [4 1 3], Context: 2
+
+PTB-INFO: New audio device -1 with handle 24 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 24 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 28 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 29 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 30 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 31 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Chunking condition 
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 2: BGM #2 -> #1  time: 10244.446409 
+
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 3: BGM #1 -> #1  time: 10248.195985 
+
+ Chunking ON 
+PTB-INFO: New audio device -1 with handle 28 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 4, Current trial: 7
+Condition: OX, Number of category: 1, Category 10 10 
+Word:4 7 9 2 8 1 6 3 5 
+Category:10 10 10 10 10 10 10 10 10 
+PTB-INFO: New audio device -1 with handle 28 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 6
+Response: 1, RT: 8.958088e-01, Correct: 1
+
+Current trial: 2, Current image: 8
+Response: 2, RT: 1.052281e+00, Correct: 1
+
+Current trial: 3, Current image: 5
+Response: 1, RT: 1.021480e+00, Correct: 1
+
+Current trial: 4, Current image: 4
+Response: 2, RT: 1.125691e+00, Correct: 0
+
+Current trial: 5, Current image: 9
+Response: 2, RT: 1.025934e+00, Correct: 1
+
+Current trial: 6, Current image: 7
+Response: 2, RT: 9.232671e-01, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 28 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 4, Current trial: 7
+
+** retrieval **
+Context: 2
+
+PTB-INFO: New audio device -1 with handle 28 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 1, Response: 1, Correct: 1
+Location: 4, Response: 4, Correct: 1
+
+Order: 2
+Animal: 3, Response: 3, Correct: 1
+Location: 1, Response: 1, Correct: 1
+
+Order: 3
+Animal: 5, Response: 5, Correct: 1
+Location: 3, Response: 3, Correct: 1
+
+- Trial 7 End -
+
+Trial retrieval accuracy: animal - 1, location - 1
+Trial interference accuracy: interference - 9.523810e-01, no response - 0
+
+
+3861
+PTB-INFO: New audio device -1 with handle 28 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 8 Start -
+
+** Encoding **
+Current run: 4, Current trial: 8
+Animal: [4 1 3], Location: [2 1 6], Context: 1
+
+PTB-INFO: New audio device -1 with handle 32 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 32 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 33 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 34 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 35 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 36 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Crossing ON 
+
+ Crossing at the pop up # 3: BGM #1 -> #2  time: 10349.570947 
+PTB-INFO: New audio device -1 with handle 36 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 4, Current trial: 8
+Condition: XO, Number of category: 2, Category 11 5 
+Word:7 1 2 6 9 2 5 4 7 
+Category:11 11 5 5 5 11 11 11 5 
+PTB-INFO: New audio device -1 with handle 36 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 7
+Response: 1, RT: 1.062302e+00, Correct: 1
+
+Current trial: 2, Current image: 9
+Response: 1, RT: 1.565714e+00, Correct: 1
+
+Current trial: 3, Current image: 5
+Response: 2, RT: 1.057312e+00, Correct: 1
+
+Current trial: 4, Current image: 8
+Response: 1, RT: 1.656382e+00, Correct: 1
+
+Current trial: 5, Current image: 6
+Response: 2, RT: 8.213492e-01, Correct: 1
+
+Current trial: 6, Current image: 4
+Response: 2, RT: 8.377602e-01, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 36 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 4, Current trial: 8
+
+** retrieval **
+Context: 1
+
+PTB-INFO: New audio device -1 with handle 36 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is Speakers(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 4, Response: 5, Correct: 0
+Location: 2, Response: 2, Correct: 1
+
+Order: 2
+Animal: 1, Response: 1, Correct: 1
+Location: 1, Response: 1, Correct: 1
+
+Order: 3
+Animal: 3, Response: 3, Correct: 1
+Location: 6, Response: 6, Correct: 1
+
+- Trial 8 End -
+
+Trial retrieval accuracy: animal - 6.666667e-01, location - 1
+Trial interference accuracy: interference - 9.583333e-01, no response - 0
+
+
+*** EXPERIMENT END ***
+
+Sbj retrieval accuracy: animal - 0.92, location - 0.88
+Sbj interference accuracy: interference - 0.98, no response - 0
+
+
+
+PTB-INFO: There are still 3723 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO: a total of 239 times out of a total of 9263 flips during this session.
+
+INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO: If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO: of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO: deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO: examples in the PDF presentation in PsychDocumentation/Psychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+
+ set: 12
+ context 2: multisensory boundary - chunking 
+ context 1: visual boundary
+ BGM setting 
+   B1: cut2_sound_a.mp3  
+   B2: cut2_sound_d.mp3 
+   NB: cut2_sound_c.mp3 
+
+ 

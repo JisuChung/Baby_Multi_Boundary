@@ -1,0 +1,266 @@
+
+ set: 9
+ context 2: multisensory boundary 
+ context 1: visual boundary
+ BGM setting 
+   B1: 240120_13_nonrythm_b2.m4a  
+   B2: 240120_13_nonrythm_c2.m4a 
+   NB: 240120_13_nonrythm_a.m4a 
+
+0
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 1 Start -
+
+** Encoding **
+Current run: 1, Current trial: 1
+Animal: [1 5 4], Location: [5 6 4], Context: 1
+
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 2 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 2 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 1
+Condition: OX, Number of category: 1, Category 3 3 
+Word:7 5 2 9 8 3 1 4 6 
+Category:3 3 3 3 3 3 3 3 3 
+PTB-INFO: New audio device -1 with handle 2 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 9
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 2, Current image: 8
+Response: 1, RT: 1.182727e+00, Correct: 0
+
+Current trial: 3, Current image: 5
+Response: 1, RT: 9.514894e-01, Correct: 1
+
+Current trial: 4, Current image: 6
+Response: 1, RT: 1.332202e+00, Correct: 1
+
+Current trial: 5, Current image: 4
+Response: 1, RT: 5.341647e-01, Correct: 1
+
+Current trial: 6, Current image: 7
+Response: 2, RT: 1.424626e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 2 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 1, Current trial: 1
+
+** retrieval **
+Context: 1
+
+PTB-INFO: New audio device -1 with handle 2 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 1, Response: 1, Correct: 1
+Location: 5, Response: 6, Correct: 0
+
+Order: 2
+Animal: 5, Response: 4, Correct: 0
+Location: 6, Response: 4, Correct: 0
+
+Order: 3
+Animal: 4, Response: 3, Correct: 0
+Location: 4, Response: 5, Correct: 0
+
+- Trial 1 End -
+
+Trial retrieval accuracy: animal - 3.333333e-01, location - 0
+Trial interference accuracy: interference - 8.000000e-01, no response - 1
+
+
+12181
+PTB-INFO: New audio device -1 with handle 2 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 2 Start -
+
+** Encoding **
+Current run: 1, Current trial: 2
+Animal: [3 1 5], Location: [2 3 1], Context: 2
+
+PTB-INFO: New audio device -1 with handle 3 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 3 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 4 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 5 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 3 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 2
+Condition: XO, Number of category: 2, Category 8 9 
+Word:7 6 1 2 7 5 8 9 4 
+Category:8 8 9 9 9 8 8 8 9 
+PTB-INFO: New audio device -1 with handle 3 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 7
+Response: 1, RT: 2.572375e+00, Correct: 1
+
+Current trial: 2, Current image: 4
+Response: 2, RT: 1.173170e+00, Correct: 1
+
+Current trial: 3, Current image: 5
+Response: 2, RT: 1.060723e+00, Correct: 1
+
+Current trial: 4, Current image: 8
+Response: 1, RT: 1.414082e+00, Correct: 1
+
+Current trial: 5, Current image: 9
+Response: 1, RT: 1.486549e+00, Correct: 1
+
+Current trial: 6, Current image: 6
+Response: 2, RT: 1.059989e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 3 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 1, Current trial: 2
+
+** retrieval **
+Context: 2
+
+PTB-INFO: New audio device -1 with handle 3 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 3, Response: 1, Correct: 0
+Location: 2, Response: 2, Correct: 1
+
+Order: 2
+Animal: 1, Response: 3, Correct: 0
+Location: 3, Response: 3, Correct: 1
+
+Order: 3
+Animal: 5, Response: 4, Correct: 0
+Location: 1, Response: 1, Correct: 1
+
+- Trial 2 End -
+
+Trial retrieval accuracy: animal - 0, location - 1
+Trial interference accuracy: interference - 9.090909e-01, no response - 1
+
+
+9601
+PTB-INFO: New audio device -1 with handle 3 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 3 Start -
+
+** Encoding **
+Current run: 2, Current trial: 3
+Animal: [5 2 4], Location: [2 6 4], Context: 1
+
+PTB-INFO: New audio device -1 with handle 3 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 3 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 6 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 7 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 7 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 2, Current trial: 3
+Condition: XO, Number of category: 2, Category 11 10 
+Word:4 5 6 8 7 1 6 7 9 
+Category:11 11 10 10 10 11 11 11 10 
+PTB-INFO: New audio device -1 with handle 7 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 9
+Response: 1, RT: 2.022966e+00, Correct: 1
+
+Current trial: 2, Current image: 6
+Response: 2, RT: 1.138490e+00, Correct: 1
+
+Current trial: 3, Current image: 7
+Response: 1, RT: 1.226994e+00, Correct: 1
+
+Current trial: 4, Current image: 8
+Response: 1, RT: 1.107183e+00, Correct: 1
+
+Current trial: 5, Current image: 4
+Response: 2, RT: 1.091142e+00, Correct: 1
+
+Current trial: 6, Current image: 5
+Response: 2, RT: 1.173232e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 7 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is ?ㅻ뱶??(High Definition Audio Devic
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+{다음 작업 중 사용자에 의해 종료됨: <a href="matlab:matlab.internal.language.introspective.errorDocCallback('KbCheck', 'C:\toolbox\Psychtoolbox\PsychBasic\KbCheck.m', 289)" style="font-weight:bold">KbCheck</a> (<a href="matlab: opentoline('C:\toolbox\Psychtoolbox\PsychBasic\KbCheck.m',289,0)">line 289</a>)
+
+
+다음에서: <a href="matlab:matlab.internal.language.introspective.errorDocCallback('wcd_em_multi_boundary_obj3_v3_set_save_continue', 'C:\Users\leelab_labtop2\Desktop\Experiment\Museum_exp\2_exp_EM_multi_boundary_240122\wcd_em_multi_boundary_obj3_v3_set_save_continue.m', 1488)" style="font-weight:bold">wcd_em_multi_boundary_obj3_v3_set_save_continue</a> (<a href="matlab: opentoline('C:\Users\leelab_labtop2\Desktop\Experiment\Museum_exp\2_exp_EM_multi_boundary_240122\wcd_em_multi_boundary_obj3_v3_set_save_continue.m',1488,0)">line 1488</a>)
+            [keyIsDown, secs, keyCode] = KbCheck;
+} 

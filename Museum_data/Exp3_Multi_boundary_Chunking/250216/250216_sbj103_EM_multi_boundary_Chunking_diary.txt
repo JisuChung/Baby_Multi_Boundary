@@ -1,0 +1,905 @@
+
+ set: 5
+ context 1: Chunking condition 
+ context 2: Multi boundary
+ BGM setting 
+  (chunking) B1_1: chunking_a.mp3  
+  B1_2: chunking_aa.mp3  
+ B2: chunking_b.mp3 
+   / (boundary) B1: cut2_sound_a.mp3 
+  B2: cut2_sound_c.mp3 
+
+0
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 1 Start -
+
+** Encoding **
+Current run: 1, Current trial: 1
+Animal: [5 1 2], Location: [6 1 5], Context: 1
+
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 2 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 3 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 4 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Chunking condition 
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 2: BGM #2 -> #1  time: 7127.711446 
+
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 3: BGM #1 -> #2  time: 7131.429843 
+
+ Chunking ON 
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 1
+Condition: XO, Number of category: 1, Category 2 2 
+Word:7 6 4 3 8 1 5 9 2 
+Category:2 2 2 2 2 2 2 2 2 
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 5
+Response: 2, RT: 1.710933e+00, Correct: 1
+
+Current trial: 2, Current image: 4
+Response: 2, RT: 9.314161e-01, Correct: 1
+
+Current trial: 3, Current image: 6
+Response: 2, RT: 1.018727e+00, Correct: 1
+
+Current trial: 4, Current image: 7
+Response: 1, RT: 1.492292e+00, Correct: 1
+
+Current trial: 5, Current image: 9
+Response: 1, RT: 1.332117e+00, Correct: 1
+
+Current trial: 6, Current image: 8
+Response: 1, RT: 1.044496e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 1, Current trial: 1
+
+** retrieval **
+Context: 1
+
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 5, Response: 1, Correct: 0
+Location: 6, Response: 6, Correct: 1
+
+Order: 2
+Animal: 1, Response: 3, Correct: 0
+Location: 1, Response: 5, Correct: 0
+
+Order: 3
+Animal: 2, Response: 2, Correct: 1
+Location: 5, Response: 1, Correct: 0
+
+- Trial 1 End -
+
+Trial retrieval accuracy: animal - 3.333333e-01, location - 3.333333e-01
+Trial interference accuracy: interference - 1, no response - 0
+
+
+9111
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 2 Start -
+
+** Encoding **
+Current run: 1, Current trial: 2
+Animal: [3 2 5], Location: [3 2 1], Context: 2
+
+PTB-INFO: New audio device -1 with handle 5 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 5 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 6 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 7 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 8 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 9 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 8 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 2
+Condition: OX, Number of category: 2, Category 11 8 
+Word:1 8 2 9 3 9 6 2 8 
+Category:11 11 8 8 8 11 11 11 8 
+PTB-INFO: New audio device -1 with handle 8 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 8
+Response: 2, RT: 2.392202e+00, Correct: 1
+
+Current trial: 2, Current image: 7
+Response: 2, RT: 1.032810e+00, Correct: 1
+
+Current trial: 3, Current image: 4
+Response: 1, RT: 1.073253e+00, Correct: 1
+
+Current trial: 4, Current image: 9
+Response: 2, RT: 1.195156e+00, Correct: 1
+
+Current trial: 5, Current image: 5
+Response: 1, RT: 1.258870e+00, Correct: 1
+
+Current trial: 6, Current image: 6
+Response: 1, RT: 1.651507e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 8 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 1, Current trial: 2
+
+** retrieval **
+Context: 2
+
+PTB-INFO: New audio device -1 with handle 8 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 3, Response: 3, Correct: 1
+Location: 3, Response: 3, Correct: 1
+
+Order: 2
+Animal: 2, Response: 2, Correct: 1
+Location: 2, Response: 2, Correct: 1
+
+Order: 3
+Animal: 5, Response: 5, Correct: 1
+Location: 1, Response: 1, Correct: 1
+
+- Trial 2 End -
+
+Trial retrieval accuracy: animal - 1, location - 1
+Trial interference accuracy: interference - 1, no response - 0
+
+
+8656
+PTB-INFO: New audio device -1 with handle 8 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 3 Start -
+
+** Encoding **
+Current run: 2, Current trial: 3
+Animal: [5 1 3], Location: [6 4 1], Context: 2
+
+PTB-INFO: New audio device -1 with handle 8 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 8 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 10 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 11 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 12 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 13 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Crossing ON 
+
+ Crossing at the pop up # 3: BGM #2 -> #1  time: 7495.947401 
+PTB-INFO: New audio device -1 with handle 12 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 2, Current trial: 3
+Condition: XO, Number of category: 2, Category 5 6 
+Word:9 3 1 5 6 7 6 4 7 
+Category:5 5 6 6 6 5 5 5 6 
+PTB-INFO: New audio device -1 with handle 12 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 9
+Response: 2, RT: 7.598000e-03, Correct: 0
+
+Current trial: 2, Current image: 8
+Response: 1, RT: 1.342228e+00, Correct: 1
+
+Current trial: 3, Current image: 5
+Response: 2, RT: 1.359065e+00, Correct: 1
+
+Current trial: 4, Current image: 6
+Response: 2, RT: 1.113406e+00, Correct: 1
+
+Current trial: 5, Current image: 7
+Response: 1, RT: 1.115265e+00, Correct: 1
+
+Current trial: 6, Current image: 4
+Response: 2, RT: 1.221269e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 12 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 2, Current trial: 3
+
+** retrieval **
+Context: 2
+
+PTB-INFO: New audio device -1 with handle 12 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 5, Response: 5, Correct: 1
+Location: 6, Response: 6, Correct: 1
+
+Order: 2
+Animal: 1, Response: 1, Correct: 1
+Location: 4, Response: 5, Correct: 0
+
+Order: 3
+Animal: 3, Response: 3, Correct: 1
+Location: 1, Response: 1, Correct: 1
+
+- Trial 3 End -
+
+Trial retrieval accuracy: animal - 1, location - 6.666667e-01
+Trial interference accuracy: interference - 9.444444e-01, no response - 0
+
+
+5821
+PTB-INFO: New audio device -1 with handle 12 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 4 Start -
+
+** Encoding **
+Current run: 2, Current trial: 4
+Animal: [2 3 4], Location: [1 3 4], Context: 1
+
+PTB-INFO: New audio device -1 with handle 14 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 14 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 15 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 16 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 17 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 18 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Chunking condition 
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 2: BGM #1 -> #1  time: 7606.156622 
+
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 3: BGM #1 -> #2  time: 7609.874896 
+
+ Chunking ON 
+PTB-INFO: New audio device -1 with handle 16 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 2, Current trial: 4
+Condition: OX, Number of category: 1, Category 1 1 
+Word:6 5 8 3 9 1 7 4 2 
+Category:1 1 1 1 1 1 1 1 1 
+PTB-INFO: New audio device -1 with handle 16 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 8
+Response: 2, RT: 2.699532e+00, Correct: 1
+
+Current trial: 2, Current image: 9
+Response: 2, RT: 8.684756e-01, Correct: 1
+
+Current trial: 3, Current image: 5
+Response: 2, RT: 1.029846e+00, Correct: 0
+
+Current trial: 4, Current image: 4
+Response: 1, RT: 6.750000e-05, Correct: 1
+
+Current trial: 5, Current image: 7
+Response: 2, RT: 1.143058e+00, Correct: 1
+
+Current trial: 6, Current image: 6
+Response: 1, RT: 2.793746e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 16 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 2, Current trial: 4
+
+** retrieval **
+Context: 1
+
+PTB-INFO: New audio device -1 with handle 16 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 2, Response: 2, Correct: 1
+Location: 1, Response: 2, Correct: 0
+
+Order: 2
+Animal: 3, Response: 1, Correct: 0
+Location: 3, Response: 5, Correct: 0
+
+Order: 3
+Animal: 4, Response: 4, Correct: 1
+Location: 4, Response: 5, Correct: 0
+
+- Trial 4 End -
+
+Trial retrieval accuracy: animal - 6.666667e-01, location - 0
+Trial interference accuracy: interference - 9.166667e-01, no response - 0
+
+
+6391
+PTB-INFO: New audio device -1 with handle 16 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 5 Start -
+
+** Encoding **
+Current run: 3, Current trial: 5
+Animal: [4 1 3], Location: [4 3 1], Context: 1
+
+PTB-INFO: New audio device -1 with handle 16 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 16 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 19 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 20 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 21 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 22 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Chunking condition 
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 2: BGM #2 -> #1  time: 7798.417082 
+
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 3: BGM #1 -> #1  time: 7802.137052 
+
+ Chunking ON 
+PTB-INFO: New audio device -1 with handle 19 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 3, Current trial: 5
+Condition: OX, Number of category: 2, Category 3 4 
+Word:7 1 9 3 6 4 9 3 7 
+Category:3 3 4 4 4 3 3 3 4 
+PTB-INFO: New audio device -1 with handle 19 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 7
+Response: 2, RT: 1.371636e+00, Correct: 1
+
+Current trial: 2, Current image: 9
+Response: 2, RT: 1.293074e+00, Correct: 1
+
+Current trial: 3, Current image: 4
+Response: 1, RT: 1.147965e+00, Correct: 1
+
+Current trial: 4, Current image: 5
+Response: 2, RT: 1.445516e+00, Correct: 0
+
+Current trial: 5, Current image: 6
+Response: 1, RT: 1.166998e+00, Correct: 1
+
+Current trial: 6, Current image: 8
+Response: 2, RT: 1.201156e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 19 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 3, Current trial: 5
+
+** retrieval **
+Context: 1
+
+PTB-INFO: New audio device -1 with handle 19 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 4, Response: 1, Correct: 0
+Location: 4, Response: 6, Correct: 0
+
+Order: 2
+Animal: 1, Response: 4, Correct: 0
+Location: 3, Response: 1, Correct: 0
+
+Order: 3
+Animal: 3, Response: 3, Correct: 1
+Location: 1, Response: 2, Correct: 0
+
+- Trial 5 End -
+
+Trial retrieval accuracy: animal - 3.333333e-01, location - 0
+Trial interference accuracy: interference - 9.000000e-01, no response - 0
+
+
+5076
+PTB-INFO: New audio device -1 with handle 19 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 6 Start -
+
+** Encoding **
+Current run: 3, Current trial: 6
+Animal: [4 5 1], Location: [4 1 3], Context: 2
+
+PTB-INFO: New audio device -1 with handle 23 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 23 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 24 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 25 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 26 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 27 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Crossing ON 
+
+ Crossing at the pop up # 2: BGM #2 -> #1  time: 7912.909201 
+PTB-INFO: New audio device -1 with handle 26 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 3, Current trial: 6
+Condition: XO, Number of category: 1, Category 7 7 
+Word:6 8 1 4 2 5 9 7 3 
+Category:7 7 7 7 7 7 7 7 7 
+PTB-INFO: New audio device -1 with handle 26 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 5
+Response: 2, RT: 9.854502e-01, Correct: 1
+
+Current trial: 2, Current image: 9
+Response: 1, RT: 2.170101e+00, Correct: 1
+
+Current trial: 3, Current image: 8
+Response: 1, RT: 1.147216e+00, Correct: 1
+
+Current trial: 4, Current image: 7
+Response: 1, RT: 1.125020e+00, Correct: 1
+
+Current trial: 5, Current image: 6
+Response: 2, RT: 9.269892e-01, Correct: 1
+
+Current trial: 6, Current image: 4
+Response: 2, RT: 9.726400e-01, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 26 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 3, Current trial: 6
+
+** retrieval **
+Context: 2
+
+PTB-INFO: New audio device -1 with handle 26 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 4, Response: 2, Correct: 0
+Location: 4, Response: 3, Correct: 0
+
+Order: 2
+Animal: 5, Response: 4, Correct: 0
+Location: 1, Response: 1, Correct: 1
+
+Order: 3
+Animal: 1, Response: 1, Correct: 1
+Location: 3, Response: 2, Correct: 0
+
+- Trial 6 End -
+
+Trial retrieval accuracy: animal - 3.333333e-01, location - 3.333333e-01
+Trial interference accuracy: interference - 9.166667e-01, no response - 0
+
+
+4471
+PTB-INFO: New audio device -1 with handle 26 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 7 Start -
+
+** Encoding **
+Current run: 4, Current trial: 7
+Animal: [3 5 4], Location: [2 4 1], Context: 2
+
+PTB-INFO: New audio device -1 with handle 26 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 26 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 28 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 29 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 30 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 31 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Crossing ON 
+
+ Crossing at the pop up # 2: BGM #1 -> #2  time: 8082.461475 
+
+ Crossing ON 
+
+ Crossing at the pop up # 3: BGM #2 -> #1  time: 8086.378846 
+PTB-INFO: New audio device -1 with handle 30 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 4, Current trial: 7
+Condition: OX, Number of category: 1, Category 10 10 
+Word:1 6 7 2 4 9 8 5 3 
+Category:10 10 10 10 10 10 10 10 10 
+PTB-INFO: New audio device -1 with handle 30 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 5
+Response: 1, RT: 9.882091e-01, Correct: 1
+
+Current trial: 2, Current image: 4
+Response: 1, RT: 8.626714e-01, Correct: 1
+
+Current trial: 3, Current image: 6
+Response: 1, RT: 8.525390e-01, Correct: 1
+
+Current trial: 4, Current image: 9
+Response: 2, RT: 1.196051e+00, Correct: 1
+
+Current trial: 5, Current image: 7
+Response: 2, RT: 1.163852e+00, Correct: 1
+
+Current trial: 6, Current image: 8
+Response: 2, RT: 1.038048e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 30 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 4, Current trial: 7
+
+** retrieval **
+Context: 2
+
+PTB-INFO: New audio device -1 with handle 30 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 3, Response: 1, Correct: 0
+Location: 2, Response: 3, Correct: 0
+
+Order: 2
+Animal: 5, Response: 3, Correct: 0
+Location: 4, Response: 5, Correct: 0
+
+Order: 3
+Animal: 4, Response: 5, Correct: 0
+Location: 1, Response: 6, Correct: 0
+
+- Trial 7 End -
+
+Trial retrieval accuracy: animal - 0, location - 0
+Trial interference accuracy: interference - 9.285714e-01, no response - 0
+
+
+6636
+PTB-INFO: New audio device -1 with handle 30 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 8 Start -
+
+** Encoding **
+Current run: 4, Current trial: 8
+Animal: [2 5 4], Location: [5 6 1], Context: 1
+
+PTB-INFO: New audio device -1 with handle 32 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 32 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 33 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 34 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 35 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 36 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Chunking condition 
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 2: BGM #2 -> #2  time: 8198.922703 
+
+ Chunking ON 
+
+ Chunking condition 
+ Crossing at the pop up # 3: BGM #2 -> #1  time: 8202.642521 
+
+ Chunking ON 
+PTB-INFO: New audio device -1 with handle 34 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 4, Current trial: 8
+Condition: XO, Number of category: 2, Category 9 12 
+Word:3 2 4 5 3 1 8 4 7 
+Category:9 9 12 12 12 9 9 9 12 
+PTB-INFO: New audio device -1 with handle 34 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 4
+Response: 2, RT: 1.365752e+00, Correct: 1
+
+Current trial: 2, Current image: 7
+Response: 1, RT: 2.994179e+00, Correct: 1
+
+Current trial: 3, Current image: 8
+Response: 1, RT: 6.790000e-05, Correct: 1
+
+Current trial: 4, Current image: 5
+Response: 2, RT: 1.255249e+00, Correct: 1
+
+Current trial: 5, Current image: 6
+Response: 1, RT: 1.802506e+00, Correct: 0
+
+Current trial: 6, Current image: 9
+Response: 1, RT: 1.587647e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 34 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 4, Current trial: 8
+
+** retrieval **
+Context: 1
+
+PTB-INFO: New audio device -1 with handle 34 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is TFX156T(NVIDIA High Definition 
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 2, Response: 2, Correct: 1
+Location: 5, Response: 1, Correct: 0
+
+Order: 2
+Animal: 5, Response: 1, Correct: 0
+Location: 6, Response: 3, Correct: 0
+
+Order: 3
+Animal: 4, Response: 5, Correct: 0
+Location: 1, Response: 5, Correct: 0
+
+- Trial 8 End -
+
+Trial retrieval accuracy: animal - 3.333333e-01, location - 0
+Trial interference accuracy: interference - 9.166667e-01, no response - 0
+
+
+*** EXPERIMENT END ***
+
+Sbj retrieval accuracy: animal - 0.50, location - 0.29
+Sbj interference accuracy: interference - 0.94, no response - 0
+
+
+
+PTB-INFO: There are still 5548 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO: a total of 261 times out of a total of 11600 flips during this session.
+
+INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO: If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO: of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO: deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO: examples in the PDF presentation in PsychDocumentation/Psychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+
+ set: 5
+ context 1: multisensory boundary - chunking 
+ context 2: visual boundary
+ BGM setting 
+   B1: cut2_sound_a.mp3  
+   B2: cut2_sound_c.mp3 
+   NB: cut2_sound_d.mp3 
+
+ 

@@ -1,0 +1,2155 @@
+경고 마지막 작업 폴더 기본 설정을 사용하여 선택된
+CUsersleelab_labtop2Desktop1_exp_EM_0708 (1)에 액세스할 수 없습니다.
+대신 CUsersleelab_labtop2DocumentsMATLAB을(를) 초기 작업 폴더로 사용합니다. 
+
+PsychStartup Adding path of installed GStreamer runtime to library path. [Cgstreamer1.0msvc_x86_64bin]
+ wcd_practice_em_museum_obj3_v2
+Sbj Number 999
+Experimenter yj
+'PsychDebugWindowConfiguratio'은(는) 정의되지 않은 함수 또는 변수입니다.
+
+오류 발생 wcd_practice_em_museum_obj3_v2 (line 30)
+PsychDebugWindowConfiguratio([], 0)
+ 
+ wcd_practice_em_museum_obj3_v2
+Sbj Number 999
+Experimenter yj
+
+
+PTB-INFO This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date Feb  2 2022).
+PTB-INFO OS support status Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO For information about paid priority support, community membership and commercial services, please type
+PTB-INFO 'PsychPaidSupportAndServices'.
+
+PTB-INFO Proper timing and timestamping of visual stimulus onset is not reliably supported at all
+PTB-INFO when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
+
+
+PTB-INFO OpenGL-Renderer is NVIDIA Corporation  NVIDIA GeForce GTX 1660 TiPCIeSSE2  4.6.0 NVIDIA 512.89
+PTB-INFO VBL startline = 1080 , VBL Endline = -1
+PTB-INFO Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
+PTB-INFO Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
+PTB-INFO Measured monitor refresh interval from VBLsync = 0.000000 ms [inf Hz]. (0 valid samples taken, stddev=0.000000 ms.)
+PTB-INFO Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING ==============================================================================================================================
+PTB-WARNING WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING ==============================================================================================================================
+PTB-INFO All display tests and calibrations disabled. Assuming a refresh interval of 144.000000 Hz. Timing will be inaccurate!
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+다음 작업 중 사용자에 의해 종료됨 wcd_practice_em_museum_obj3_v2 (line 366)
+ 
+
+ 
+ 
+ wcd_practice_em_museum_obj3_v2
+
+
+PTB-INFO There are still 3517 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO a total of 279 times out of a total of 708 flips during this session.
+
+INFO This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO examples in the PDF presentation in PsychDocumentationPsychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+Sbj Number 999
+Experimenter yj
+
+
+PTB-INFO This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date Feb  2 2022).
+PTB-INFO OS support status Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO For information about paid priority support, community membership and commercial services, please type
+PTB-INFO 'PsychPaidSupportAndServices'.
+
+PTB-INFO Proper timing and timestamping of visual stimulus onset is not reliably supported at all
+PTB-INFO when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
+
+
+PTB-INFO OpenGL-Renderer is NVIDIA Corporation  NVIDIA GeForce GTX 1660 TiPCIeSSE2  4.6.0 NVIDIA 512.89
+PTB-INFO VBL startline = 1080 , VBL Endline = -1
+PTB-INFO Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
+PTB-INFO Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
+PTB-INFO Measured monitor refresh interval from VBLsync = 0.000000 ms [inf Hz]. (0 valid samples taken, stddev=0.000000 ms.)
+PTB-INFO Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING ==============================================================================================================================
+PTB-WARNING WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING ==============================================================================================================================
+PTB-INFO All display tests and calibrations disabled. Assuming a refresh interval of 144.000000 Hz. Timing will be inaccurate!
+다음 작업 중 사용자에 의해 종료됨 wcd_practice_em_museum_obj3_v2 (line 379)
+ 
+ 
+ sca;
+
+
+PTB-INFO There are still 615 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO a total of 53 times out of a total of 128 flips during this session.
+
+INFO This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO examples in the PDF presentation in PsychDocumentationPsychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+ wcd_practice_em_museum_obj3_v2
+Sbj Number 999
+Experimenter yj
+
+
+PTB-INFO This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date Feb  2 2022).
+PTB-INFO OS support status Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO For information about paid priority support, community membership and commercial services, please type
+PTB-INFO 'PsychPaidSupportAndServices'.
+
+PTB-INFO Proper timing and timestamping of visual stimulus onset is not reliably supported at all
+PTB-INFO when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
+
+
+PTB-INFO OpenGL-Renderer is NVIDIA Corporation  NVIDIA GeForce GTX 1660 TiPCIeSSE2  4.6.0 NVIDIA 512.89
+PTB-INFO VBL startline = 1080 , VBL Endline = -1
+PTB-INFO Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
+PTB-INFO Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
+PTB-INFO Measured monitor refresh interval from VBLsync = 0.000000 ms [inf Hz]. (0 valid samples taken, stddev=0.000000 ms.)
+PTB-INFO Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING ==============================================================================================================================
+PTB-WARNING WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING ==============================================================================================================================
+PTB-INFO All display tests and calibrations disabled. Assuming a refresh interval of 144.000000 Hz. Timing will be inaccurate!
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅽ뵾而�(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Encoding 
+Animal [5 1 2], Location [4 3 6], Context 1
+
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅽ뵾而�(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅽ뵾而�(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅽ뵾而�(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 1, Current trial 1
+Word5 1 6 8 7 9 2 4 3 
+Category0 0 0 0 0 0 0 0 0 
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅽ뵾而�(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference test starts 
+Current trial 1, Current image 5
+Response 99, RT 99, Correct 99
+
+Current trial 2, Current image 4
+Response 99, RT 99, Correct 99
+
+Current trial 3, Current image 6
+Response 99, RT 99, Correct 99
+
+Current trial 4, Current image 9
+Response 99, RT 99, Correct 99
+
+Current trial 5, Current image 8
+Response 99, RT 99, Correct 99
+
+Current trial 6, Current image 7
+Response 99, RT 99, Correct 99
+
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅽ뵾而�(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+ retrieval 
+Context 1
+
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅽ뵾而�(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 5, Response 4, Correct 0
+Location 4, Response 5, Correct 0
+
+Order 2
+Animal 1, Response 3, Correct 0
+Location 3, Response 3, Correct 1
+
+Order 3
+Animal 2, Response 3, Correct 0
+Location 6, Response 4, Correct 0
+
+  PRACTICE END 
+
+
+
+PTB-INFO There are still 29872 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO a total of 2487 times out of a total of 6104 flips during this session.
+
+INFO This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO examples in the PDF presentation in PsychDocumentationPsychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+
+ 
+ Sbj retrieval accuracy animal - 0.00, location - 0.33
+Sbj interference accuracy interference - NaN, no response - 6
+
+-- file saved --
+ wcd_practice_em_museum_obj3_v2
+Sbj Number  999
+Experimenter yj
+
+
+PTB-INFO This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date Feb  2 2022).
+PTB-INFO OS support status Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO For information about paid priority support, community membership and commercial services, please type
+PTB-INFO 'PsychPaidSupportAndServices'.
+
+PTB-INFO Proper timing and timestamping of visual stimulus onset is not reliably supported at all
+PTB-INFO when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
+
+
+PTB-INFO OpenGL-Renderer is NVIDIA Corporation  NVIDIA GeForce GTX 1660 TiPCIeSSE2  4.6.0 NVIDIA 512.89
+PTB-INFO VBL startline = 1080 , VBL Endline = -1
+PTB-INFO Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
+PTB-INFO Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
+PTB-INFO Measured monitor refresh interval from VBLsync = 0.000000 ms [inf Hz]. (0 valid samples taken, stddev=0.000000 ms.)
+PTB-INFO Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING ==============================================================================================================================
+PTB-WARNING WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING ==============================================================================================================================
+PTB-INFO All display tests and calibrations disabled. Assuming a refresh interval of 144.000000 Hz. Timing will be inaccurate!
+다음 사용 중 오류가 발생함 diary
+.results230709sbj 999_WCDWWW_practice_diary.txt 파일을 찾을 수 없음
+
+오류 발생 wcd_practice_em_museum_obj3_v2 (line 657)
+diary(diary_www);
+ 
+ sca;
+
+
+PTB-INFO There are still 722 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO a total of 88 times out of a total of 150 flips during this session.
+
+INFO This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO examples in the PDF presentation in PsychDocumentationPsychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+ wcd_practice_em_museum_obj3_v2
+Sbj Number 102
+Experimenter test
+
+
+PTB-INFO This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date Feb  2 2022).
+PTB-INFO OS support status Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO For information about paid priority support, community membership and commercial services, please type
+PTB-INFO 'PsychPaidSupportAndServices'.
+
+PTB-INFO Proper timing and timestamping of visual stimulus onset is not reliably supported at all
+PTB-INFO when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
+
+
+PTB-INFO OpenGL-Renderer is NVIDIA Corporation  NVIDIA GeForce GTX 1660 TiPCIeSSE2  4.6.0 NVIDIA 512.89
+PTB-INFO VBL startline = 1080 , VBL Endline = -1
+PTB-INFO Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
+PTB-INFO Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
+PTB-INFO Measured monitor refresh interval from VBLsync = 0.000000 ms [inf Hz]. (0 valid samples taken, stddev=0.000000 ms.)
+PTB-INFO Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING ==============================================================================================================================
+PTB-WARNING WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING ==============================================================================================================================
+PTB-INFO All display tests and calibrations disabled. Assuming a refresh interval of 144.000000 Hz. Timing will be inaccurate!
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ Encoding 
+Animal [5 3 1], Location [4 6 3], Context 1
+
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 1, Current trial 1
+Word2 1 3 4 7 6 8 5 9 
+Category0 0 0 0 0 0 0 0 0 
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference test starts 
+Current trial 1, Current image 8
+Response 99, RT 99, Correct 99
+
+Current trial 2, Current image 7
+Response 1, RT 5.521074e-01, Correct 0
+
+Current trial 3, Current image 9
+Response 99, RT 99, Correct 99
+
+Current trial 4, Current image 5
+Response 99, RT 99, Correct 99
+
+Current trial 5, Current image 4
+Response 99, RT 99, Correct 99
+
+Current trial 6, Current image 6
+Response 99, RT 99, Correct 99
+
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+ retrieval 
+Context 1
+
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 5, Response 2, Correct 0
+Location 4, Response 2, Correct 0
+
+Order 2
+Animal 3, Response 1, Correct 0
+Location 6, Response 1, Correct 0
+
+Order 3
+Animal 1, Response 5, Correct 0
+Location 3, Response 1, Correct 0
+
+  PRACTICE END 
+
+
+
+PTB-INFO There are still 13822 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO a total of 104 times out of a total of 2892 flips during this session.
+
+INFO This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO examples in the PDF presentation in PsychDocumentationPsychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+
+ 
+ Sbj retrieval accuracy animal - 0.00, location - 0.00
+Sbj interference accuracy interference - 0.00, no response - 5
+
+-- file saved --
+ wcd_em_museum_obj3_v3
+ 
+ %%% INPUT SUBJECT INFORMATION TO START %%% 
+Sbj Number 999
+Experimenter test
+MF f
+
+Animal preference(N N N N N) 1 2 3 4 5
+
+---
+ready (enter)  
+
+
+PTB-INFO This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date Feb  2 2022).
+PTB-INFO OS support status Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO For information about paid priority support, community membership and commercial services, please type
+PTB-INFO 'PsychPaidSupportAndServices'.
+
+PTB-INFO Proper timing and timestamping of visual stimulus onset is not reliably supported at all
+PTB-INFO when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
+
+
+PTB-INFO OpenGL-Renderer is NVIDIA Corporation  NVIDIA GeForce GTX 1660 TiPCIeSSE2  4.6.0 NVIDIA 512.89
+PTB-INFO VBL startline = 1080 , VBL Endline = -1
+PTB-INFO Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
+PTB-INFO Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
+PTB-INFO Measured monitor refresh interval from VBLsync = 0.000000 ms [inf Hz]. (0 valid samples taken, stddev=0.000000 ms.)
+PTB-INFO Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING ==============================================================================================================================
+PTB-WARNING WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING ==============================================================================================================================
+PTB-INFO All display tests and calibrations disabled. Assuming a refresh interval of 144.000000 Hz. Timing will be inaccurate!
+0
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 1 Start -
+
+ Encoding 
+Current run 1, Current trial 1
+Animal [5 1 2], Location [3 1 5], Context 1
+
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 1, Current trial 1
+Condition XO, Number of category 1, Category 12 12 
+Word6 2 9 7 3 4 1 5 8 
+Category12 12 12 12 12 12 12 12 12 
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 8
+Response 99, RT 99, Correct 99
+
+Current trial 2, Current image 5
+Response 99, RT 99, Correct 99
+
+Current trial 3, Current image 4
+Response 99, RT 99, Correct 99
+
+Current trial 4, Current image 6
+Response 99, RT 99, Correct 99
+
+Current trial 5, Current image 7
+Response 99, RT 99, Correct 99
+
+Current trial 6, Current image 9
+Response 99, RT 99, Correct 99
+
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 1, Current trial 1
+
+ retrieval 
+Context 1
+
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 5, Response 5, Correct 1
+Location 3, Response 6, Correct 0
+
+Order 2
+Animal 1, Response 3, Correct 0
+Location 1, Response 1, Correct 1
+
+Order 3
+Animal 2, Response 1, Correct 0
+Location 5, Response 5, Correct 1
+
+- Trial 1 End -
+
+Trial retrieval accuracy animal - 3.333333e-01, location - 6.666667e-01
+Trial interference accuracy interference - NaN, no response - 6
+
+
+1646
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 2 Start -
+
+ Encoding 
+Current run 1, Current trial 2
+Animal [3 5 1], Location [4 2 3], Context 2
+
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 1, Current trial 2
+Condition OX, Number of category 2, Category 11 7 
+Word1 7 2 8 6 3 4 9 4 
+Category11 11 7 7 7 11 11 11 7 
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 7
+Response 99, RT 99, Correct 99
+
+Current trial 2, Current image 4
+Response 99, RT 99, Correct 99
+
+Current trial 3, Current image 9
+Response 99, RT 99, Correct 99
+
+Current trial 4, Current image 6
+Response 99, RT 99, Correct 99
+
+Current trial 5, Current image 8
+Response 99, RT 99, Correct 99
+
+Current trial 6, Current image 5
+Response 99, RT 99, Correct 99
+
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 1, Current trial 2
+
+ retrieval 
+Context 2
+
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 3, Response 2, Correct 0
+Location 4, Response 3, Correct 0
+
+Order 2
+Animal 5, Response 2, Correct 0
+Location 2, Response 6, Correct 0
+
+Order 3
+Animal 1, Response 2, Correct 0
+Location 3, Response 6, Correct 0
+
+- Trial 2 End -
+
+Trial retrieval accuracy animal - 0, location - 0
+Trial interference accuracy interference - NaN, no response - 12
+
+
+1711
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 3 Start -
+
+ Encoding 
+Current run 2, Current trial 3
+Animal [2 4 3], Location [5 6 1], Context 2
+
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 2, Current trial 3
+Condition XO, Number of category 2, Category 10 6 
+Word4 6 5 3 1 5 2 9 8 
+Category10 10 6 6 6 10 10 10 6 
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 5
+Response 99, RT 99, Correct 99
+
+Current trial 2, Current image 7
+Response 99, RT 99, Correct 99
+
+Current trial 3, Current image 9
+Response 99, RT 99, Correct 99
+
+Current trial 4, Current image 6
+Response 99, RT 99, Correct 99
+
+Current trial 5, Current image 8
+Response 99, RT 99, Correct 99
+
+Current trial 6, Current image 4
+Response 99, RT 99, Correct 99
+
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 2, Current trial 3
+
+ retrieval 
+Context 2
+
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 2, Response 2, Correct 1
+Location 5, Response 2, Correct 0
+
+Order 2
+Animal 4, Response 1, Correct 0
+Location 6, Response 4, Correct 0
+
+Order 3
+Animal 3, Response 1, Correct 0
+Location 1, Response 4, Correct 0
+
+- Trial 3 End -
+
+Trial retrieval accuracy animal - 3.333333e-01, location - 0
+Trial interference accuracy interference - NaN, no response - 18
+
+
+3161
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 4 Start -
+
+ Encoding 
+Current run 2, Current trial 4
+Animal [4 5 2], Location [6 1 4], Context 1
+
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 2, Current trial 4
+Condition OX, Number of category 1, Category 8 8 
+Word8 5 4 3 6 2 1 7 9 
+Category8 8 8 8 8 8 8 8 8 
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 7
+Response 99, RT 99, Correct 99
+
+Current trial 2, Current image 6
+Response 99, RT 99, Correct 99
+
+Current trial 3, Current image 9
+Response 99, RT 99, Correct 99
+
+Current trial 4, Current image 5
+Response 99, RT 99, Correct 99
+
+Current trial 5, Current image 8
+Response 99, RT 99, Correct 99
+
+Current trial 6, Current image 4
+Response 99, RT 99, Correct 99
+
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 2, Current trial 4
+
+ retrieval 
+Context 1
+
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 4, Response 5, Correct 0
+Location 6, Response 6, Correct 1
+
+Order 2
+Animal 5, Response 5, Correct 1
+Location 1, Response 3, Correct 0
+
+Order 3
+Animal 2, Response 4, Correct 0
+Location 4, Response 1, Correct 0
+
+- Trial 4 End -
+
+Trial retrieval accuracy animal - 3.333333e-01, location - 3.333333e-01
+Trial interference accuracy interference - NaN, no response - 24
+
+
+971
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 5 Start -
+
+ Encoding 
+Current run 3, Current trial 5
+Animal [4 3 5], Location [2 4 5], Context 2
+
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 3, Current trial 5
+Condition OX, Number of category 1, Category 5 5 
+Word8 7 9 6 3 4 1 5 2 
+Category5 5 5 5 5 5 5 5 5 
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 7
+Response 99, RT 99, Correct 99
+
+Current trial 2, Current image 8
+Response 99, RT 99, Correct 99
+
+Current trial 3, Current image 6
+Response 99, RT 99, Correct 99
+
+Current trial 4, Current image 5
+Response 99, RT 99, Correct 99
+
+Current trial 5, Current image 4
+Response 99, RT 99, Correct 99
+
+Current trial 6, Current image 9
+Response 99, RT 99, Correct 99
+
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 3, Current trial 5
+
+ retrieval 
+Context 2
+
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 4, Response 5, Correct 0
+Location 2, Response 3, Correct 0
+
+Order 2
+Animal 3, Response 4, Correct 0
+Location 4, Response 5, Correct 0
+
+Order 3
+Animal 5, Response 2, Correct 0
+Location 5, Response 6, Correct 0
+
+- Trial 5 End -
+
+Trial retrieval accuracy animal - 0, location - 0
+Trial interference accuracy interference - NaN, no response - 30
+
+
+1706
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 6 Start -
+
+ Encoding 
+Current run 3, Current trial 6
+Animal [1 4 5], Location [4 1 6], Context 1
+
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 3, Current trial 6
+Condition XO, Number of category 2, Category 1 9 
+Word5 4 5 6 4 2 8 6 9 
+Category1 1 9 9 9 1 1 1 9 
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 6
+Response 99, RT 99, Correct 99
+
+Current trial 2, Current image 7
+Response 99, RT 99, Correct 99
+
+Current trial 3, Current image 9
+Response 99, RT 99, Correct 99
+
+Current trial 4, Current image 5
+Response 99, RT 99, Correct 99
+
+Current trial 5, Current image 8
+Response 99, RT 99, Correct 99
+
+Current trial 6, Current image 4
+Response 99, RT 99, Correct 99
+
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 3, Current trial 6
+
+ retrieval 
+Context 1
+
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 1, Response 5, Correct 0
+Location 4, Response 1, Correct 0
+
+Order 2
+Animal 4, Response 2, Correct 0
+Location 1, Response 6, Correct 0
+
+Order 3
+Animal 5, Response 3, Correct 0
+Location 6, Response 2, Correct 0
+
+- Trial 6 End -
+
+Trial retrieval accuracy animal - 0, location - 0
+Trial interference accuracy interference - NaN, no response - 36
+
+
+1046
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 7 Start -
+
+ Encoding 
+Current run 4, Current trial 7
+Animal [3 5 2], Location [3 4 6], Context 1
+
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 4, Current trial 7
+Condition OX, Number of category 2, Category 3 4 
+Word6 5 1 4 7 1 8 7 2 
+Category3 3 4 4 4 3 3 3 4 
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 6
+Response 99, RT 99, Correct 99
+
+Current trial 2, Current image 9
+Response 99, RT 99, Correct 99
+
+Current trial 3, Current image 7
+Response 99, RT 99, Correct 99
+
+Current trial 4, Current image 5
+Response 99, RT 99, Correct 99
+
+Current trial 5, Current image 4
+Response 99, RT 99, Correct 99
+
+Current trial 6, Current image 8
+Response 99, RT 99, Correct 99
+
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 4, Current trial 7
+
+ retrieval 
+Context 1
+
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 3, Response 2, Correct 0
+Location 3, Response 1, Correct 0
+
+Order 2
+Animal 5, Response 5, Correct 1
+Location 4, Response 2, Correct 0
+
+Order 3
+Animal 2, Response 1, Correct 0
+Location 6, Response 6, Correct 1
+
+- Trial 7 End -
+
+Trial retrieval accuracy animal - 3.333333e-01, location - 3.333333e-01
+Trial interference accuracy interference - NaN, no response - 42
+
+
+966
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 8 Start -
+
+ Encoding 
+Current run 4, Current trial 8
+Animal [1 3 4], Location [5 3 2], Context 2
+
+PTB-INFO New audio device -1 with handle 4 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 4 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 4 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 4, Current trial 8
+Condition XO, Number of category 1, Category 2 2 
+Word4 7 8 2 3 5 9 1 6 
+Category2 2 2 2 2 2 2 2 2 
+PTB-INFO New audio device -1 with handle 4 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 7
+Response 99, RT 99, Correct 99
+
+Current trial 2, Current image 6
+Response 99, RT 99, Correct 99
+
+Current trial 3, Current image 8
+Response 99, RT 99, Correct 99
+
+Current trial 4, Current image 4
+Response 99, RT 99, Correct 99
+
+Current trial 5, Current image 9
+Response 99, RT 99, Correct 99
+
+Current trial 6, Current image 5
+Response 99, RT 99, Correct 99
+
+PTB-INFO New audio device -1 with handle 4 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 4, Current trial 8
+
+ retrieval 
+Context 2
+
+PTB-INFO New audio device -1 with handle 4 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 1, Response 5, Correct 0
+Location 5, Response 5, Correct 1
+
+Order 2
+Animal 3, Response 5, Correct 0
+Location 3, Response 2, Correct 0
+
+Order 3
+Animal 4, Response 5, Correct 0
+Location 2, Response 6, Correct 0
+
+- Trial 8 End -
+
+Trial retrieval accuracy animal - 0, location - 3.333333e-01
+Trial interference accuracy interference - NaN, no response - 48
+
+
+ EXPERIMENT END 
+
+Sbj retrieval accuracy animal - 0.17, location - 0.21
+Sbj interference accuracy interference - NaN, no response - 216
+
+
+
+PTB-INFO There are still 853 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO a total of 159 times out of a total of 3613 flips during this session.
+
+INFO This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO examples in the PDF presentation in PsychDocumentationPsychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+-- file saved --
+
+ans =
+
+     5
+
+animal 41.7, animal order 16.7, location 45.8, location order 20.8, ani-loc 0.0 
+
+
+ same category NaN, RT NaN sec, difforder NaN, RT NaN sec 
+
+  wcd_practice_em_museum_obj3_v2
+다음 사용 중 오류가 발생함 wcd_practice_em_museum_obj3_v2 (line 14)
+'ar'에는 System Identification Toolbox이(가) 필요합니다.
+ 
+ wcd_practice_em_museum_obj3_v2
+다음 사용 중 오류가 발생함 wcd_practice_em_museum_obj3_v2 (line 14)
+'ar'에는 System Identification Toolbox이(가) 필요합니다.
+ 
+ wcd_practice_em_museum_obj3_v2
+다음 사용 중 오류가 발생함 wcd_practice_em_museum_obj3_v2 (line 14)
+'ar'에는 System Identification Toolbox이(가) 필요합니다.
+ 
+ wcd_practice_em_museum_obj3_v2
+다음 사용 중 오류가 발생함 wcd_practice_em_museum_obj3_v2 (line 14)
+'ar'에는 System Identification Toolbox이(가) 필요합니다.
+ 
+ wcd_practice_em_museum_obj3_v2
+Sbj Number 102
+Experimenter gk
+
+
+PTB-INFO This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date Feb  2 2022).
+PTB-INFO OS support status Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO For information about paid priority support, community membership and commercial services, please type
+PTB-INFO 'PsychPaidSupportAndServices'.
+
+PTB-INFO Proper timing and timestamping of visual stimulus onset is not reliably supported at all
+PTB-INFO when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
+
+
+PTB-INFO OpenGL-Renderer is NVIDIA Corporation  NVIDIA GeForce GTX 1660 TiPCIeSSE2  4.6.0 NVIDIA 512.89
+PTB-INFO VBL startline = 1080 , VBL Endline = -1
+PTB-INFO Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
+PTB-INFO Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
+PTB-INFO Measured monitor refresh interval from VBLsync = 0.000000 ms [inf Hz]. (0 valid samples taken, stddev=0.000000 ms.)
+PTB-INFO Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING ==============================================================================================================================
+PTB-WARNING WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING ==============================================================================================================================
+PTB-INFO All display tests and calibrations disabled. Assuming a refresh interval of 144.000000 Hz. Timing will be inaccurate!
+
+
+PTB-INFO There are still 21974 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO a total of 917 times out of a total of 4400 flips during this session.
+
+INFO This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO examples in the PDF presentation in PsychDocumentationPsychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+ Practice terminated 
+Pause timing Before task
+ wcd_em_museum_obj3_v3
+ 
+ %%% INPUT SUBJECT INFORMATION TO START %%% 
+Sbj Number  102
+Experimenter gk
+MF m
+
+Animal preference(N N N N N) 5 1 3 2 4
+
+---
+ready (enter)  
+
+
+PTB-INFO This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date Feb  2 2022).
+PTB-INFO OS support status Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO For information about paid priority support, community membership and commercial services, please type
+PTB-INFO 'PsychPaidSupportAndServices'.
+
+PTB-INFO Proper timing and timestamping of visual stimulus onset is not reliably supported at all
+PTB-INFO when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
+
+
+PTB-INFO OpenGL-Renderer is NVIDIA Corporation  NVIDIA GeForce GTX 1660 TiPCIeSSE2  4.6.0 NVIDIA 512.89
+PTB-INFO VBL startline = 1080 , VBL Endline = -1
+PTB-INFO Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
+PTB-INFO Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
+PTB-INFO Measured monitor refresh interval from VBLsync = 0.000000 ms [inf Hz]. (0 valid samples taken, stddev=0.000000 ms.)
+PTB-INFO Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING ==============================================================================================================================
+PTB-WARNING WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING ==============================================================================================================================
+PTB-INFO All display tests and calibrations disabled. Assuming a refresh interval of 144.000000 Hz. Timing will be inaccurate!
+0
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 1 Start -
+
+ Encoding 
+Current run 1, Current trial 1
+Animal [2 5 1], Location [6 3 1], Context 2
+
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 1, Current trial 1
+Condition XO, Number of category 2, Category 3 10 
+Word1 7 8 9 7 9 4 8 3 
+Category3 3 10 10 10 3 3 3 10 
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 5
+Response 1, RT 2.474242e+00, Correct 0
+
+Current trial 2, Current image 4
+Response 1, RT 2.477232e+00, Correct 0
+
+Current trial 3, Current image 8
+Response 1, RT 2.002021e+00, Correct 1
+
+Current trial 4, Current image 6
+Response 1, RT 2.640825e+00, Correct 0
+
+Current trial 5, Current image 9
+Response 1, RT 1.288681e+00, Correct 1
+
+Current trial 6, Current image 7
+Response 99, RT 99, Correct 99
+
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 1, Current trial 1
+
+ retrieval 
+Context 2
+
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 2, Response 2, Correct 1
+Location 6, Response 5, Correct 0
+
+Order 2
+Animal 5, Response 5, Correct 1
+Location 3, Response 2, Correct 0
+
+Order 3
+Animal 1, Response 1, Correct 1
+Location 1, Response 1, Correct 1
+
+- Trial 1 End -
+
+Trial retrieval accuracy animal - 1, location - 3.333333e-01
+Trial interference accuracy interference - 4.000000e-01, no response - 1
+
+
+17551
+PTB-INFO Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO New audio device -1 with handle 0 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 2 Start -
+
+ Encoding 
+Current run 1, Current trial 2
+Animal [3 2 4], Location [6 4 1], Context 1
+
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 1, Current trial 2
+Condition OX, Number of category 1, Category 12 12 
+Word2 8 9 3 7 4 1 5 6 
+Category12 12 12 12 12 12 12 12 12 
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 5
+Response 2, RT 2.294992e+00, Correct 0
+
+Current trial 2, Current image 8
+Response 2, RT 1.446769e+00, Correct 1
+
+Current trial 3, Current image 4
+Response 2, RT 2.454958e+00, Correct 0
+
+Current trial 4, Current image 7
+Response 2, RT 1.461697e+00, Correct 1
+
+Current trial 5, Current image 6
+Response 2, RT 1.786710e+00, Correct 0
+
+Current trial 6, Current image 9
+Response 2, RT 1.104126e+00, Correct 1
+
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 1, Current trial 2
+
+ retrieval 
+Context 1
+
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 3, Response 3, Correct 1
+Location 6, Response 6, Correct 1
+
+Order 2
+Animal 2, Response 2, Correct 1
+Location 4, Response 4, Correct 1
+
+Order 3
+Animal 4, Response 4, Correct 1
+Location 1, Response 1, Correct 1
+
+- Trial 2 End -
+
+Trial retrieval accuracy animal - 1, location - 1
+Trial interference accuracy interference - 4.545455e-01, no response - 1
+
+
+13431
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 3 Start -
+
+ Encoding 
+Current run 2, Current trial 3
+Animal [5 2 3], Location [5 6 3], Context 2
+
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 2, Current trial 3
+Condition XO, Number of category 1, Category 1 1 
+Word4 7 5 2 6 9 8 3 1 
+Category1 1 1 1 1 1 1 1 1 
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 9
+Response 99, RT 99, Correct 99
+
+Current trial 2, Current image 6
+Response 1, RT 9.200387e-01, Correct 0
+
+Current trial 3, Current image 5
+Response 1, RT 7.087103e-01, Correct 0
+
+Current trial 4, Current image 7
+Response 1, RT 6.601326e-01, Correct 1
+
+Current trial 5, Current image 4
+Response 1, RT 5.558344e-01, Correct 0
+
+Current trial 6, Current image 8
+Response 1, RT 5.400645e-01, Correct 1
+
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 2, Current trial 3
+
+ retrieval 
+Context 2
+
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 5, Response 3, Correct 0
+Location 5, Response 5, Correct 1
+
+Order 2
+Animal 2, Response 2, Correct 1
+Location 6, Response 2, Correct 0
+
+Order 3
+Animal 3, Response 4, Correct 0
+Location 3, Response 6, Correct 0
+
+- Trial 3 End -
+
+Trial retrieval accuracy animal - 3.333333e-01, location - 3.333333e-01
+Trial interference accuracy interference - 4.375000e-01, no response - 2
+
+
+12426
+PTB-INFO New audio device -1 with handle 1 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 4 Start -
+
+ Encoding 
+Current run 2, Current trial 4
+Animal [3 5 4], Location [4 6 5], Context 1
+
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 2, Current trial 4
+Condition OX, Number of category 2, Category 6 5 
+Word2 4 7 1 9 5 1 8 2 
+Category6 6 5 5 5 6 6 6 5 
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 7
+Response 2, RT 1.847422e+00, Correct 1
+
+Current trial 2, Current image 5
+Response 2, RT 5.292442e-01, Correct 0
+
+Current trial 3, Current image 8
+Response 2, RT 7.150000e-05, Correct 1
+
+Current trial 4, Current image 6
+Response 2, RT 7.070000e-05, Correct 0
+
+Current trial 5, Current image 9
+Response 2, RT 6.730000e-05, Correct 1
+
+Current trial 6, Current image 4
+Response 2, RT 1.839008e-01, Correct 0
+
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 2, Current trial 4
+
+ retrieval 
+Context 1
+
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 3, Response 3, Correct 1
+Location 4, Response 4, Correct 1
+
+Order 2
+Animal 5, Response 2, Correct 0
+Location 6, Response 5, Correct 0
+
+Order 3
+Animal 4, Response 4, Correct 1
+Location 5, Response 6, Correct 0
+
+- Trial 4 End -
+
+Trial retrieval accuracy animal - 6.666667e-01, location - 3.333333e-01
+Trial interference accuracy interference - 4.545455e-01, no response - 2
+
+
+12166
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 5 Start -
+
+ Encoding 
+Current run 3, Current trial 5
+Animal [3 5 1], Location [5 1 4], Context 1
+
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 3, Current trial 5
+Condition OX, Number of category 2, Category 8 2 
+Word5 1 7 5 3 4 2 3 6 
+Category8 8 2 2 2 8 8 8 2 
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 7
+Response 1, RT 6.292480e-01, Correct 0
+
+Current trial 2, Current image 9
+Response 2, RT 3.698688e-01, Correct 1
+
+Current trial 3, Current image 6
+Response 2, RT 6.500000e-05, Correct 0
+
+Current trial 4, Current image 4
+Response 2, RT 7.630000e-05, Correct 0
+
+Current trial 5, Current image 5
+Response 2, RT 8.570000e-05, Correct 0
+
+Current trial 6, Current image 8
+Response 2, RT 7.680000e-05, Correct 1
+
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 3, Current trial 5
+
+ retrieval 
+Context 1
+
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 3, Response 3, Correct 1
+Location 5, Response 5, Correct 1
+
+Order 2
+Animal 5, Response 1, Correct 0
+Location 1, Response 4, Correct 0
+
+Order 3
+Animal 1, Response 2, Correct 0
+Location 4, Response 1, Correct 0
+
+- Trial 5 End -
+
+Trial retrieval accuracy animal - 3.333333e-01, location - 3.333333e-01
+Trial interference accuracy interference - 4.285714e-01, no response - 2
+
+
+12151
+PTB-INFO New audio device -1 with handle 2 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 6 Start -
+
+ Encoding 
+Current run 3, Current trial 6
+Animal [5 1 4], Location [1 2 6], Context 2
+
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 3, Current trial 6
+Condition XO, Number of category 1, Category 9 9 
+Word9 4 6 1 7 8 3 2 5 
+Category9 9 9 9 9 9 9 9 9 
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 9
+Response 1, RT 2.691797e+00, Correct 1
+
+Current trial 2, Current image 8
+Response 1, RT 8.095165e-01, Correct 1
+
+Current trial 3, Current image 4
+Response 1, RT 5.466995e-01, Correct 0
+
+Current trial 4, Current image 5
+Response 1, RT 6.733006e-01, Correct 0
+
+Current trial 5, Current image 7
+Response 1, RT 7.888043e-01, Correct 1
+
+Current trial 6, Current image 6
+Response 1, RT 4.434515e-01, Correct 0
+
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 3, Current trial 6
+
+ retrieval 
+Context 2
+
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 5, Response 1, Correct 0
+Location 1, Response 5, Correct 0
+
+Order 2
+Animal 1, Response 3, Correct 0
+Location 2, Response 2, Correct 1
+
+Order 3
+Animal 4, Response 2, Correct 0
+Location 6, Response 3, Correct 0
+
+- Trial 6 End -
+
+Trial retrieval accuracy animal - 0, location - 3.333333e-01
+Trial interference accuracy interference - 4.411765e-01, no response - 2
+
+
+12281
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 7 Start -
+
+ Encoding 
+Current run 4, Current trial 7
+Animal [2 5 4], Location [5 1 6], Context 1
+
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 4, Current trial 7
+Condition OX, Number of category 1, Category 7 7 
+Word8 3 9 5 6 1 7 4 2 
+Category7 7 7 7 7 7 7 7 7 
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 9
+Response 1, RT 7.626628e-01, Correct 0
+
+Current trial 2, Current image 6
+Response 2, RT 4.426909e-01, Correct 0
+
+Current trial 3, Current image 4
+Response 2, RT 3.452990e-01, Correct 0
+
+Current trial 4, Current image 8
+Response 1, RT 7.738608e-01, Correct 0
+
+Current trial 5, Current image 5
+Response 2, RT 3.646632e-01, Correct 0
+
+Current trial 6, Current image 7
+Response 2, RT 1.059653e+00, Correct 1
+
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 4, Current trial 7
+
+ retrieval 
+Context 1
+
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 2, Response 5, Correct 0
+Location 5, Response 6, Correct 0
+
+Order 2
+Animal 5, Response 1, Correct 0
+Location 1, Response 5, Correct 0
+
+Order 3
+Animal 4, Response 4, Correct 1
+Location 6, Response 1, Correct 0
+
+- Trial 7 End -
+
+Trial retrieval accuracy animal - 3.333333e-01, location - 0
+Trial interference accuracy interference - 4.000000e-01, no response - 2
+
+
+11726
+PTB-INFO New audio device -1 with handle 3 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 8 Start -
+
+ Encoding 
+Current run 4, Current trial 8
+Animal [4 1 3], Location [1 2 4], Context 2
+
+PTB-INFO New audio device -1 with handle 4 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 4 opened as PortAudio stream
+PTB-INFO For 2 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO New audio device -1 with handle 4 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+ interference 
+Current run 4, Current trial 8
+Condition XO, Number of category 2, Category 11 4 
+Word6 5 8 7 2 7 8 1 6 
+Category11 11 4 4 4 11 11 11 4 
+PTB-INFO New audio device -1 with handle 4 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+ interference test starts 
+Current trial 1, Current image 8
+Response 2, RT 1.110860e+00, Correct 0
+
+Current trial 2, Current image 4
+Response 2, RT 8.695600e-01, Correct 1
+
+Current trial 3, Current image 9
+Response 1, RT 8.932926e-01, Correct 1
+
+Current trial 4, Current image 6
+Response 1, RT 6.599399e-01, Correct 0
+
+Current trial 5, Current image 7
+Response 2, RT 4.994438e-01, Correct 0
+
+Current trial 6, Current image 5
+Response 2, RT 4.523321e-01, Correct 1
+
+PTB-INFO New audio device -1 with handle 4 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ retrieval 
+Current run 4, Current trial 8
+
+ retrieval 
+Context 2
+
+PTB-INFO New audio device -1 with handle 4 opened as PortAudio stream
+PTB-INFO For 1 channels Playback Audio subsystem is MME, Audio device name is �ㅻ뱶��(High Definition Audio Devic
+PTB-INFO Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+ reenactment 
+Order 1
+Animal 4, Response 4, Correct 1
+Location 1, Response 4, Correct 0
+
+Order 2
+Animal 1, Response 3, Correct 0
+Location 2, Response 1, Correct 0
+
+Order 3
+Animal 3, Response 1, Correct 0
+Location 4, Response 2, Correct 0
+
+- Trial 8 End -
+
+Trial retrieval accuracy animal - 3.333333e-01, location - 0
+Trial interference accuracy interference - 4.130435e-01, no response - 2
+
+
+ EXPERIMENT END 
+
+Sbj retrieval accuracy animal - 0.50, location - 0.33
+Sbj interference accuracy interference - 0.43, no response - 14
+
+
+
+PTB-INFO There are still 11943 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO a total of 6916 times out of a total of 21982 flips during this session.
+
+INFO This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO examples in the PDF presentation in PsychDocumentationPsychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+-- file saved --
+
+ans =
+
+     5
+
+animal 75.0, animal order 50.0, location 79.2, location order 33.3, ani-loc 33.3 
+
+
+ same category 39.1, RT 1.0 sec, difforder 43.5, RT 0.8 sec 
+
+ 
+ 
+ Sbj retrieval accuracy animal - 0.00, location - 0.00
+Sbj interference accuracy interference - 0.40, no response - 4.545455e-01
+
+Sbj interference accuracy interference - 0.44, no response - 4.545455e-01
+
+Sbj interference accuracy interference - 0.43, no response - 4.411765e-01
+
+Sbj interference accuracy interference - 0.40, no response - 4.130435e-01
+
+Sbj interference accuracy interference - 5.00, no response - -- file saved --
+ 

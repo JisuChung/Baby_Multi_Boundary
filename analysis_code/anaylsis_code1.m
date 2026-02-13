@@ -1,0 +1,2688 @@
+clear all;
+
+cd D:\DCNL\DEvl\Multi\Museum_data
+
+
+www_path = 'WWW\';
+
+data_path = 'Exp1_Multi_boundary\';
+ctrl_path = 'Exp2_Multi_boundary_Control\';
+chunk_path = 'Exp3_Multi_boundary_Chunking\';
+
+
+
+www_year_dir = dir(fullfile(www_path, '20*'));
+www_year_num = length(www_year_dir);
+
+data_year_dir = dir(fullfile(data_path, '2*'));
+data_year_num = length(data_year_dir);
+
+ctrl_year_dir = dir(fullfile(ctrl_path, '2*'));
+ctrl_year_num = length(ctrl_year_dir);
+
+chunk_year_dir = dir(fullfile(chunk_path, '2*'));
+chunk_year_num = length(chunk_year_dir);
+
+
+
+www_participant_info = readtable([www_path 'www_participant data.xlsx']);
+
+participant_info = readtable([data_path 'Exp1_participant_data.xlsx']);
+ctrl_participant_info = readtable([ctrl_path 'Exp2_control_participant_data.xlsx']);
+chunk_participant_info = readtable([chunk_path 'Exp3_Chunk_participant_data.xlsx']);
+
+
+
+% Subject_data.id = participant_info_table.ID;
+% Subject_data.age_yr = participant_info_table.age_yr;
+% Subject_data.age_mo = participant_info_table.age_mo;
+% Subject_data.age_detail = participant_info_table.age_yrfrac;
+
+
+% length(participant_info.pre_onsite)
+% sum(strcmp(participant_info.pre_onsite, '연구실'))
+% sum(strcmp(participant_info.sex, '여'))
+% figure(); histogram(participant_info.age_yr);
+
+%% data
+
+% multi boundary data
+loc = 0;
+for yi = 1:data_year_num
+    clearvars data_dir exclude_prac data_selec
+    data_dir = dir(fullfile(data_path, data_year_dir(yi).name, '\*.mat'));
+    exclude_prac = ~contains({data_dir.name}, 'practice') & ~contains({data_dir.name}, 'boundary1_') & ~contains({data_dir.name}, 'run')  & ~contains({data_dir.name}, '1_1')  & ~contains({data_dir.name}, '4_7') & ~contains({data_dir.name}, '4_8');
+    data_selec = data_dir(exclude_prac);
+    for di = 1:length(data_selec)
+        clearvars Data
+        sbjid_temp = str2double(regexp( data_selec(di).name, '\d+', 'match'));
+        sbjid = sbjid_temp(1)*1000 + sbjid_temp(2);
+        load([data_path data_year_dir(yi).name '\' data_selec(di).name])
+        if yi == 1 & di == 1
+            loc = 1;
+        else
+            loc = loc + 1;
+        end
+        sbj_data(loc,1) = sbjid;
+        All_Data(loc,1).id = sbjid;
+        All_Data(loc,1).Data = Data;
+    end
+end
+
+% www data
+
+loc = 0;
+for yi = 1:www_year_num
+    clearvars data_dir exclude_prac data_selec
+    data_dir = dir(fullfile(www_path, www_year_dir(yi).name, '\*.mat'));
+    exclude_prac = ~contains({data_dir.name}, 'practice') & ~contains({data_dir.name}, '_monster_') ;
+    data_selec = data_dir(exclude_prac);
+    for di = 1:length(data_selec)
+        clearvars Data
+        sbjid_temp = str2double(regexp( data_selec(di).name, '\d+', 'match'));
+        sbjid = sbjid_temp(1)*1000 + sbjid_temp(2);
+        load([www_path www_year_dir(yi).name '\' data_selec(di).name])
+        if yi == 1 & di == 1
+            loc = 1;
+        else
+            loc = loc + 1;
+        end
+        www_sbj_data(loc,1) = sbjid;
+        WWW_Data(loc,1).id = sbjid;
+        WWW_Data(loc,1).Data = Data;
+    end
+end
+
+
+% multi boundary data (CTRL)
+loc = 0;
+for yi = 1:ctrl_year_num
+    clearvars data_dir exclude_prac data_selec
+    data_dir = dir(fullfile(ctrl_path, ctrl_year_dir(yi).name, '\*boundary.mat'));
+    exclude_prac = ~contains({data_dir.name}, 'practice') & ~contains({data_dir.name}, 'boundary1_') & ~contains({data_dir.name}, 'run')  & ~contains({data_dir.name}, '1_1');
+    data_selec = data_dir(exclude_prac);
+    for di = 1:length(data_selec)
+        clearvars Data
+        sbjid_temp = str2double(regexp( data_selec(di).name, '\d+', 'match'));
+        sbjid = sbjid_temp(1)*1000 + sbjid_temp(2);
+        load([ctrl_path ctrl_year_dir(yi).name '\' data_selec(di).name])
+        if yi == 1 & di == 1
+            loc = 1;
+        else
+            loc = loc + 1;
+        end
+        ctrl_sbj_data(loc,1) = sbjid;
+        ctrl_All_Data(loc,1).id = sbjid;
+        ctrl_All_Data(loc,1).Data = Data;
+    end
+end
+
+
+
+%%
+% figure()
+% subplot(2,1,1);
+% histogram(participant_info.age_yr, 'FaceColor','none');
+% xlim([4.5 9.5]);
+% ylim([0 13]);
+% title('all subject');
+%
+% subplot(2,1,2);
+% histogram(participant_info.age_yr(strcmp(participant_info.sex, '여'),:)); hold on;
+% histogram(participant_info.age_yr(strcmp(participant_info.sex, '남'),:));
+% xlim([4.5 9.5]);
+% ylim([0 13]);
+%
+%
+%
+%
+% figure()
+%
+% subplot(2,1,1);
+% histogram(participant_info.age_yrfrac,10,  'FaceColor','none');
+% xlim([5 10]);
+% ylim([0 7]);
+%
+% title('all subject');
+%
+% subplot(2,1,2);
+% histogram(participant_info.age_yrfrac(strcmp(participant_info.sex, '여'),:),10); hold on;
+% histogram(participant_info.age_yrfrac(strcmp(participant_info.sex, '남'),:),10);
+% xlim([5 10]);
+% ylim([0 7]);
+
+
+
+% figure()
+% subplot(2,1,1);
+% histogram(www_participant_info.age_yr, 'FaceColor','none');
+% xlim([4.5 9.5]);
+% ylim([0 25]);
+% title('all subject');
+%
+% subplot(2,1,2);
+% histogram(www_participant_info.age_yr(strcmp(www_participant_info.sex, '여'),:)); hold on;
+% histogram(www_participant_info.age_yr(strcmp(www_participant_info.sex, '남'),:));
+% xlim([4.5 9.5]);
+% ylim([0 20]);
+%
+%
+%
+%
+% figure()
+%
+% subplot(2,1,1);
+% histogram(www_participant_info.age_yrfrac,10,  'FaceColor','none');
+% xlim([5 10]);
+% % ylim([0 7]);
+%
+% title('all subject');
+%
+% subplot(2,1,2);
+% histogram(www_participant_info.age_yrfrac(strcmp(www_participant_info.sex, '여'),:),10); hold on;
+% histogram(www_participant_info.age_yrfrac(strcmp(www_participant_info.sex, '남'),:),10);
+% xlim([5 10]);
+% ylim([0 7]);
+
+%
+%
+%
+% figure()
+% % subplot(2,1,1);
+% histogram(participant_info.age_yr(strcmp(participant_info.sex, '남'),:));hold on;
+% histogram(participant_info.age_yr(strcmp(participant_info.sex, '여'),:));
+% histogram(participant_info.age_yr, 'FaceColor','none');
+% xlim([4.5 9.5]);
+% % ylim([0 13]);
+% title('Multi Boundary');
+%
+% figure()
+% % subplot(2,1,1);
+%
+% histogram(www_participant_info.age_yr(strcmp(www_participant_info.sex, '남'),:));hold on;
+% histogram(www_participant_info.age_yr(strcmp(www_participant_info.sex, '여'),:));
+% histogram(www_participant_info.age_yr, 'FaceColor','none');
+% xlim([4.5 9.5]);
+% % ylim([0 13]);
+% title('No Boundary');
+
+
+
+
+%%
+selected_condition1 = [1, 4]; selected_condition2 = [3, 6];
+boundary_condition = cellstr(['1  1  2'; '1  2  1';'2  1  1'; '2  2  1'; '2  1  2'; '1  2  2'; '1  1  1'; '2  2  2']);
+
+crossing_0 = [7, 8]; crossing_1 = [1, 3, 4, 6]; crossing_2 = [2, 5];
+
+setnum = [1,3; 4,6; 7,9; 10,12; 13,15; 16,18; 19,21; 22,24;];
+
+
+for ti = 1:length(sbj_data)
+    Trial_Data(ti).main = All_Data(ti).Data.trial.retrieval;
+    Trial_Data(ti).inter = All_Data(ti).Data.trial.interRet;
+    Trial_Data(ti).info = All_Data(ti).Data.trial.trialinfo;
+    Trial_Data(ti).main_trial.run = [1; 1; 2; 2; 3; 3; 4; 4];
+    Trial_Data(ti).main_trial.trial = [1:1:8]';
+    
+end
+
+for ti = 1:length(ctrl_sbj_data)
+    ctrl_Trial_Data(ti).main = ctrl_All_Data(ti).Data.trial.retrieval;
+    ctrl_Trial_Data(ti).inter = ctrl_All_Data(ti).Data.trial.interRet;
+    ctrl_Trial_Data(ti).info = ctrl_All_Data(ti).Data.trial.trialinfo;
+    ctrl_Trial_Data(ti).main_trial.run = [1; 1; 2; 2; 3; 3; 4; 4];
+    ctrl_Trial_Data(ti).main_trial.trial = [1:1:8]';
+    
+end
+
+
+
+for tti = 1:length(www_sbj_data)
+    WWW_Trial_Data(tti).main = WWW_Data(tti).Data.trial.retrieval;
+    WWW_Trial_Data(tti).inter = WWW_Data(tti).Data.trial.interRet;
+    WWW_Trial_Data(tti).info = WWW_Data(tti).Data.trial.trialinfo;
+    WWW_Trial_Data(tti).main_trial.run = [1; 1; 2; 2; 3; 3; 4; 4];
+    WWW_Trial_Data(tti).main_trial.trial = [1:1:8]';    
+end
+
+
+main_var = fieldnames(Trial_Data(1).main);
+inter_var = fieldnames(Trial_Data(1).inter);
+
+for si = 1:length(sbj_data)
+    Trial_Data(si).main = struct2table(Trial_Data(si).main);
+    Trial_Data(si).inter = struct2table(Trial_Data(si).inter);
+    Trial_Data(si).main_trial = struct2table(Trial_Data(si).main_trial);
+    temp_table = struct2table(All_Data(si).Data.time);
+    react_start = temp_table.time(contains(temp_table.label, 'select start'),:);
+    react_end = temp_table.time(contains(temp_table.label, 'select end'),:);
+    react_time = react_end - react_start;
+
+    Trial_Data(si).main.respondRT = react_time;
+    
+    Trial_Data(si).main.animalRT = Trial_Data(si).main.animalT - react_start;
+    Trial_Data(si).main.locationRT = react_end - Trial_Data(si).main.animalT;
+
+
+    Trial_Data(si).main.respondRT_log = log(Trial_Data(si).main.respondRT);
+    Trial_Data(si).main.animalRT_log = log(Trial_Data(si).main.animalRT);
+    Trial_Data(si).main.locationRT_log = log(Trial_Data(si).main.locationRT);
+
+
+
+    Trial_Data(si).main.locationEnc_cat(Trial_Data(si).main.locationEnc > 3) = 2;
+    Trial_Data(si).main.locationEnc_cat(Trial_Data(si).main.locationEnc <= 3) = 1;
+    Trial_Data(si).main.location_cat(Trial_Data(si).main.location > 3) = 2;
+    Trial_Data(si).main.location_cat(Trial_Data(si).main.location <= 3) = 1;
+
+    Trial_Data(si).main.location_catAcc =  (Trial_Data(si).main.locationEnc_cat == Trial_Data(si).main.location_cat);
+    
+    % yj method ( 1 location cat / 2 detail right / 0 really wrong)
+    Trial_Data(si).main.categorical_Acc = Trial_Data(si).main.location_catAcc + Trial_Data(si).main.locationAcc;
+
+    for ti = 1:height(Trial_Data(si).main)/3
+        loc_temp = find(Trial_Data(si).main.trial==ti); loc1 = min(loc_temp); loc2 = max(loc_temp);
+        Trial_Data(si).main.context(loc1:loc2,1) = Trial_Data(si).info.context(ti);
+        Trial_Data(si).main.boundary(loc1:loc2,1) = Trial_Data(si).info.condition(ti);
+
+        % boundary condition
+        Loc_cat = num2str(Trial_Data(si).main.locationEnc_cat(Trial_Data(si).main.trial == ti,:)');
+        Trial_Data(si).main.boundary_cat(loc1:loc2,1) = find(strcmp(Loc_cat, boundary_condition));
+
+        % what / where
+        what_enc = Trial_Data(si).main.animalEnc(Trial_Data(si).main.trial==ti);
+        what_res = Trial_Data(si).main.animal(Trial_Data(si).main.trial==ti);
+        Trial_Data(si).main.what(loc1:loc2,1) = ismember(what_res, what_enc);
+        where_enc = Trial_Data(si).main.locationEnc(Trial_Data(si).main.trial==ti);
+        where_res = Trial_Data(si).main.location(Trial_Data(si).main.trial==ti);
+        Trial_Data(si).main.where(loc1:loc2,1) = ismember(where_res, where_enc);
+        what_where_enc = what_enc*10+where_enc;
+        what_where_res = what_res*10+where_res;
+        Trial_Data(si).main.whatwhere(loc1:loc2,1) = ismember(what_where_res, what_where_enc);
+        Trial_Data(si).main.wherewhen(loc1:loc2,1) = Trial_Data(si).main.locationAcc(loc1:loc2,1);
+        Trial_Data(si).main.whatwhen(loc1:loc2,1) = Trial_Data(si).main.animalAcc(loc1:loc2,1);
+        Trial_Data(si).main.fullem(loc1:loc2,1) = Trial_Data(si).main.locationAcc(loc1:loc2,1) & Trial_Data(si).main.animalAcc(loc1:loc2,1);
+
+        Trial_Data(si).main.boundary_cat_okay = ismember(Trial_Data(si).main.boundary_cat,selected_condition1) + ismember(Trial_Data(si).main.boundary_cat,selected_condition2)*2;
+        Trial_Data(si).main.boundary_crossing = ismember(Trial_Data(si).main.boundary_cat,crossing_1) + ismember(Trial_Data(si).main.boundary_cat,crossing_2)*2;
+
+        CATwhere_enc = Trial_Data(si).main.locationEnc_cat(Trial_Data(si).main.trial==ti);
+        CATwhere_res = Trial_Data(si).main.location_cat(Trial_Data(si).main.trial==ti);
+        Trial_Data(si).main.location_catAcc_where(loc1:loc2,1) = ismember(CATwhere_res, CATwhere_enc);
+ 
+        Trial_Data(si).main.location_catAcc_wherewhen(loc1:loc2,1) = Trial_Data(si).main.location_catAcc(loc1:loc2,1);
+        what_CATwhere_enc = what_enc*10+CATwhere_enc;
+        what_CATwhere_res = what_res*10+CATwhere_res;
+        Trial_Data(si).main.location_catAcc_whatwhere(loc1:loc2,1) = ismember(what_CATwhere_res, what_CATwhere_enc);
+        Trial_Data(si).main.location_catAcc_fullem(loc1:loc2,1) = Trial_Data(si).main.location_catAcc(loc1:loc2,1) & Trial_Data(si).main.animalAcc(loc1:loc2,1);
+
+
+        loc_cat_enc = Trial_Data(si).main.locationEnc_cat(Trial_Data(si).main.trial==ti);
+        loc_cat_res = Trial_Data(si).main.location_cat(Trial_Data(si).main.trial==ti);
+        Trial_Data(si).main.location_catWhere(loc1:loc2,1) = ismember(loc_cat_res, loc_cat_enc);
+
+
+        Trial_Data(si).main_trial.boundary_cat(ti) = Trial_Data(si).main.boundary_cat(3*ti);
+        Trial_Data(si).main_trial.context(ti) = Trial_Data(si).main.context(3*ti);
+        Trial_Data(si).main_trial.boundary(ti) = Trial_Data(si).main.boundary(3*ti);
+
+        Trial_Data(si).main_trial.boundary_1cross_run = ismember(Trial_Data(si).main_trial.boundary_cat,selected_condition1) + ismember(Trial_Data(si).main_trial.boundary_cat,selected_condition2)*2;
+    
+        Trial_Data(si).main_trial.across_acc(ti) = NaN;
+        Trial_Data(si).main_trial.within_acc(ti) = NaN;
+
+
+
+        if ~ismember(Trial_Data(si).main.boundary_cat(3*ti), [7, 8])
+            Trial_Data(si).main_trial.across_acc(ti) = all(Trial_Data(si).main.location_catAcc((ti-1)*3+1:(ti-1)*3+3,1)==1);
+            
+            temp_ans = Trial_Data(si).main.locationEnc((ti-1)*3+1:(ti-1)*3+3,1);
+            temp_res = Trial_Data(si).main.location((ti-1)*3+1:(ti-1)*3+3,1);
+            temp_cat = Trial_Data(si).main.location_cat((ti-1)*3+1:(ti-1)*3+3,1);
+            
+            
+            for lefi = 1:2
+                if sum(temp_cat == lefi) == 2
+                    seli = lefi;
+                    sel_loc = find(temp_cat == lefi);
+                end
+            end
+            sel_ans = temp_ans(sel_loc);
+            sel_res = temp_res(sel_loc);
+            
+            
+            Trial_Data(si).main_trial.within_acc(ti) = all(sel_ans == sel_res);
+
+
+            
+
+
+
+        end
+    
+
+
+    end
+
+    Trial_Data(si).main_trial.boundary_cat_okay = ismember(Trial_Data(si).main_trial.boundary_cat,selected_condition1) + ismember(Trial_Data(si).main_trial.boundary_cat,selected_condition2)*2;
+
+
+
+    for vi = 10:13
+        if vi == 13
+            Trial_Data(si).inter.(inter_var{vi})(Trial_Data(si).inter.RT == 99 | isnan(Trial_Data(si).inter.RT),1) = 0;
+        else
+            Trial_Data(si).inter.(inter_var{vi})(Trial_Data(si).inter.RT == 99 | isnan(Trial_Data(si).inter.RT),1) = NaN;
+        end
+    end
+
+end
+
+
+for si = 1:length(www_sbj_data)
+    clearvars temp_table react_start react_end react_time
+    WWW_Trial_Data(si).main = struct2table(WWW_Trial_Data(si).main);
+    WWW_Trial_Data(si).inter = struct2table(WWW_Trial_Data(si).inter);
+    WWW_Trial_Data(si).main_trial = struct2table(WWW_Trial_Data(si).main_trial);
+    temp_table = struct2table(WWW_Data(si).Data.time);
+    trial_num = (WWW_Trial_Data(si).main.trial-1)*3 + WWW_Trial_Data(si).main.order;
+    %     react_start = NaN(size(trial_num)); react_end = NaN(size(trial_num));  react_time = NaN(size(trial_num));
+
+    react_start = temp_table.time(contains(temp_table.label, 'select start'),:);
+    react_end = temp_table.time(contains(temp_table.label, 'select end'),:);
+    react_time = react_end - react_start;
+
+    WWW_Trial_Data(si).main.respondRT = react_time;
+    WWW_Trial_Data(si).main.animalRT = WWW_Trial_Data(si).main.animalT - react_start;
+    WWW_Trial_Data(si).main.locationRT = react_end - WWW_Trial_Data(si).main.animalT;
+
+    WWW_Trial_Data(si).main.respondRT_log = log(WWW_Trial_Data(si).main.respondRT);
+    WWW_Trial_Data(si).main.animalRT_log = log(WWW_Trial_Data(si).main.animalRT);
+    WWW_Trial_Data(si).main.locationRT_log = log(WWW_Trial_Data(si).main.locationRT);
+    
+
+
+    WWW_Trial_Data(si).main.locationEnc_cat(WWW_Trial_Data(si).main.locationEnc > 3) = 2;
+    WWW_Trial_Data(si).main.locationEnc_cat(WWW_Trial_Data(si).main.locationEnc <= 3) = 1;
+    WWW_Trial_Data(si).main.location_cat(WWW_Trial_Data(si).main.location > 3) = 2;
+    WWW_Trial_Data(si).main.location_cat(WWW_Trial_Data(si).main.location <= 3) = 1;
+
+    WWW_Trial_Data(si).main.location_catAcc =  (WWW_Trial_Data(si).main.locationEnc_cat == WWW_Trial_Data(si).main.location_cat);
+
+    % yj method ( 1 location cat right / 2 really right / 0 really wrong)
+    WWW_Trial_Data(si).main.categorical_Acc = WWW_Trial_Data(si).main.location_catAcc + WWW_Trial_Data(si).main.locationAcc;
+
+
+    empty_trial = [];
+    for zi = 1:8
+        if isempty(WWW_Trial_Data(si).main.locationEnc_cat(WWW_Trial_Data(si).main.trial == zi,:))
+            empty_trial(end+1,1) = zi;
+        end
+    end
+
+    if height(WWW_Trial_Data(si).main)~=24
+        WWW_Trial_Data(si).main_trial.boundary_cat(1:24) = NaN;
+        WWW_Trial_Data(si).main_trial.context(1:24) = NaN;
+    end
+
+
+    %     if isempty(empty_trial)
+    for ti = 1:8
+        loc_temp = find(WWW_Trial_Data(si).main.trial==ti); loc1 = min(loc_temp); loc2 = max(loc_temp);
+        WWW_Trial_Data(si).main.context(loc1:loc2,1) = WWW_Trial_Data(si).info.context(ti);
+
+        % boundary condition
+        Loc_cat = num2str(WWW_Trial_Data(si).main.locationEnc_cat(WWW_Trial_Data(si).main.trial == ti,:)');
+        WWW_Trial_Data(si).main.boundary_cat(loc1:loc2,1) = find(strcmp(Loc_cat, boundary_condition));
+
+
+        % what / where
+        what_enc = WWW_Trial_Data(si).main.animalEnc(WWW_Trial_Data(si).main.trial==ti);
+        what_res = WWW_Trial_Data(si).main.animal(WWW_Trial_Data(si).main.trial==ti);
+        WWW_Trial_Data(si).main.what(loc1:loc2,1) = ismember(what_res, what_enc);
+        where_enc = WWW_Trial_Data(si).main.locationEnc(WWW_Trial_Data(si).main.trial==ti);
+        where_res = WWW_Trial_Data(si).main.location(WWW_Trial_Data(si).main.trial==ti);
+        WWW_Trial_Data(si).main.where(loc1:loc2,1) = ismember(where_res, where_enc);
+        what_where_enc = what_enc*10+where_enc;
+        what_where_res = what_res*10+where_res;
+        WWW_Trial_Data(si).main.whatwhere(loc1:loc2,1) = ismember(what_where_res, what_where_enc);
+        WWW_Trial_Data(si).main.wherewhen(loc1:loc2,1) = WWW_Trial_Data(si).main.locationAcc(loc1:loc2,1);
+        WWW_Trial_Data(si).main.whatwhen(loc1:loc2,1) = WWW_Trial_Data(si).main.animalAcc(loc1:loc2,1);
+        WWW_Trial_Data(si).main.fullem(loc1:loc2,1) = WWW_Trial_Data(si).main.animalAcc(loc1:loc2,1) & WWW_Trial_Data(si).main.locationAcc(loc1:loc2,1);
+
+
+        WWW_Trial_Data(si).main.boundary_cat_okay = ismember(WWW_Trial_Data(si).main.boundary_cat,selected_condition1) + ismember(WWW_Trial_Data(si).main.boundary_cat,selected_condition2)*2;
+        WWW_Trial_Data(si).main.boundary_crossing = ismember(WWW_Trial_Data(si).main.boundary_cat,crossing_1) + ismember(WWW_Trial_Data(si).main.boundary_cat,crossing_2)*2;
+
+
+        CATwhere_enc = WWW_Trial_Data(si).main.locationEnc_cat(WWW_Trial_Data(si).main.trial==ti);
+        CATwhere_res = WWW_Trial_Data(si).main.location_cat(WWW_Trial_Data(si).main.trial==ti);
+        WWW_Trial_Data(si).main.location_catAcc_where(loc1:loc2,1) = ismember(CATwhere_res, CATwhere_enc);
+
+        WWW_Trial_Data(si).main.location_catAcc_wherewhen(loc1:loc2,1) = WWW_Trial_Data(si).main.location_catAcc(loc1:loc2,1);
+        what_CATwhere_enc = what_enc*10+CATwhere_enc;
+        what_CATwhere_res = what_res*10+CATwhere_res;
+        WWW_Trial_Data(si).main.location_catAcc_whatwhere(loc1:loc2,1) = ismember(what_CATwhere_res, what_CATwhere_enc);
+        WWW_Trial_Data(si).main.location_catAcc_fullem(loc1:loc2,1) = WWW_Trial_Data(si).main.location_catAcc(loc1:loc2,1) & WWW_Trial_Data(si).main.animalAcc(loc1:loc2,1);
+
+
+
+
+        loc_cat_enc = WWW_Trial_Data(si).main.locationEnc_cat(WWW_Trial_Data(si).main.trial==ti);
+        loc_cat_res = WWW_Trial_Data(si).main.location_cat(WWW_Trial_Data(si).main.trial==ti);
+        WWW_Trial_Data(si).main.location_catWhere(loc1:loc2,1) = ismember(loc_cat_res, loc_cat_enc);
+
+
+
+        if ti <= height(WWW_Trial_Data(si).main)/3
+
+            WWW_Trial_Data(si).main_trial.boundary_cat(ti) = WWW_Trial_Data(si).main.boundary_cat(3*ti);
+
+            WWW_Trial_Data(si).main_trial.context(ti) = WWW_Trial_Data(si).main.context(3*ti);
+            %         WWW_Trial_Data(si).main_trial.boundary(ti) = WWW_Trial_Data(si).main.boundary(3*ti);
+            WWW_Trial_Data(si).main_trial.boundary_crossing(ti) = WWW_Trial_Data(si).main.boundary_crossing(3*ti);
+
+            WWW_Trial_Data(si).main_trial.boundary_1cross_run = ismember(WWW_Trial_Data(si).main_trial.boundary_cat,selected_condition1) + ismember(WWW_Trial_Data(si).main_trial.boundary_cat,selected_condition2)*2;
+
+            WWW_Trial_Data(si).main_trial.across_acc(ti) = NaN;
+            WWW_Trial_Data(si).main_trial.within_acc(ti) = NaN;
+
+
+
+        if ~ismember(WWW_Trial_Data(si).main.boundary_cat(3*ti), [7, 8])
+            WWW_Trial_Data(si).main_trial.across_acc(ti) = all(WWW_Trial_Data(si).main.location_catAcc((ti-1)*3+1:(ti-1)*3+3,1)==1);
+            
+            temp_ans = WWW_Trial_Data(si).main.locationEnc((ti-1)*3+1:(ti-1)*3+3,1);
+            temp_res = WWW_Trial_Data(si).main.location((ti-1)*3+1:(ti-1)*3+3,1);
+            temp_cat = WWW_Trial_Data(si).main.location_cat((ti-1)*3+1:(ti-1)*3+3,1);
+            
+            
+            for lefi = 1:2
+                if sum(temp_cat == lefi) == 2
+                    seli = lefi;
+                    sel_loc = find(temp_cat == lefi);
+                end
+            end
+            sel_ans = temp_ans(sel_loc);
+            sel_res = temp_res(sel_loc);
+            
+            
+            WWW_Trial_Data(si).main_trial.within_acc(ti) = all(sel_ans == sel_res);
+
+
+            
+
+
+
+        end
+
+        end
+
+
+
+    end
+    WWW_Trial_Data(si).main_trial.boundary_cat_okay = ismember(WWW_Trial_Data(si).main_trial.boundary_cat,selected_condition1) + ismember(WWW_Trial_Data(si).main_trial.boundary_cat,selected_condition2)*2;
+
+
+    %     else
+    % 일단 급한대로 nan 처리 나중에 수정 필요
+    %         WWW_Trial_Data(si).main.context = nan(size(WWW_Trial_Data(si).main.run))
+    %         WWW_Trial_Data(si).main.boundary_cat = nan(size(WWW_Trial_Data(si).main.run))
+    %     end
+
+
+    for vi = 10:13
+        if vi == 13
+            WWW_Trial_Data(si).inter.(inter_var{vi})(WWW_Trial_Data(si).inter.RT == 99 | isnan(WWW_Trial_Data(si).inter.RT),1) = 0;
+        else
+            WWW_Trial_Data(si).inter.(inter_var{vi})(WWW_Trial_Data(si).inter.RT == 99 | isnan(WWW_Trial_Data(si).inter.RT),1) = NaN;
+        end
+    end
+
+end
+
+
+
+
+for si = 1:length(ctrl_sbj_data)
+    ctrl_Trial_Data(si).main = struct2table(ctrl_Trial_Data(si).main);
+    ctrl_Trial_Data(si).inter = struct2table(ctrl_Trial_Data(si).inter);
+    ctrl_Trial_Data(si).main_trial = struct2table(ctrl_Trial_Data(si).main_trial);
+    temp_table = struct2table(ctrl_All_Data(si).Data.time);
+    react_start = temp_table.time(contains(temp_table.label, 'select start'),:);
+    react_end = temp_table.time(contains(temp_table.label, 'select end'),:);
+    react_time = react_end - react_start;
+
+    ctrl_Trial_Data(si).main.respondRT = react_time;
+    
+    ctrl_Trial_Data(si).main.animalRT = ctrl_Trial_Data(si).main.animalT - react_start;
+    ctrl_Trial_Data(si).main.locationRT = react_end - ctrl_Trial_Data(si).main.animalT;
+
+
+    ctrl_Trial_Data(si).main.respondRT_log = log(ctrl_Trial_Data(si).main.respondRT);
+    ctrl_Trial_Data(si).main.animalRT_log = log(ctrl_Trial_Data(si).main.animalRT);
+    ctrl_Trial_Data(si).main.locationRT_log = log(ctrl_Trial_Data(si).main.locationRT);
+
+
+
+    ctrl_Trial_Data(si).main.locationEnc_cat(ctrl_Trial_Data(si).main.locationEnc > 3) = 2;
+    ctrl_Trial_Data(si).main.locationEnc_cat(ctrl_Trial_Data(si).main.locationEnc <= 3) = 1;
+    ctrl_Trial_Data(si).main.location_cat(ctrl_Trial_Data(si).main.location > 3) = 2;
+    ctrl_Trial_Data(si).main.location_cat(ctrl_Trial_Data(si).main.location <= 3) = 1;
+
+    ctrl_Trial_Data(si).main.location_catAcc =  (ctrl_Trial_Data(si).main.locationEnc_cat == ctrl_Trial_Data(si).main.location_cat);
+    
+    % yj method ( 1 location cat / 2 detail right / 0 really wrong)
+    ctrl_Trial_Data(si).main.categorical_Acc = ctrl_Trial_Data(si).main.location_catAcc + ctrl_Trial_Data(si).main.locationAcc;
+    
+    for ti = 1:height(ctrl_Trial_Data(si).main)/3
+        loc_temp = find(ctrl_Trial_Data(si).main.trial==ti); loc1 = min(loc_temp); loc2 = max(loc_temp);
+        ctrl_Trial_Data(si).main.context(loc1:loc2,1) = ctrl_Trial_Data(si).info.context(ti);
+        ctrl_Trial_Data(si).main.boundary(loc1:loc2,1) = ctrl_Trial_Data(si).info.condition(ti);
+
+        % boundary condition
+        Loc_cat = num2str(ctrl_Trial_Data(si).main.locationEnc_cat(ctrl_Trial_Data(si).main.trial == ti,:)');
+        ctrl_Trial_Data(si).main.boundary_cat(loc1:loc2,1) = find(strcmp(Loc_cat, boundary_condition));
+
+        % what / where
+        what_enc = ctrl_Trial_Data(si).main.animalEnc(ctrl_Trial_Data(si).main.trial==ti);
+        what_res = ctrl_Trial_Data(si).main.animal(ctrl_Trial_Data(si).main.trial==ti);
+        ctrl_Trial_Data(si).main.what(loc1:loc2,1) = ismember(what_res, what_enc);
+        where_enc = ctrl_Trial_Data(si).main.locationEnc(ctrl_Trial_Data(si).main.trial==ti);
+        where_res = ctrl_Trial_Data(si).main.location(ctrl_Trial_Data(si).main.trial==ti);
+        ctrl_Trial_Data(si).main.where(loc1:loc2,1) = ismember(where_res, where_enc);
+        what_where_enc = what_enc*10+where_enc;
+        what_where_res = what_res*10+where_res;
+        ctrl_Trial_Data(si).main.whatwhere(loc1:loc2,1) = ismember(what_where_res, what_where_enc);
+        ctrl_Trial_Data(si).main.wherewhen(loc1:loc2,1) = ctrl_Trial_Data(si).main.locationAcc(loc1:loc2,1);
+        ctrl_Trial_Data(si).main.whatwhen(loc1:loc2,1) = ctrl_Trial_Data(si).main.animalAcc(loc1:loc2,1);
+        ctrl_Trial_Data(si).main.fullem(loc1:loc2,1) = ctrl_Trial_Data(si).main.locationAcc(loc1:loc2,1) & ctrl_Trial_Data(si).main.animalAcc(loc1:loc2,1);
+
+        ctrl_Trial_Data(si).main.boundary_cat_okay = ismember(ctrl_Trial_Data(si).main.boundary_cat,selected_condition1) + ismember(ctrl_Trial_Data(si).main.boundary_cat,selected_condition2)*2;
+        ctrl_Trial_Data(si).main.boundary_crossing = ismember(ctrl_Trial_Data(si).main.boundary_cat,crossing_1) + ismember(ctrl_Trial_Data(si).main.boundary_cat,crossing_2)*2;
+
+
+        loc_cat_enc = ctrl_Trial_Data(si).main.locationEnc_cat(ctrl_Trial_Data(si).main.trial==ti);
+        loc_cat_res = ctrl_Trial_Data(si).main.location_cat(ctrl_Trial_Data(si).main.trial==ti);
+        ctrl_Trial_Data(si).main.location_catWhere(loc1:loc2,1) = ismember(loc_cat_res, loc_cat_enc);
+
+
+        ctrl_Trial_Data(si).main_trial.boundary_cat(ti) = ctrl_Trial_Data(si).main.boundary_cat(3*ti);
+        ctrl_Trial_Data(si).main_trial.context(ti) = ctrl_Trial_Data(si).main.context(3*ti);
+        ctrl_Trial_Data(si).main_trial.boundary(ti) = ctrl_Trial_Data(si).main.boundary(3*ti);
+
+        ctrl_Trial_Data(si).main_trial.boundary_1cross_run = ismember(ctrl_Trial_Data(si).main_trial.boundary_cat,selected_condition1) + ismember(ctrl_Trial_Data(si).main_trial.boundary_cat,selected_condition2)*2;
+    
+        ctrl_Trial_Data(si).main_trial.across_acc(ti) = NaN;
+        ctrl_Trial_Data(si).main_trial.within_acc(ti) = NaN;
+
+
+
+        if ~ismember(ctrl_Trial_Data(si).main.boundary_cat(3*ti), [7, 8])
+            ctrl_Trial_Data(si).main_trial.across_acc(ti) = all(ctrl_Trial_Data(si).main.location_catAcc((ti-1)*3+1:(ti-1)*3+3,1)==1);
+            
+            temp_ans = ctrl_Trial_Data(si).main.locationEnc((ti-1)*3+1:(ti-1)*3+3,1);
+            temp_res = ctrl_Trial_Data(si).main.location((ti-1)*3+1:(ti-1)*3+3,1);
+            temp_cat = ctrl_Trial_Data(si).main.location_cat((ti-1)*3+1:(ti-1)*3+3,1);
+            
+            
+            for lefi = 1:2
+                if sum(temp_cat == lefi) == 2
+                    seli = lefi;
+                    sel_loc = find(temp_cat == lefi);
+                end
+            end
+            sel_ans = temp_ans(sel_loc);
+            sel_res = temp_res(sel_loc);
+            
+            
+            ctrl_Trial_Data(si).main_trial.within_acc(ti) = all(sel_ans == sel_res);
+
+
+            
+
+
+
+        end
+    
+    end
+
+
+    for vi = 10:13
+        if vi == 13
+            ctrl_Trial_Data(si).inter.(inter_var{vi})(ctrl_Trial_Data(si).inter.RT == 99 | isnan(ctrl_Trial_Data(si).inter.RT),1) = 0;
+        else
+            ctrl_Trial_Data(si).inter.(inter_var{vi})(ctrl_Trial_Data(si).inter.RT == 99 | isnan(ctrl_Trial_Data(si).inter.RT),1) = NaN;
+        end
+    end
+
+end
+
+
+
+
+%% Behavior features
+
+Behavior_table.ID = sbj_data;
+Behavior_table = struct2table(Behavior_table);
+Behavior_table.group = ones(size(Behavior_table.ID));
+Behavior_table.sex = participant_info.sex;
+Behavior_table.age = participant_info.age_yr;
+Behavior_table.age_detail = participant_info.age_yrfrac;
+Behavior_table.group = ones(size(Behavior_table.ID));
+
+
+WWW_Behavior_table.ID = www_sbj_data;
+WWW_Behavior_table.group = zeros(size(WWW_Behavior_table.ID));
+WWW_Behavior_table = struct2table(WWW_Behavior_table);
+WWW_Behavior_table.sex = www_participant_info.sex;
+WWW_Behavior_table.age = www_participant_info.age_yr;
+WWW_Behavior_table.age_detail = www_participant_info.age_yrfrac;
+
+
+ctrl_Behavior_table.ID = ctrl_sbj_data;
+ctrl_Behavior_table = struct2table(ctrl_Behavior_table);
+ctrl_Behavior_table.group = ones(size(ctrl_Behavior_table.ID));
+ctrl_Behavior_table.sex = ctrl_participant_info.sex;
+ctrl_Behavior_table.age = ctrl_participant_info.age_yr;
+ctrl_Behavior_table.age_detail = ctrl_participant_info.age_yrfrac;
+ctrl_Behavior_table.group = ones(size(ctrl_Behavior_table.ID));
+
+
+% for si = 1:length(www_sbj_data)
+% 
+% 
+% end
+
+
+
+for si = 1:length(sbj_data)
+    Behavior_table.set(si) = All_Data(si).Data.trial.trialinfo.set;
+
+
+    if length(All_Data(si).Data.trial.trialinfo.bgm_B1) == 20
+        Behavior_table.Bgm_B1(si) = All_Data(si).Data.trial.trialinfo.bgm_B1(end);
+    elseif length(All_Data(si).Data.trial.trialinfo.bgm_B1) == 21
+        Behavior_table.Bgm_B1(si) = All_Data(si).Data.trial.trialinfo.bgm_B1(end-1);
+    end
+
+
+    if length(All_Data(si).Data.trial.trialinfo.bgm_B2) == 20
+        Behavior_table.Bgm_B2(si) = All_Data(si).Data.trial.trialinfo.bgm_B2(end);
+    elseif length(All_Data(si).Data.trial.trialinfo.bgm_B2) == 21
+        Behavior_table.Bgm_B2(si) = All_Data(si).Data.trial.trialinfo.bgm_B2(end-1);
+    end
+
+
+    if length(All_Data(si).Data.trial.trialinfo.bgm_NB) == 20
+        Behavior_table.Bgm_NB(si) = All_Data(si).Data.trial.trialinfo.bgm_NB(end);
+    elseif length(All_Data(si).Data.trial.trialinfo.bgm_NB) == 21
+        Behavior_table.Bgm_NB(si) = All_Data(si).Data.trial.trialinfo.bgm_NB(end-1);
+    end
+
+end
+
+
+for si = 1:length(ctrl_sbj_data)
+    ctrl_Behavior_table.set(si) = ctrl_All_Data(si).Data.trial.trialinfo.set;
+    ctrl_Behavior_table.Bgm_B1(si) = ctrl_All_Data(si).Data.trial.trialinfo.bgm_B1(end);
+    ctrl_Behavior_table.Bgm_B2(si) = ctrl_All_Data(si).Data.trial.trialinfo.bgm_B2(end);
+    ctrl_Behavior_table.Bgm_NB(si) = ctrl_All_Data(si).Data.trial.trialinfo.bgm_NB(end);
+
+end
+
+
+
+
+
+Behavior_table_GROUP2 = Behavior_table;
+Behavior_table_GROUP2.group = ones(size(Behavior_table.ID))*2;
+Behavior_table_GROUP3 = Behavior_table;
+Behavior_table_GROUP3.group = ones(size(Behavior_table.ID))*3;
+
+for si = 1:length(sbj_data)
+    Behavior_table.cross0(si) = sum(Trial_Data(si).main.boundary_crossing == 0);
+    Behavior_table.cross1(si) = sum(Trial_Data(si).main.boundary_crossing == 1);
+    Behavior_table.cross2(si) = sum(Trial_Data(si).main.boundary_crossing == 2);
+    Behavior_table.cross0_ABD(si) = sum(Trial_Data(si).main.boundary_crossing == 0 & Trial_Data(si).main.boundary == 0);
+    Behavior_table.cross1_ABD(si) = sum(Trial_Data(si).main.boundary_crossing == 1 & Trial_Data(si).main.boundary == 0);
+    Behavior_table.cross2_ABD(si) = sum(Trial_Data(si).main.boundary_crossing == 2 & Trial_Data(si).main.boundary == 0);
+    Behavior_table.cross0_MBD(si) = sum(Trial_Data(si).main.boundary_crossing == 0 & Trial_Data(si).main.boundary == 1);
+    Behavior_table.cross1_MBD(si) = sum(Trial_Data(si).main.boundary_crossing == 1 & Trial_Data(si).main.boundary == 1);
+    Behavior_table.cross2_MBD(si) = sum(Trial_Data(si).main.boundary_crossing == 2 & Trial_Data(si).main.boundary == 1);    
+    % inter trial accuracy
+    Behavior_table.inter_acc(si) = nanmean(Trial_Data(si).inter.correct);
+    Behavior_table.inter_acc_cat1(si) = nanmean(Trial_Data(si).inter.correct(Trial_Data(si).inter.condition == 1));
+    Behavior_table.inter_acc_cat2(si) = nanmean(Trial_Data(si).inter.correct(Trial_Data(si).inter.condition == 2));
+    Behavior_table.inter_bnd_use_index(si) = Behavior_table.inter_acc_cat2(si) - Behavior_table.inter_acc_cat1(si);
+    Behavior_table.inter_bnd_user(si) = Behavior_table.inter_acc_cat1(si) < Behavior_table.inter_acc_cat2(si);
+
+    % yj method ( 1 location cat / 2 detail right / 0 really wrong)
+%     WWW_Trial_Data(si).main.categorical_Acc = WWW_Trial_Data(si).main.location_catAcc + WWW_Trial_Data(si).main.locationAcc;
+    
+    if sum(Trial_Data(si).main.categorical_Acc == 1) + sum(Trial_Data(si).main.categorical_Acc == 0) ~= 0
+        Behavior_table.loc_chunking(si) = sum(Trial_Data(si).main.categorical_Acc == 1) / (sum(Trial_Data(si).main.categorical_Acc == 1) + sum(Trial_Data(si).main.categorical_Acc == 0));
+    else
+        Behavior_table.loc_chunking(si) = NaN;
+    end
+
+    Behavior_table.all_wrong_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.where == 0));
+
+
+    % accuracy
+    Behavior_table.across_acc(si) = nanmean(Trial_Data(si).main_trial.across_acc)    
+    Behavior_table.within_acc(si) = nanmean(Trial_Data(si).main_trial.within_acc)   
+
+    Behavior_table.acc_what(si) = nanmean(Trial_Data(si).main.what);
+    Behavior_table.acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen);
+    Behavior_table.acc_where(si) = nanmean(Trial_Data(si).main.where);
+    Behavior_table.acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen);
+    Behavior_table.acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere);
+    Behavior_table.acc_fullem(si) = nanmean(Trial_Data(si).main.fullem);
+
+    Behavior_table.acc_loc_cat_where(si) = nanmean(Trial_Data(si).main.location_catAcc_where);
+    Behavior_table.acc_loc_cat_wherewhen(si) = nanmean(Trial_Data(si).main.location_catAcc_wherewhen);
+    Behavior_table.acc_loc_cat_whatwhere(si) = nanmean(Trial_Data(si).main.location_catAcc_whatwhere);
+    Behavior_table.acc_loc_cat_fullem(si) = nanmean(Trial_Data(si).main.location_catAcc_fullem);
+
+    Behavior_table.acc_wrong_loc_cat_where(si) = nanmean(Trial_Data(si).main.location_catAcc_where(Trial_Data(si).main.where == 0));
+    Behavior_table.acc_wrong_loc_cat_wherewhen(si) = nanmean(Trial_Data(si).main.location_catAcc_wherewhen(Trial_Data(si).main.where == 0));
+    Behavior_table.acc_wrong_loc_cat_whatwhere(si) = nanmean(Trial_Data(si).main.location_catAcc_whatwhere(Trial_Data(si).main.where == 0));
+    Behavior_table.acc_wrong_loc_cat_fullem(si) = nanmean(Trial_Data(si).main.location_catAcc_fullem(Trial_Data(si).main.where == 0));
+
+
+
+
+    % accuracy - location categorically divided
+    Behavior_table.acc_location_cat(si) = nanmean(Trial_Data(si).main.location_catAcc);
+    Behavior_table.acc_location_cat_only(si) = nanmean(Trial_Data(si).main.location_catWhere);
+
+
+    % reaction time (right or wrong whole)
+    Behavior_table.rt_respond(si) = nanmean(Trial_Data(si).main.respondRT);
+    Behavior_table.rt_animal(si) = nanmean(Trial_Data(si).main.animalRT);
+    Behavior_table.rt_location(si) = nanmean(Trial_Data(si).main.locationRT);
+
+    Behavior_table.log_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT_log);
+    Behavior_table.log_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT_log);
+    Behavior_table.log_rt_location(si) = nanmean(Trial_Data(si).main.locationRT_log);
+
+
+
+    %reaction time (right only)
+    Behavior_table.rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.fullem == 1));
+    Behavior_table.rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.animalAcc == 1));
+    Behavior_table.rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.locationAcc == 1));
+
+    Behavior_table.log_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.fullem == 1));
+    Behavior_table.log_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.animalAcc == 1));
+    Behavior_table.log_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.locationAcc == 1));
+
+
+
+    % each trial (right & wrong)
+    Behavior_table.rt_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.order == 1));
+    Behavior_table.rt_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.order == 1));
+    Behavior_table.rt_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.order == 1));
+
+    Behavior_table.rt_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.order == 2));
+    Behavior_table.rt_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.order == 2));
+    Behavior_table.rt_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.order == 2));
+
+    Behavior_table.rt_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.order == 3));
+    Behavior_table.rt_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.order == 3));
+    Behavior_table.rt_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.order == 3));
+
+
+    Behavior_table.log_rt_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1));
+    Behavior_table.log_rt_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1));
+    Behavior_table.log_rt_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1));
+
+    Behavior_table.log_rt_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2));
+    Behavior_table.log_rt_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2));
+    Behavior_table.log_rt_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2));
+
+    Behavior_table.log_rt_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3));
+    Behavior_table.log_rt_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3));
+    Behavior_table.log_rt_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3));
+
+    Behavior_table.log_rt_right_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.fullem == 1));
+    Behavior_table.log_rt_right_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.animalAcc == 1));
+    Behavior_table.log_rt_right_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.locationAcc == 1));
+
+    Behavior_table.log_rt_right_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.fullem == 1));
+    Behavior_table.log_rt_right_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.animalAcc == 1));
+    Behavior_table.log_rt_right_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.locationAcc == 1));
+
+    Behavior_table.log_rt_right_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.fullem == 1));
+    Behavior_table.log_rt_right_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.animalAcc == 1));
+    Behavior_table.log_rt_right_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.locationAcc == 1));
+
+
+
+
+    % a signle boundary only
+    Behavior_table.all_ABD_across_acc(si) = nanmean(Trial_Data(si).main_trial.across_acc(Trial_Data(si).main_trial.boundary == 0,:))    
+    Behavior_table.all_ABD_within_acc(si) = nanmean(Trial_Data(si).main_trial.within_acc(Trial_Data(si).main_trial.boundary == 0,:))    
+    Behavior_table.all_ABD_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_acc_location_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.boundary == 0,:));
+
+
+
+    Behavior_table.all_ABD_acc_loc_cat_where(si) = nanmean(Trial_Data(si).main.location_catAcc_where(Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_acc_loc_cat_wherewhen(si) = nanmean(Trial_Data(si).main.location_catAcc_wherewhen(Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_acc_loc_cat_whatwhere(si) = nanmean(Trial_Data(si).main.location_catAcc_whatwhere(Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_acc_loc_cat_fullem(si) = nanmean(Trial_Data(si).main.location_catAcc_fullem(Trial_Data(si).main.boundary == 0,:));
+
+    Behavior_table.all_ABD_acc_wrong_loc_cat_where(si) = nanmean(Trial_Data(si).main.location_catAcc_where(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_acc_wrong_loc_cat_wherewhen(si) = nanmean(Trial_Data(si).main.location_catAcc_wherewhen(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_acc_wrong_loc_cat_whatwhere(si) = nanmean(Trial_Data(si).main.location_catAcc_whatwhere(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_acc_wrong_loc_cat_fullem(si) = nanmean(Trial_Data(si).main.location_catAcc_fullem(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 0,:));
+
+
+
+    if sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 0,:) == 1) + sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 0,:) == 0) ~= 0
+        Behavior_table.ABD_loc_chunking(si) = sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 0,:) == 1) / (sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 0,:) == 1) + sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 0,:) == 0));
+    else
+        Behavior_table.ABD_loc_chunking(si) = NaN;
+    end
+
+    Behavior_table.all_ABD_wrong_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 0,:));    
+
+
+
+    Behavior_table.all_ABD_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 0,:));
+
+
+    Behavior_table.all_ABD_log_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_log_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.boundary == 0,:));
+    Behavior_table.all_ABD_log_rt_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.boundary == 0,:));
+
+
+    % right trials rt only
+    Behavior_table.all_ABD_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT(((Trial_Data(si).main.boundary == 0) & (Trial_Data(si).main.fullem == 1)) == 1,:));
+    Behavior_table.all_ABD_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT(((Trial_Data(si).main.boundary == 0) & (Trial_Data(si).main.animalAcc == 1)) == 1,:));
+    Behavior_table.all_ABD_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT(((Trial_Data(si).main.boundary == 0) & (Trial_Data(si).main.locationAcc == 1)) == 1,:));
+
+
+    Behavior_table.all_ABD_log_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(((Trial_Data(si).main.boundary == 0) & (Trial_Data(si).main.fullem == 1)) == 1,:));
+    Behavior_table.all_ABD_log_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(((Trial_Data(si).main.boundary == 0) & (Trial_Data(si).main.animalAcc == 1)) == 1,:));
+    Behavior_table.all_ABD_log_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT_log(((Trial_Data(si).main.boundary == 0) & (Trial_Data(si).main.locationAcc == 1)) == 1,:));
+
+
+
+
+    Behavior_table.all_ABD_log_rt_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 0));
+    Behavior_table.all_ABD_log_rt_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 0));
+    Behavior_table.all_ABD_log_rt_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 0));
+
+    Behavior_table.all_ABD_log_rt_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 0));
+    Behavior_table.all_ABD_log_rt_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 0));
+    Behavior_table.all_ABD_log_rt_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 0));
+
+    Behavior_table.all_ABD_log_rt_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 0));
+    Behavior_table.all_ABD_log_rt_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 0));
+    Behavior_table.all_ABD_log_rt_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 0));
+
+    Behavior_table.all_ABD_log_rt_right_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 0));
+    Behavior_table.all_ABD_log_rt_right_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 0));
+    Behavior_table.all_ABD_log_rt_right_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 0));
+
+    Behavior_table.all_ABD_log_rt_right_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 0));
+    Behavior_table.all_ABD_log_rt_right_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 0));
+    Behavior_table.all_ABD_log_rt_right_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 0));
+
+    Behavior_table.all_ABD_log_rt_right_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 0));
+    Behavior_table.all_ABD_log_rt_right_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 0));
+    Behavior_table.all_ABD_log_rt_right_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 0));
+
+
+
+    % multiple boundary
+    Behavior_table.all_MBD_across_acc(si) = nanmean(Trial_Data(si).main_trial.across_acc(Trial_Data(si).main_trial.boundary == 1,:))    
+    Behavior_table.all_MBD_within_acc(si) = nanmean(Trial_Data(si).main_trial.within_acc(Trial_Data(si).main_trial.boundary == 1,:))        
+    Behavior_table.all_MBD_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_acc_location_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.boundary == 1,:));
+
+
+
+    Behavior_table.all_MBD_acc_loc_cat_where(si) = nanmean(Trial_Data(si).main.location_catAcc_where(Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_acc_loc_cat_wherewhen(si) = nanmean(Trial_Data(si).main.location_catAcc_wherewhen(Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_acc_loc_cat_whatwhere(si) = nanmean(Trial_Data(si).main.location_catAcc_whatwhere(Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_acc_loc_cat_fullem(si) = nanmean(Trial_Data(si).main.location_catAcc_fullem(Trial_Data(si).main.boundary == 1,:));
+
+    Behavior_table.all_MBD_acc_wrong_loc_cat_where(si) = nanmean(Trial_Data(si).main.location_catAcc_where(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_acc_wrong_loc_cat_wherewhen(si) = nanmean(Trial_Data(si).main.location_catAcc_wherewhen(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_acc_wrong_loc_cat_whatwhere(si) = nanmean(Trial_Data(si).main.location_catAcc_whatwhere(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_acc_wrong_loc_cat_fullem(si) = nanmean(Trial_Data(si).main.location_catAcc_fullem(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 1,:));
+
+
+
+
+    Behavior_table.all_MBD_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 1,:));
+
+
+    Behavior_table.all_MBD_log_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_log_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.boundary == 1,:));
+    Behavior_table.all_MBD_log_rt_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.boundary == 1,:));
+
+
+
+
+    if sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 1,:) == 1) + sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 1,:) == 0) ~= 0
+        Behavior_table.MBD_loc_chunking(si) = sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 1,:) == 1) / (sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 1,:) == 1) + sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 1,:) == 0));
+    else
+        Behavior_table.MBD_loc_chunking(si) = NaN;
+    end
+
+    Behavior_table.all_MBD_wrong_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 1,:));    
+
+
+
+    % right trials rt only
+    Behavior_table.all_MBD_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT(((Trial_Data(si).main.boundary == 1) & (Trial_Data(si).main.fullem == 1)) == 1,:));
+    Behavior_table.all_MBD_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT(((Trial_Data(si).main.boundary == 1) & (Trial_Data(si).main.animalAcc == 1)) == 1,:));
+    Behavior_table.all_MBD_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT(((Trial_Data(si).main.boundary == 1) & (Trial_Data(si).main.locationAcc == 1)) == 1,:));
+
+    Behavior_table.all_MBD_log_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(((Trial_Data(si).main.boundary == 1) & (Trial_Data(si).main.fullem == 1)) == 1,:));
+    Behavior_table.all_MBD_log_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(((Trial_Data(si).main.boundary == 1) & (Trial_Data(si).main.animalAcc == 1)) == 1,:));
+    Behavior_table.all_MBD_log_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT_log(((Trial_Data(si).main.boundary == 1) & (Trial_Data(si).main.locationAcc == 1)) == 1,:));
+
+
+    Behavior_table.all_MBD_log_rt_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 1));
+    Behavior_table.all_MBD_log_rt_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 1));
+    Behavior_table.all_MBD_log_rt_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 1));
+
+    Behavior_table.all_MBD_log_rt_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 1));
+    Behavior_table.all_MBD_log_rt_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 1));
+    Behavior_table.all_MBD_log_rt_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 1));
+
+    Behavior_table.all_MBD_log_rt_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 1));
+    Behavior_table.all_MBD_log_rt_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 1));
+    Behavior_table.all_MBD_log_rt_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 1));
+
+    Behavior_table.all_MBD_log_rt_right_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 1));
+    Behavior_table.all_MBD_log_rt_right_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 1));
+    Behavior_table.all_MBD_log_rt_right_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 1));
+
+    Behavior_table.all_MBD_log_rt_right_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 1));
+    Behavior_table.all_MBD_log_rt_right_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 1));
+    Behavior_table.all_MBD_log_rt_right_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 1));
+
+    Behavior_table.all_MBD_log_rt_right_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 1));
+    Behavior_table.all_MBD_log_rt_right_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 1));
+    Behavior_table.all_MBD_log_rt_right_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 1));
+
+  
+
+    %selected (boundary crossing 1) - no right rt yet
+    Behavior_table.select_across_acc(si) = nanmean(Trial_Data(si).main_trial.across_acc(Trial_Data(si).main_trial.boundary_cat_okay > 0 ,:));    
+    Behavior_table.select_within_acc(si) = nanmean(Trial_Data(si).main_trial.within_acc(Trial_Data(si).main_trial.boundary_cat_okay > 0 ,:))   
+
+    Behavior_table.select_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+
+
+    Behavior_table.select_acc_loc_cat_where(si) = nanmean(Trial_Data(si).main.location_catAcc_where(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_acc_loc_cat_wherewhen(si) = nanmean(Trial_Data(si).main.location_catAcc_wherewhen(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_acc_loc_cat_whatwhere(si) = nanmean(Trial_Data(si).main.location_catAcc_whatwhere(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_acc_loc_cat_fullem(si) = nanmean(Trial_Data(si).main.location_catAcc_fullem(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+
+
+
+    Behavior_table.select_acc_wrong_loc_cat_where(si) = nanmean(Trial_Data(si).main.location_catAcc_where(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_acc_wrong_loc_cat_wherewhen(si) = nanmean(Trial_Data(si).main.location_catAcc_wherewhen(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_acc_wrong_loc_cat_whatwhere(si) = nanmean(Trial_Data(si).main.location_catAcc_whatwhere(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_acc_wrong_loc_cat_fullem(si) = nanmean(Trial_Data(si).main.location_catAcc_fullem(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+
+
+
+    Behavior_table.select_acc_location_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+
+    if sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) + sum(Trial_Data(si).main.categorical_Acc( Trial_Data(si).main.boundary_cat_okay > 0,:) == 0) ~= 0
+        Behavior_table.select_loc_chunking(si) = sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) / (sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) + sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary_cat_okay > 0,:) == 0));
+    else
+        Behavior_table.select_loc_chunking(si) = NaN;
+    end
+
+    Behavior_table.select_wrong_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));    
+
+
+
+
+    Behavior_table.select_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+
+    Behavior_table.select_log_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_log_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_log_rt_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+
+
+    % right trials rt only
+    Behavior_table.select_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT(((Trial_Data(si).main.fullem == 1)) == 1,:));
+    Behavior_table.select_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT(((Trial_Data(si).main.animalAcc == 1)) == 1,:));
+    Behavior_table.select_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT(((Trial_Data(si).main.locationAcc == 1)) == 1,:));
+
+    Behavior_table.select_log_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(((Trial_Data(si).main.fullem == 1)) == 1,:));
+    Behavior_table.select_log_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(((Trial_Data(si).main.animalAcc == 1)) == 1,:));
+    Behavior_table.select_log_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT_log(((Trial_Data(si).main.locationAcc == 1)) == 1,:));
+
+
+    Behavior_table.AAB_log_rt_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_log_rt_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_log_rt_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_log_rt_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_log_rt_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_log_rt_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2  & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_log_rt_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_log_rt_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_log_rt_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3  & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_log_rt_right_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.fullem == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_log_rt_right_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_log_rt_right_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.locationAcc == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_log_rt_right_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.fullem == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_log_rt_right_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_log_rt_right_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_log_rt_right_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_log_rt_right_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.animalAcc == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_log_rt_right_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary_cat_okay == 1));
+
+
+    
+    Behavior_table.ABB_log_rt_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_log_rt_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_log_rt_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_log_rt_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_log_rt_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_log_rt_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2  & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_log_rt_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_log_rt_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_log_rt_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_log_rt_right_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.fullem == 1   & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_log_rt_right_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.animalAcc == 1   & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_log_rt_right_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.locationAcc == 1   & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_log_rt_right_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.fullem == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_log_rt_right_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.animalAcc == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_log_rt_right_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.locationAcc == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_log_rt_right_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.fullem == 1   & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_log_rt_right_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_log_rt_right_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary_cat_okay == 2));
+
+
+
+
+
+    
+    if sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) + sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:) == 0) ~= 0
+        Behavior_table.select_ABD_loc_chunking(si) = sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) / (sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) + sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:) == 0));
+    else
+        Behavior_table.select_ABD_loc_chunking(si) = NaN;
+    end
+
+    Behavior_table.select_ABD_across_acc(si) = nanmean(Trial_Data(si).main_trial.across_acc(Trial_Data(si).main_trial.boundary == 0  & Trial_Data(si).main_trial.boundary_1cross_run > 0,:));    
+    Behavior_table.select_ABD_within_acc(si) = nanmean(Trial_Data(si).main_trial.within_acc(Trial_Data(si).main_trial.boundary == 0 & Trial_Data(si).main_trial.boundary_1cross_run > 0,:));      
+
+    Behavior_table.select_ABD_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    Behavior_table.select_ABD_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_acc_location_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+
+    Behavior_table.select_ABD_acc_loc_cat_where(si) = nanmean(Trial_Data(si).main.location_catAcc_where(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_acc_loc_cat_wherewhen(si) = nanmean(Trial_Data(si).main.location_catAcc_wherewhen(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_acc_loc_cat_whatwhere(si) = nanmean(Trial_Data(si).main.location_catAcc_whatwhere(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_acc_loc_cat_fullem(si) = nanmean(Trial_Data(si).main.location_catAcc_fullem(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+
+
+    Behavior_table.select_ABD_acc_wrong_loc_cat_where(si) = nanmean(Trial_Data(si).main.location_catAcc_where(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_acc_wrong_loc_cat_wherewhen(si) = nanmean(Trial_Data(si).main.location_catAcc_wherewhen(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_acc_wrong_loc_cat_whatwhere(si) = nanmean(Trial_Data(si).main.location_catAcc_whatwhere(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_acc_wrong_loc_cat_fullem(si) = nanmean(Trial_Data(si).main.location_catAcc_fullem(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+
+
+
+    Behavior_table.select_ABD_wrong_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));    
+
+
+
+    Behavior_table.select_ABD_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+    Behavior_table.select_ABD_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0 & Trial_Data(si).main.fullem == 1,:));
+    Behavior_table.select_ABD_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0 & Trial_Data(si).main.animalAcc == 1,:));
+    Behavior_table.select_ABD_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0 & Trial_Data(si).main.locationAcc == 1,:));
+
+    Behavior_table.select_ABD_log_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_log_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_ABD_log_rt_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+    Behavior_table.select_ABD_log_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0 & Trial_Data(si).main.fullem == 1,:));
+    Behavior_table.select_ABD_log_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0 & Trial_Data(si).main.animalAcc == 1,:));
+    Behavior_table.select_ABD_log_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay > 0 & Trial_Data(si).main.locationAcc == 1,:));
+
+
+
+    Behavior_table.AAB_ABD_log_rt_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_ABD_log_rt_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_ABD_log_rt_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_ABD_log_rt_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_ABD_log_rt_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_ABD_log_rt_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_ABD_log_rt_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_ABD_log_rt_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_ABD_log_rt_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_ABD_log_rt_right_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_ABD_log_rt_right_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_ABD_log_rt_right_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_ABD_log_rt_right_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_ABD_log_rt_right_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_ABD_log_rt_right_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_ABD_log_rt_right_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_ABD_log_rt_right_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_ABD_log_rt_right_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay == 1));
+
+
+    
+    Behavior_table.ABB_ABD_log_rt_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_ABD_log_rt_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_ABD_log_rt_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_ABD_log_rt_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_ABD_log_rt_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_ABD_log_rt_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_ABD_log_rt_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_ABD_log_rt_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_ABD_log_rt_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_ABD_log_rt_right_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_ABD_log_rt_right_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_ABD_log_rt_right_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_ABD_log_rt_right_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_ABD_log_rt_right_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_ABD_log_rt_right_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_ABD_log_rt_right_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 0  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_ABD_log_rt_right_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_ABD_log_rt_right_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_cat_okay == 2));
+
+
+    
+
+
+   if sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) + sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:) == 0) ~= 0
+        Behavior_table.select_MBD_loc_chunking(si) = sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) / (sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) + sum(Trial_Data(si).main.categorical_Acc(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:) == 0));
+    else
+        Behavior_table.select_MBD_loc_chunking(si) = NaN;
+   end
+
+
+    Behavior_table.select_MBD_across_acc(si) = nanmean(Trial_Data(si).main_trial.across_acc(Trial_Data(si).main_trial.boundary == 1  & Trial_Data(si).main_trial.boundary_1cross_run > 0,:));
+    Behavior_table.select_MBD_within_acc(si) = nanmean(Trial_Data(si).main_trial.within_acc(Trial_Data(si).main_trial.boundary == 1 & Trial_Data(si).main_trial.boundary_1cross_run > 0,:));    
+
+    Behavior_table.select_MBD_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_acc_location_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+
+    Behavior_table.select_MBD_acc_loc_cat_where(si) = nanmean(Trial_Data(si).main.location_catAcc_where(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_acc_loc_cat_wherewhen(si) = nanmean(Trial_Data(si).main.location_catAcc_wherewhen(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_acc_loc_cat_whatwhere(si) = nanmean(Trial_Data(si).main.location_catAcc_whatwhere(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_acc_loc_cat_fullem(si) = nanmean(Trial_Data(si).main.location_catAcc_fullem(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+
+
+
+    Behavior_table.select_MBD_acc_wrong_loc_cat_where(si) = nanmean(Trial_Data(si).main.location_catAcc_where(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_acc_wrong_loc_cat_wherewhen(si) = nanmean(Trial_Data(si).main.location_catAcc_wherewhen(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_acc_wrong_loc_cat_whatwhere(si) = nanmean(Trial_Data(si).main.location_catAcc_whatwhere(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_acc_wrong_loc_cat_fullem(si) = nanmean(Trial_Data(si).main.location_catAcc_fullem(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+
+
+    Behavior_table.select_MBD_wrong_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));    
+
+
+    Behavior_table.select_MBD_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+
+    Behavior_table.select_MBD_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0 & Trial_Data(si).main.fullem == 1,:));
+    Behavior_table.select_MBD_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0 & Trial_Data(si).main.animalAcc == 1,:));
+    Behavior_table.select_MBD_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0 & Trial_Data(si).main.locationAcc == 1,:));
+
+
+    Behavior_table.select_MBD_log_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_log_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+    Behavior_table.select_MBD_log_rt_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+
+    Behavior_table.select_MBD_log_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0 & Trial_Data(si).main.fullem == 1,:));
+    Behavior_table.select_MBD_log_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0 & Trial_Data(si).main.animalAcc == 1,:));
+    Behavior_table.select_MBD_log_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay > 0 & Trial_Data(si).main.locationAcc == 1,:));
+
+
+    Behavior_table.AAB_MBD_log_rt_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_MBD_log_rt_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_MBD_log_rt_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_MBD_log_rt_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_MBD_log_rt_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_MBD_log_rt_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_MBD_log_rt_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_MBD_log_rt_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_MBD_log_rt_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_MBD_log_rt_right_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_MBD_log_rt_right_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_MBD_log_rt_right_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_MBD_log_rt_right_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_MBD_log_rt_right_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_MBD_log_rt_right_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay == 1));
+
+    Behavior_table.AAB_MBD_log_rt_right_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_MBD_log_rt_right_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay == 1));
+    Behavior_table.AAB_MBD_log_rt_right_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay == 1));
+
+
+    
+    Behavior_table.ABB_MBD_log_rt_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_MBD_log_rt_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_MBD_log_rt_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_MBD_log_rt_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_MBD_log_rt_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_MBD_log_rt_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_MBD_log_rt_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_MBD_log_rt_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_MBD_log_rt_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_MBD_log_rt_right_trial1_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_MBD_log_rt_right_trial1_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 1 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_MBD_log_rt_right_trial1_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 1  & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_MBD_log_rt_right_trial2_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_MBD_log_rt_right_trial2_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_MBD_log_rt_right_trial2_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 2 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay == 2));
+
+    Behavior_table.ABB_MBD_log_rt_right_trial3_respond(si) = nanmean(Trial_Data(si).main.respondRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.fullem == 1 & Trial_Data(si).main.boundary == 1  & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_MBD_log_rt_right_trial3_animal(si) = nanmean(Trial_Data(si).main.animalRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.animalAcc == 1 & Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay == 2));
+    Behavior_table.ABB_MBD_log_rt_right_trial3_location(si) = nanmean(Trial_Data(si).main.locationRT_log(Trial_Data(si).main.order == 3 & Trial_Data(si).main.locationAcc == 1 & Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_cat_okay == 2));
+
+
+
+
+
+
+    % crossing 0
+    Behavior_table.cross0_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary_crossing == 0 ,:));
+    Behavior_table.cross0_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary_crossing == 0 ,:));
+    Behavior_table.cross0_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary_crossing == 0  ,:));
+    Behavior_table.cross0_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary_crossing == 0 ,:));
+    Behavior_table.cross0_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary_crossing == 0 ,:));
+    Behavior_table.cross0_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary_crossing == 0 ,:));
+
+    Behavior_table.cross0_acc_loc_cat_where(si) = nanmean(Trial_Data(si).main.location_catAcc_where(Trial_Data(si).main.boundary_crossing == 0  ,:));
+    Behavior_table.cross0_acc_loc_cat_wherewhen(si) = nanmean(Trial_Data(si).main.location_catAcc_wherewhen(Trial_Data(si).main.boundary_crossing == 0 ,:));
+    Behavior_table.cross0_acc_loc_cat_whatwhere(si) = nanmean(Trial_Data(si).main.location_catAcc_whatwhere(Trial_Data(si).main.boundary_crossing == 0 ,:));
+    Behavior_table.cross0_acc_loc_cat_fullem(si) = nanmean(Trial_Data(si).main.location_catAcc_fullem(Trial_Data(si).main.boundary_crossing == 0 ,:));
+
+
+    Behavior_table.cross0_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary_crossing == 0 ,:));
+    Behavior_table.cross0_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary_crossing == 0 ,:));
+    Behavior_table.cross0_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary_crossing == 0 ,:));
+
+    Behavior_table.cross0_ABD_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 0 ,:));
+    Behavior_table.cross0_ABD_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_ABD_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_ABD_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_ABD_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_ABD_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_ABD_acc_location_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 0,:));
+
+
+    Behavior_table.cross0_ABD_wrong_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 0,:));    
+    
+
+
+    Behavior_table.cross0_ABD_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_ABD_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_ABD_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 0,:));
+
+    Behavior_table.cross0_ABD_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 0 & Trial_Data(si).main.fullem == 1,:));
+    Behavior_table.cross0_ABD_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 0 & Trial_Data(si).main.animalAcc == 1,:));
+    Behavior_table.cross0_ABD_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 0 & Trial_Data(si).main.locationAcc == 1,:));
+
+
+
+    Behavior_table.cross0_MBD_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_MBD_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_MBD_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_MBD_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_MBD_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_MBD_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_MBD_acc_location_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 0,:));
+
+    Behavior_table.cross0_MBD_wrong_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.where == 0 & Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 0,:));    
+    
+
+
+    Behavior_table.cross0_MBD_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_MBD_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 0,:));
+    Behavior_table.cross0_MBD_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 0,:));
+
+
+    Behavior_table.cross0_MBD_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 0 & Trial_Data(si).main.fullem == 1,:));
+    Behavior_table.cross0_MBD_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 0 & Trial_Data(si).main.animalAcc == 1,:));
+    Behavior_table.cross0_MBD_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 0 & Trial_Data(si).main.locationAcc == 1,:));
+
+
+    % bnd index 
+    Behavior_table.cross0_MBD_ABD_acc_what(si) = Behavior_table.cross0_MBD_acc_what(si) - Behavior_table.cross0_ABD_acc_what(si);
+    Behavior_table.cross0_MBD_ABD_acc_whatwhen(si) = Behavior_table.cross0_MBD_acc_whatwhen(si) - Behavior_table.cross0_ABD_acc_whatwhen(si);
+    Behavior_table.cross0_MBD_ABD_acc_where(si) = Behavior_table.cross0_MBD_acc_where(si) - Behavior_table.cross0_ABD_acc_where(si);
+    Behavior_table.cross0_MBD_ABD_acc_wherewhen(si) = Behavior_table.cross0_MBD_acc_wherewhen(si) - Behavior_table.cross0_ABD_acc_wherewhen(si);
+    Behavior_table.cross0_MBD_ABD_acc_whatwhere(si) = Behavior_table.cross0_MBD_acc_whatwhere(si) - Behavior_table.cross0_ABD_acc_whatwhere(si);
+    Behavior_table.cross0_MBD_ABD_acc_fullem(si) = Behavior_table.cross0_MBD_acc_fullem(si) - Behavior_table.cross0_ABD_acc_fullem(si);
+                        
+
+
+
+
+    % crossing 2
+
+    Behavior_table.cross2_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary_crossing == 2 ,:));
+    Behavior_table.cross2_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary_crossing == 2 ,:));
+    Behavior_table.cross2_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary_crossing == 2 ,:));
+    Behavior_table.cross2_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary_crossing == 2 ,:));
+    Behavior_table.cross2_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary_crossing == 2 ,:));
+    Behavior_table.cross2_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary_crossing == 2 ,:));
+
+    Behavior_table.cross2_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary_crossing == 2 ,:));
+    Behavior_table.cross2_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary_crossing == 2 ,:));
+    Behavior_table.cross2_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary_crossing == 2 ,:));
+
+    Behavior_table.cross2_ABD_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 2 ,:));
+    Behavior_table.cross2_ABD_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_ABD_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_ABD_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_ABD_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_ABD_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_ABD_acc_location_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 2,:));
+
+    Behavior_table.cross2_ABD_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_ABD_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_ABD_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 2,:));
+
+    Behavior_table.cross2_ABD_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 2 & Trial_Data(si).main.fullem == 1,:));
+    Behavior_table.cross2_ABD_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 2 & Trial_Data(si).main.animalAcc == 1,:));
+    Behavior_table.cross2_ABD_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 0 & Trial_Data(si).main.boundary_crossing == 2 & Trial_Data(si).main.locationAcc == 1,:));
+
+
+
+    Behavior_table.cross2_MBD_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_MBD_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_MBD_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_MBD_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_MBD_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_MBD_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_MBD_acc_location_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 2,:));
+
+    Behavior_table.cross2_MBD_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_MBD_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 2,:));
+    Behavior_table.cross2_MBD_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 2,:));
+
+
+    Behavior_table.cross2_MBD_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 2 & Trial_Data(si).main.fullem == 1,:));
+    Behavior_table.cross2_MBD_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 2 & Trial_Data(si).main.animalAcc == 1,:));
+    Behavior_table.cross2_MBD_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 1 & Trial_Data(si).main.boundary_crossing == 2 & Trial_Data(si).main.locationAcc == 1,:));
+
+
+    % crossing 0 & 2
+    Behavior_table.cross0and2_acc_what(si) = nanmean(Trial_Data(si).main.what(ismember(Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    Behavior_table.cross0and2_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(ismember(Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    Behavior_table.cross0and2_acc_where(si) = nanmean(Trial_Data(si).main.where(ismember(Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    Behavior_table.cross0and2_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+
+
+    Behavior_table.cross0and2_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(ismember(Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    Behavior_table.cross0and2_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(ismember(Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    Behavior_table.cross0and2_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(ismember(Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+
+    Behavior_table.cross0and2_ABD_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    Behavior_table.cross0and2_ABD_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_ABD_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_ABD_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_ABD_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_ABD_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_ABD_acc_location_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+
+    Behavior_table.cross0and2_ABD_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_ABD_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_ABD_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+
+    Behavior_table.cross0and2_ABD_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]) & Trial_Data(si).main.fullem == 1,:));
+    Behavior_table.cross0and2_ABD_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]) & Trial_Data(si).main.animalAcc == 1,:));
+    Behavior_table.cross0and2_ABD_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]) & Trial_Data(si).main.locationAcc == 1,:));
+
+
+
+    Behavior_table.cross0and2_MBD_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_MBD_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_MBD_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_MBD_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_MBD_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_MBD_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_MBD_acc_location_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+
+    Behavior_table.cross0and2_MBD_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_MBD_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    Behavior_table.cross0and2_MBD_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+
+
+    Behavior_table.cross0and2_MBD_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]) & Trial_Data(si).main.fullem == 1,:));
+    Behavior_table.cross0and2_MBD_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]) & Trial_Data(si).main.animalAcc == 1,:));
+    Behavior_table.cross0and2_MBD_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [0, 2]) & Trial_Data(si).main.locationAcc == 1,:));
+
+
+    % crossing 1 & 2
+    Behavior_table.cross1and2_acc_what(si) = nanmean(Trial_Data(si).main.what(ismember(Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    Behavior_table.cross1and2_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(ismember(Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    Behavior_table.cross1and2_acc_where(si) = nanmean(Trial_Data(si).main.where(ismember(Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    Behavior_table.cross1and2_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+
+
+    Behavior_table.cross1and2_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(ismember(Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    Behavior_table.cross1and2_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(ismember(Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    Behavior_table.cross1and2_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(ismember(Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+
+
+    Behavior_table.cross1and2_ABD_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    Behavior_table.cross1and2_ABD_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_ABD_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_ABD_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_ABD_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_ABD_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_ABD_acc_location_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+
+    Behavior_table.cross1and2_ABD_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_ABD_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_ABD_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+
+    Behavior_table.cross1and2_ABD_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]) & Trial_Data(si).main.fullem == 1,:));
+    Behavior_table.cross1and2_ABD_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]) & Trial_Data(si).main.animalAcc == 1,:));
+    Behavior_table.cross1and2_ABD_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 0 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]) & Trial_Data(si).main.locationAcc == 1,:));
+
+
+
+    Behavior_table.cross1and2_MBD_acc_what(si) = nanmean(Trial_Data(si).main.what(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_MBD_acc_whatwhen(si) = nanmean(Trial_Data(si).main.whatwhen(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_MBD_acc_where(si) = nanmean(Trial_Data(si).main.where(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_MBD_acc_wherewhen(si) = nanmean(Trial_Data(si).main.wherewhen(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_MBD_acc_whatwhere(si) = nanmean(Trial_Data(si).main.whatwhere(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_MBD_acc_fullem(si) = nanmean(Trial_Data(si).main.fullem(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_MBD_acc_location_cat(si) = nanmean(Trial_Data(si).main.location_catAcc(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+
+    Behavior_table.cross1and2_MBD_rt_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_MBD_rt_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    Behavior_table.cross1and2_MBD_rt_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+
+
+    Behavior_table.cross1and2_MBD_rt_right_respond(si) = nanmean(Trial_Data(si).main.respondRT(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]) & Trial_Data(si).main.fullem == 1,:));
+    Behavior_table.cross1and2_MBD_rt_right_animal(si) = nanmean(Trial_Data(si).main.animalRT(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]) & Trial_Data(si).main.animalAcc == 1,:));
+    Behavior_table.cross1and2_MBD_rt_right_location(si) = nanmean(Trial_Data(si).main.locationRT(Trial_Data(si).main.boundary == 1 & ismember(Trial_Data(si).main.boundary_crossing, [1, 2]) & Trial_Data(si).main.locationAcc == 1,:));
+
+
+    % bnd index (multi - audio)
+    Behavior_table.all_MBD_ABD_acc_what(si) = Behavior_table.all_MBD_acc_what(si) - Behavior_table.all_ABD_acc_what(si);
+    Behavior_table.all_MBD_ABD_acc_whatwhen(si) = Behavior_table.all_MBD_acc_whatwhen(si) - Behavior_table.all_ABD_acc_whatwhen(si);
+    Behavior_table.all_MBD_ABD_acc_where(si) = Behavior_table.all_MBD_acc_where(si) - Behavior_table.all_ABD_acc_where(si);
+    Behavior_table.all_MBD_ABD_acc_wherewhen(si) = Behavior_table.all_MBD_acc_wherewhen(si) - Behavior_table.all_ABD_acc_wherewhen(si);
+    Behavior_table.all_MBD_ABD_acc_whatwhere(si) = Behavior_table.all_MBD_acc_whatwhere(si) - Behavior_table.all_ABD_acc_whatwhere(si);
+    Behavior_table.all_MBD_ABD_acc_fullem(si) = Behavior_table.all_MBD_acc_fullem(si) - Behavior_table.all_ABD_acc_fullem(si);
+                        
+
+    Behavior_table.select_MBD_ABD_acc_what(si) = Behavior_table.select_MBD_acc_what(si) - Behavior_table.select_ABD_acc_what(si);
+    Behavior_table.select_MBD_ABD_acc_whatwhen(si) = Behavior_table.select_MBD_acc_whatwhen(si) - Behavior_table.select_ABD_acc_whatwhen(si);
+    Behavior_table.select_MBD_ABD_acc_where(si) = Behavior_table.select_MBD_acc_where(si) - Behavior_table.select_ABD_acc_where(si);
+    Behavior_table.select_MBD_ABD_acc_wherewhen(si) = Behavior_table.select_MBD_acc_wherewhen(si) - Behavior_table.select_ABD_acc_wherewhen(si);
+    Behavior_table.select_MBD_ABD_acc_whatwhere(si) = Behavior_table.select_MBD_acc_whatwhere(si) - Behavior_table.select_ABD_acc_whatwhere(si);
+    Behavior_table.select_MBD_ABD_acc_fullem(si) = Behavior_table.select_MBD_acc_fullem(si) - Behavior_table.select_ABD_acc_fullem(si);
+                   
+    Behavior_table.cross0_MBD_ABD_acc_what(si) = Behavior_table.cross0_MBD_acc_what(si) - Behavior_table.cross0_ABD_acc_what(si);
+    Behavior_table.cross0_MBD_ABD_acc_whatwhen(si) = Behavior_table.cross0_MBD_acc_whatwhen(si) - Behavior_table.cross0_ABD_acc_whatwhen(si);
+    Behavior_table.cross0_MBD_ABD_acc_where(si) = Behavior_table.cross0_MBD_acc_where(si) - Behavior_table.cross0_ABD_acc_where(si);
+    Behavior_table.cross0_MBD_ABD_acc_wherewhen(si) = Behavior_table.cross0_MBD_acc_wherewhen(si) - Behavior_table.cross0_ABD_acc_wherewhen(si);
+    Behavior_table.cross0_MBD_ABD_acc_whatwhere(si) = Behavior_table.cross0_MBD_acc_whatwhere(si) - Behavior_table.cross0_ABD_acc_whatwhere(si);
+    Behavior_table.cross0_MBD_ABD_acc_fullem(si) = Behavior_table.cross0_MBD_acc_fullem(si) - Behavior_table.cross0_ABD_acc_fullem(si);
+                   
+                   
+    Behavior_table.cross2_MBD_ABD_acc_what(si) = Behavior_table.cross2_MBD_acc_what(si) - Behavior_table.cross2_ABD_acc_what(si);
+    Behavior_table.cross2_MBD_ABD_acc_whatwhen(si) = Behavior_table.cross2_MBD_acc_whatwhen(si) - Behavior_table.cross2_ABD_acc_whatwhen(si);
+    Behavior_table.cross2_MBD_ABD_acc_where(si) = Behavior_table.cross2_MBD_acc_where(si) - Behavior_table.cross2_ABD_acc_where(si);
+    Behavior_table.cross2_MBD_ABD_acc_wherewhen(si) = Behavior_table.cross2_MBD_acc_wherewhen(si) - Behavior_table.cross2_ABD_acc_wherewhen(si);
+    Behavior_table.cross2_MBD_ABD_acc_whatwhere(si) = Behavior_table.cross2_MBD_acc_whatwhere(si) - Behavior_table.cross2_ABD_acc_whatwhere(si);
+    Behavior_table.cross2_MBD_ABD_acc_fullem(si) = Behavior_table.cross2_MBD_acc_fullem(si) - Behavior_table.cross2_ABD_acc_fullem(si);
+                   
+                   
+    Behavior_table.cross0and2_MBD_ABD_acc_what(si) = Behavior_table.cross0and2_MBD_acc_what(si) - Behavior_table.cross0and2_ABD_acc_what(si);
+    Behavior_table.cross0and2_MBD_ABD_acc_whatwhen(si) = Behavior_table.cross0and2_MBD_acc_whatwhen(si) - Behavior_table.cross0and2_ABD_acc_whatwhen(si);
+    Behavior_table.cross0and2_MBD_ABD_acc_where(si) = Behavior_table.cross0and2_MBD_acc_where(si) - Behavior_table.cross0and2_ABD_acc_where(si);
+    Behavior_table.cross0and2_MBD_ABD_acc_wherewhen(si) = Behavior_table.cross0and2_MBD_acc_wherewhen(si) - Behavior_table.cross0and2_ABD_acc_wherewhen(si);
+    Behavior_table.cross0and2_MBD_ABD_acc_whatwhere(si) = Behavior_table.cross0and2_MBD_acc_whatwhere(si) - Behavior_table.cross0and2_ABD_acc_whatwhere(si);
+    Behavior_table.cross0and2_MBD_ABD_acc_fullem(si) = Behavior_table.cross0and2_MBD_acc_fullem(si) - Behavior_table.cross0and2_ABD_acc_fullem(si);
+                   
+    Behavior_table.cross1and2_MBD_ABD_acc_what(si) = Behavior_table.cross1and2_MBD_acc_what(si) - Behavior_table.cross1and2_ABD_acc_what(si);
+    Behavior_table.cross1and2_MBD_ABD_acc_whatwhen(si) = Behavior_table.cross1and2_MBD_acc_whatwhen(si) - Behavior_table.cross1and2_ABD_acc_whatwhen(si);
+    Behavior_table.cross1and2_MBD_ABD_acc_where(si) = Behavior_table.cross1and2_MBD_acc_where(si) - Behavior_table.cross1and2_ABD_acc_where(si);
+    Behavior_table.cross1and2_MBD_ABD_acc_wherewhen(si) = Behavior_table.cross1and2_MBD_acc_wherewhen(si) - Behavior_table.cross1and2_ABD_acc_wherewhen(si);
+    Behavior_table.cross1and2_MBD_ABD_acc_whatwhere(si) = Behavior_table.cross1and2_MBD_acc_whatwhere(si) - Behavior_table.cross1and2_ABD_acc_whatwhere(si);
+    Behavior_table.cross1and2_MBD_ABD_acc_fullem(si) = Behavior_table.cross1and2_MBD_acc_fullem(si) - Behavior_table.cross1and2_ABD_acc_fullem(si);
+                   
+
+    Behavior_table.cross1_cross0_acc_what(si) = Behavior_table.select_acc_what(si) - Behavior_table.cross0_acc_what(si);
+    Behavior_table.cross1_cross0_acc_whatwhen(si) = Behavior_table.select_acc_whatwhen(si) - Behavior_table.cross0_acc_whatwhen(si);
+    Behavior_table.cross1_cross0_acc_where(si) = Behavior_table.select_acc_where(si) - Behavior_table.cross0_acc_where(si);
+    Behavior_table.cross1_cross0_acc_wherewhen(si) = Behavior_table.select_acc_wherewhen(si) - Behavior_table.cross0_acc_wherewhen(si);
+    Behavior_table.cross1_cross0_acc_whatwhere(si) = Behavior_table.select_acc_whatwhere(si) - Behavior_table.cross0_acc_whatwhere(si);
+    Behavior_table.cross1_cross0_acc_fullem(si) = Behavior_table.select_acc_fullem(si) - Behavior_table.cross0_acc_fullem(si);
+        
+    Behavior_table.cross1_cross0and2_acc_what(si) = Behavior_table.select_acc_what(si) - Behavior_table.cross0and2_acc_what(si);
+    Behavior_table.cross1_cross0and2_acc_whatwhen(si) = Behavior_table.select_acc_whatwhen(si) - Behavior_table.cross0and2_acc_whatwhen(si);
+    Behavior_table.cross1_cross0and2_acc_where(si) = Behavior_table.select_acc_where(si) - Behavior_table.cross0and2_acc_where(si);
+    Behavior_table.cross1_cross0and2_acc_wherewhen(si) = Behavior_table.select_acc_wherewhen(si) - Behavior_table.cross0and2_acc_wherewhen(si);
+    Behavior_table.cross1_cross0and2_acc_whatwhere(si) = Behavior_table.select_acc_whatwhere(si) - Behavior_table.cross0and2_acc_whatwhere(si);
+    Behavior_table.cross1_cross0and2_acc_fullem(si) = Behavior_table.select_acc_fullem(si) - Behavior_table.cross0and2_acc_fullem(si);
+        
+    Behavior_table.cross1and2_cross0_acc_what(si) = Behavior_table.cross1and2_acc_what(si) - Behavior_table.cross0_acc_what(si);
+    Behavior_table.cross1and2_cross0_acc_whatwhen(si) = Behavior_table.cross1and2_acc_whatwhen(si) - Behavior_table.cross0_acc_whatwhen(si);
+    Behavior_table.cross1and2_cross0_acc_where(si) = Behavior_table.cross1and2_acc_where(si) - Behavior_table.cross0_acc_where(si);
+    Behavior_table.cross1and2_cross0_acc_wherewhen(si) = Behavior_table.cross1and2_acc_wherewhen(si) - Behavior_table.cross0_acc_wherewhen(si);
+    Behavior_table.cross1and2_cross0_acc_whatwhere(si) = Behavior_table.cross1and2_acc_whatwhere(si) - Behavior_table.cross0_acc_whatwhere(si);
+    Behavior_table.cross1and2_cross0_acc_fullem(si) = Behavior_table.cross1and2_acc_fullem(si) - Behavior_table.cross0_acc_fullem(si);
+        
+    Behavior_table.cross1_cross2_acc_what(si) = Behavior_table.select_acc_what(si) - Behavior_table.cross2_acc_what(si);
+    Behavior_table.cross1_cross2_acc_whatwhen(si) = Behavior_table.select_acc_whatwhen(si) - Behavior_table.cross2_acc_whatwhen(si);
+    Behavior_table.cross1_cross2_acc_where(si) = Behavior_table.select_acc_where(si) - Behavior_table.cross2_acc_where(si);
+    Behavior_table.cross1_cross2_acc_wherewhen(si) = Behavior_table.select_acc_wherewhen(si) - Behavior_table.cross2_acc_wherewhen(si);
+    Behavior_table.cross1_cross2_acc_whatwhere(si) = Behavior_table.select_acc_whatwhere(si) - Behavior_table.cross2_acc_whatwhere(si);
+    Behavior_table.cross1_cross2_acc_fullem(si) = Behavior_table.select_acc_fullem(si) - Behavior_table.cross2_acc_fullem(si);
+    
+
+    Behavior_table.cross1_cross0_ABD_acc_what(si) = Behavior_table.select_ABD_acc_what(si) - Behavior_table.cross0_ABD_acc_what(si);
+    Behavior_table.cross1_cross0_ABD_acc_whatwhen(si) = Behavior_table.select_ABD_acc_whatwhen(si) - Behavior_table.cross0_ABD_acc_whatwhen(si);
+    Behavior_table.cross1_cross0_ABD_acc_where(si) = Behavior_table.select_ABD_acc_where(si) - Behavior_table.cross0_ABD_acc_where(si);
+    Behavior_table.cross1_cross0_ABD_acc_wherewhen(si) = Behavior_table.select_ABD_acc_wherewhen(si) - Behavior_table.cross0_ABD_acc_wherewhen(si);
+    Behavior_table.cross1_cross0_ABD_acc_whatwhere(si) = Behavior_table.select_ABD_acc_whatwhere(si) - Behavior_table.cross0_ABD_acc_whatwhere(si);
+    Behavior_table.cross1_cross0_ABD_acc_fullem(si) = Behavior_table.select_ABD_acc_fullem(si) - Behavior_table.cross0_ABD_acc_fullem(si);
+        
+    Behavior_table.cross1_cross0and2_ABD_acc_what(si) = Behavior_table.select_ABD_acc_what(si) - Behavior_table.cross0and2_ABD_acc_what(si);
+    Behavior_table.cross1_cross0and2_ABD_acc_whatwhen(si) = Behavior_table.select_ABD_acc_whatwhen(si) - Behavior_table.cross0and2_ABD_acc_whatwhen(si);
+    Behavior_table.cross1_cross0and2_ABD_acc_where(si) = Behavior_table.select_ABD_acc_where(si) - Behavior_table.cross0and2_ABD_acc_where(si);
+    Behavior_table.cross1_cross0and2_ABD_acc_wherewhen(si) = Behavior_table.select_ABD_acc_wherewhen(si) - Behavior_table.cross0and2_ABD_acc_wherewhen(si);
+    Behavior_table.cross1_cross0and2_ABD_acc_whatwhere(si) = Behavior_table.select_ABD_acc_whatwhere(si) - Behavior_table.cross0and2_ABD_acc_whatwhere(si);
+    Behavior_table.cross1_cross0and2_ABD_acc_fullem(si) = Behavior_table.select_ABD_acc_fullem(si) - Behavior_table.cross0and2_ABD_acc_fullem(si);
+        
+    Behavior_table.cross1and2_cross0_ABD_acc_what(si) = Behavior_table.cross1and2_ABD_acc_what(si) - Behavior_table.cross0_ABD_acc_what(si);
+    Behavior_table.cross1and2_cross0_ABD_acc_whatwhen(si) = Behavior_table.cross1and2_ABD_acc_whatwhen(si) - Behavior_table.cross0_ABD_acc_whatwhen(si);
+    Behavior_table.cross1and2_cross0_ABD_acc_where(si) = Behavior_table.cross1and2_ABD_acc_where(si) - Behavior_table.cross0_ABD_acc_where(si);
+    Behavior_table.cross1and2_cross0_ABD_acc_wherewhen(si) = Behavior_table.cross1and2_ABD_acc_wherewhen(si) - Behavior_table.cross0_ABD_acc_wherewhen(si);
+    Behavior_table.cross1and2_cross0_ABD_acc_whatwhere(si) = Behavior_table.cross1and2_ABD_acc_whatwhere(si) - Behavior_table.cross0_ABD_acc_whatwhere(si);
+    Behavior_table.cross1and2_cross0_ABD_acc_fullem(si) = Behavior_table.cross1and2_ABD_acc_fullem(si) - Behavior_table.cross0_ABD_acc_fullem(si);
+        
+    Behavior_table.cross1_cross2_ABD_acc_what(si) = Behavior_table.select_ABD_acc_what(si) - Behavior_table.cross2_ABD_acc_what(si);
+    Behavior_table.cross1_cross2_ABD_acc_whatwhen(si) = Behavior_table.select_ABD_acc_whatwhen(si) - Behavior_table.cross2_ABD_acc_whatwhen(si);
+    Behavior_table.cross1_cross2_ABD_acc_where(si) = Behavior_table.select_ABD_acc_where(si) - Behavior_table.cross2_ABD_acc_where(si);
+    Behavior_table.cross1_cross2_ABD_acc_wherewhen(si) = Behavior_table.select_ABD_acc_wherewhen(si) - Behavior_table.cross2_ABD_acc_wherewhen(si);
+    Behavior_table.cross1_cross2_ABD_acc_whatwhere(si) = Behavior_table.select_ABD_acc_whatwhere(si) - Behavior_table.cross2_ABD_acc_whatwhere(si);
+    Behavior_table.cross1_cross2_ABD_acc_fullem(si) = Behavior_table.select_ABD_acc_fullem(si) - Behavior_table.cross2_ABD_acc_fullem(si);
+    
+
+
+    Behavior_table.cross1_cross0_MBD_acc_what(si) = Behavior_table.select_MBD_acc_what(si) - Behavior_table.cross0_MBD_acc_what(si);
+    Behavior_table.cross1_cross0_MBD_acc_whatwhen(si) = Behavior_table.select_MBD_acc_whatwhen(si) - Behavior_table.cross0_MBD_acc_whatwhen(si);
+    Behavior_table.cross1_cross0_MBD_acc_where(si) = Behavior_table.select_MBD_acc_where(si) - Behavior_table.cross0_MBD_acc_where(si);
+    Behavior_table.cross1_cross0_MBD_acc_wherewhen(si) = Behavior_table.select_MBD_acc_wherewhen(si) - Behavior_table.cross0_MBD_acc_wherewhen(si);
+    Behavior_table.cross1_cross0_MBD_acc_whatwhere(si) = Behavior_table.select_MBD_acc_whatwhere(si) - Behavior_table.cross0_MBD_acc_whatwhere(si);
+    Behavior_table.cross1_cross0_MBD_acc_fullem(si) = Behavior_table.select_MBD_acc_fullem(si) - Behavior_table.cross0_MBD_acc_fullem(si);
+        
+    Behavior_table.cross1_cross0and2_MBD_acc_what(si) = Behavior_table.select_MBD_acc_what(si) - Behavior_table.cross0and2_MBD_acc_what(si);
+    Behavior_table.cross1_cross0and2_MBD_acc_whatwhen(si) = Behavior_table.select_MBD_acc_whatwhen(si) - Behavior_table.cross0and2_MBD_acc_whatwhen(si);
+    Behavior_table.cross1_cross0and2_MBD_acc_where(si) = Behavior_table.select_MBD_acc_where(si) - Behavior_table.cross0and2_MBD_acc_where(si);
+    Behavior_table.cross1_cross0and2_MBD_acc_wherewhen(si) = Behavior_table.select_MBD_acc_wherewhen(si) - Behavior_table.cross0and2_MBD_acc_wherewhen(si);
+    Behavior_table.cross1_cross0and2_MBD_acc_whatwhere(si) = Behavior_table.select_MBD_acc_whatwhere(si) - Behavior_table.cross0and2_MBD_acc_whatwhere(si);
+    Behavior_table.cross1_cross0and2_MBD_acc_fullem(si) = Behavior_table.select_MBD_acc_fullem(si) - Behavior_table.cross0and2_MBD_acc_fullem(si);
+        
+    Behavior_table.cross1and2_cross0_MBD_acc_what(si) = Behavior_table.cross1and2_MBD_acc_what(si) - Behavior_table.cross0_MBD_acc_what(si);
+    Behavior_table.cross1and2_cross0_MBD_acc_whatwhen(si) = Behavior_table.cross1and2_MBD_acc_whatwhen(si) - Behavior_table.cross0_MBD_acc_whatwhen(si);
+    Behavior_table.cross1and2_cross0_MBD_acc_where(si) = Behavior_table.cross1and2_MBD_acc_where(si) - Behavior_table.cross0_MBD_acc_where(si);
+    Behavior_table.cross1and2_cross0_MBD_acc_wherewhen(si) = Behavior_table.cross1and2_MBD_acc_wherewhen(si) - Behavior_table.cross0_MBD_acc_wherewhen(si);
+    Behavior_table.cross1and2_cross0_MBD_acc_whatwhere(si) = Behavior_table.cross1and2_MBD_acc_whatwhere(si) - Behavior_table.cross0_MBD_acc_whatwhere(si);
+    Behavior_table.cross1and2_cross0_MBD_acc_fullem(si) = Behavior_table.cross1and2_MBD_acc_fullem(si) - Behavior_table.cross0_MBD_acc_fullem(si);
+        
+    Behavior_table.cross1_cross2_MBD_acc_what(si) = Behavior_table.select_MBD_acc_what(si) - Behavior_table.cross2_MBD_acc_what(si);
+    Behavior_table.cross1_cross2_MBD_acc_whatwhen(si) = Behavior_table.select_MBD_acc_whatwhen(si) - Behavior_table.cross2_MBD_acc_whatwhen(si);
+    Behavior_table.cross1_cross2_MBD_acc_where(si) = Behavior_table.select_MBD_acc_where(si) - Behavior_table.cross2_MBD_acc_where(si);
+    Behavior_table.cross1_cross2_MBD_acc_wherewhen(si) = Behavior_table.select_MBD_acc_wherewhen(si) - Behavior_table.cross2_MBD_acc_wherewhen(si);
+    Behavior_table.cross1_cross2_MBD_acc_whatwhere(si) = Behavior_table.select_MBD_acc_whatwhere(si) - Behavior_table.cross2_MBD_acc_whatwhere(si);
+    Behavior_table.cross1_cross2_MBD_acc_fullem(si) = Behavior_table.select_MBD_acc_fullem(si) - Behavior_table.cross2_MBD_acc_fullem(si);
+    
+
+
+
+    % boundary 전 후 RT는 나중에
+    %     Behavior_table.rt_befBoundary(si) = NaN;
+    %     Behavior_table.rt_aftBoundary(si) = NaN;
+    %
+    %
+    %     response1 = []; response2 = []; respond_av1 = NaN; respond_av2 = NaN;
+    %     if sum(ismember(Trial_Data(si).main.boundary_cat, [1, 4]))
+    %         response1 = Trial_Data(si).main.respondRT(ismember(Trial_Data(si).main.boundary_cat, [1, 4]),:);
+    %         a1 = length(response1); remainders = mod([1:1:a1], 3);
+    %
+    %     elseif sum(ismember(Trial_Data(si).main.boundary_cat, [3, 6]))
+    %         response2 = Trial_Data(si).main.respondRT(ismember(Trial_Data(si).main.boundary_cat, [3, 6]),:);
+    %         nanmean(Trial_Data(si).main.locationRT);
+    %
+    %     end
+
+
+
+end
+
+
+
+
+for si = 1:length(www_sbj_data)
+
+    WWW_Behavior_table.cross0(si) = sum(WWW_Trial_Data(si).main.boundary_crossing == 0);
+    WWW_Behavior_table.cross1(si) = sum(WWW_Trial_Data(si).main.boundary_crossing == 1);
+    WWW_Behavior_table.cross2(si) = sum(WWW_Trial_Data(si).main.boundary_crossing == 2);
+
+    % inter trial accuracy
+    WWW_Behavior_table.inter_acc(si) = nanmean(WWW_Trial_Data(si).inter.correct);
+    WWW_Behavior_table.inter_acc_cat1(si) = nanmean(WWW_Trial_Data(si).inter.correct(WWW_Trial_Data(si).inter.condition == 1));
+    WWW_Behavior_table.inter_acc_cat2(si) = nanmean(WWW_Trial_Data(si).inter.correct(WWW_Trial_Data(si).inter.condition == 2));
+    WWW_Behavior_table.inter_bnd_use_index(si) =  WWW_Behavior_table.inter_acc_cat2(si) -  WWW_Behavior_table.inter_acc_cat1(si);
+
+    WWW_Behavior_table.inter_bnd_user(si) = WWW_Behavior_table.inter_acc_cat1(si) < WWW_Behavior_table.inter_acc_cat2(si);
+
+
+    WWW_Behavior_table.across_acc(si) = nanmean(WWW_Trial_Data(si).main_trial.across_acc)
+    WWW_Behavior_table.within_acc(si) = nanmean(WWW_Trial_Data(si).main_trial.within_acc)
+
+    WWW_Behavior_table.acc_what(si) = nanmean(WWW_Trial_Data(si).main.what);
+    WWW_Behavior_table.acc_whatwhen(si) = nanmean(WWW_Trial_Data(si).main.whatwhen);
+    WWW_Behavior_table.acc_where(si) = nanmean(WWW_Trial_Data(si).main.where);
+    WWW_Behavior_table.acc_wherewhen(si) = nanmean(WWW_Trial_Data(si).main.wherewhen);
+    WWW_Behavior_table.acc_whatwhere(si) = nanmean(WWW_Trial_Data(si).main.whatwhere);
+    WWW_Behavior_table.acc_fullem(si) = nanmean(WWW_Trial_Data(si).main.fullem);
+    WWW_Behavior_table.acc_location_cat(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc);
+    WWW_Behavior_table.acc_location_cat_only(si) = nanmean(WWW_Trial_Data(si).main.location_catWhere);
+
+
+    WWW_Behavior_table.acc_loc_cat_where(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_where);
+    WWW_Behavior_table.acc_loc_cat_wherewhen(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_wherewhen);
+    WWW_Behavior_table.acc_loc_cat_whatwhere(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_whatwhere);
+    WWW_Behavior_table.acc_loc_cat_fullem(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_fullem);
+
+
+
+    WWW_Behavior_table.acc_wrong_loc_cat_where(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_where(WWW_Trial_Data(si).main.where == 0,:));
+    WWW_Behavior_table.acc_wrong_loc_cat_wherewhen(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_wherewhen(WWW_Trial_Data(si).main.where == 0,:));
+    WWW_Behavior_table.acc_wrong_loc_cat_whatwhere(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_whatwhere(WWW_Trial_Data(si).main.where == 0,:));
+    WWW_Behavior_table.acc_wrong_loc_cat_fullem(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_fullem(WWW_Trial_Data(si).main.where == 0,:));
+
+
+
+
+
+    if sum(WWW_Trial_Data(si).main.categorical_Acc == 2) + sum(WWW_Trial_Data(si).main.categorical_Acc == 0) ~= 0
+        WWW_Behavior_table.loc_chunking(si) = sum(WWW_Trial_Data(si).main.categorical_Acc == 2) / (sum(WWW_Trial_Data(si).main.categorical_Acc == 2) + sum(WWW_Trial_Data(si).main.categorical_Acc == 0));
+    else
+        WWW_Behavior_table.loc_chunking(si) = NaN;
+    end
+
+    WWW_Behavior_table.all_wrong_cat(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc(WWW_Trial_Data(si).main.where == 0,:));    
+    
+
+
+
+    WWW_Behavior_table.rt_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT);
+    WWW_Behavior_table.rt_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT);
+    WWW_Behavior_table.rt_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT);
+
+    %reaction time (right only)
+    WWW_Behavior_table.rt_right_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT(WWW_Trial_Data(si).main.fullem == 1));
+    WWW_Behavior_table.rt_right_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT(WWW_Trial_Data(si).main.animalAcc == 1));
+    WWW_Behavior_table.rt_right_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT(WWW_Trial_Data(si).main.locationAcc == 1));
+
+
+    WWW_Behavior_table.rt_trial1_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT(WWW_Trial_Data(si).main.order == 1));
+    WWW_Behavior_table.rt_trial1_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT(WWW_Trial_Data(si).main.order == 1));
+    WWW_Behavior_table.rt_trial1_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT(WWW_Trial_Data(si).main.order == 1));
+
+    WWW_Behavior_table.rt_trial2_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT(WWW_Trial_Data(si).main.order == 2));
+    WWW_Behavior_table.rt_trial2_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT(WWW_Trial_Data(si).main.order == 2));
+    WWW_Behavior_table.rt_trial2_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT(WWW_Trial_Data(si).main.order == 2));
+
+    WWW_Behavior_table.rt_trial3_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT(WWW_Trial_Data(si).main.order == 3));
+    WWW_Behavior_table.rt_trial3_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT(WWW_Trial_Data(si).main.order == 3));
+    WWW_Behavior_table.rt_trial3_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT(WWW_Trial_Data(si).main.order == 3));
+
+
+
+
+
+    WWW_Behavior_table.log_rt_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT_log);
+    WWW_Behavior_table.log_rt_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT_log);
+    WWW_Behavior_table.log_rt_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT_log);
+
+    %reaction time (right only)
+    WWW_Behavior_table.log_rt_right_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT_log(WWW_Trial_Data(si).main.fullem == 1));
+    WWW_Behavior_table.log_rt_right_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT_log(WWW_Trial_Data(si).main.animalAcc == 1));
+    WWW_Behavior_table.log_rt_right_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT_log(WWW_Trial_Data(si).main.locationAcc == 1));
+
+
+    WWW_Behavior_table.log_rt_trial1_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT_log(WWW_Trial_Data(si).main.order == 1));
+    WWW_Behavior_table.log_rt_trial1_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT_log(WWW_Trial_Data(si).main.order == 1));
+    WWW_Behavior_table.log_rt_trial1_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT_log(WWW_Trial_Data(si).main.order == 1));
+
+    WWW_Behavior_table.log_rt_trial2_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT_log(WWW_Trial_Data(si).main.order == 2));
+    WWW_Behavior_table.log_rt_trial2_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT_log(WWW_Trial_Data(si).main.order == 2));
+    WWW_Behavior_table.log_rt_trial2_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT_log(WWW_Trial_Data(si).main.order == 2));
+
+    WWW_Behavior_table.log_rt_trial3_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT_log(WWW_Trial_Data(si).main.order == 3));
+    WWW_Behavior_table.log_rt_trial3_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT_log(WWW_Trial_Data(si).main.order == 3));
+    WWW_Behavior_table.log_rt_trial3_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT_log(WWW_Trial_Data(si).main.order == 3));
+
+
+
+
+
+
+
+    % crossing 0
+    WWW_Behavior_table.cross0_acc_what(si) = nanmean(WWW_Trial_Data(si).main.what(WWW_Trial_Data(si).main.boundary_crossing == 0 ,:));
+    WWW_Behavior_table.cross0_acc_whatwhen(si) = nanmean(WWW_Trial_Data(si).main.whatwhen(WWW_Trial_Data(si).main.boundary_crossing == 0 ,:));
+    WWW_Behavior_table.cross0_acc_where(si) = nanmean(WWW_Trial_Data(si).main.where(WWW_Trial_Data(si).main.boundary_crossing == 0  ,:));
+    WWW_Behavior_table.cross0_acc_wherewhen(si) = nanmean(WWW_Trial_Data(si).main.wherewhen(WWW_Trial_Data(si).main.boundary_crossing == 0 ,:));
+    WWW_Behavior_table.cross0_acc_whatwhere(si) = nanmean(WWW_Trial_Data(si).main.whatwhere(WWW_Trial_Data(si).main.boundary_crossing == 0 ,:));
+    WWW_Behavior_table.cross0_acc_fullem(si) = nanmean(WWW_Trial_Data(si).main.fullem(WWW_Trial_Data(si).main.boundary_crossing == 0 ,:));
+
+    WWW_Behavior_table.cross0_wrong_cat(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc(WWW_Trial_Data(si).main.where == 0 & WWW_Trial_Data(si).main.boundary_crossing == 0,:));
+
+
+
+
+    WWW_Behavior_table.cross0_rt_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [0]) ,:));
+    WWW_Behavior_table.cross0_rt_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [0]) ,:));
+    WWW_Behavior_table.cross0_rt_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [0]) ,:));
+
+
+
+    WWW_Behavior_table.cross1_across_acc(si) = nanmean(WWW_Trial_Data(si).main_trial.across_acc(WWW_Trial_Data(si).main_trial.boundary_crossing == 1 ,:))
+    WWW_Behavior_table.cross1_within_acc(si) = nanmean(WWW_Trial_Data(si).main_trial.within_acc(WWW_Trial_Data(si).main_trial.boundary_crossing == 1 ,:))
+
+    WWW_Behavior_table.cross1_acc_what(si) = nanmean(WWW_Trial_Data(si).main.what(WWW_Trial_Data(si).main.boundary_crossing == 1 ,:));
+    WWW_Behavior_table.cross1_acc_whatwhen(si) = nanmean(WWW_Trial_Data(si).main.whatwhen(WWW_Trial_Data(si).main.boundary_crossing == 1 ,:));
+    WWW_Behavior_table.cross1_acc_where(si) = nanmean(WWW_Trial_Data(si).main.where(WWW_Trial_Data(si).main.boundary_crossing == 1  ,:));
+    WWW_Behavior_table.cross1_acc_wherewhen(si) = nanmean(WWW_Trial_Data(si).main.wherewhen(WWW_Trial_Data(si).main.boundary_crossing == 1 ,:));
+    WWW_Behavior_table.cross1_acc_whatwhere(si) = nanmean(WWW_Trial_Data(si).main.whatwhere(WWW_Trial_Data(si).main.boundary_crossing == 1 ,:));
+    WWW_Behavior_table.cross1_acc_fullem(si) = nanmean(WWW_Trial_Data(si).main.fullem(WWW_Trial_Data(si).main.boundary_crossing == 1 ,:));
+
+
+    WWW_Behavior_table.cross1_acc_loc_cat_where(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_where(WWW_Trial_Data(si).main.boundary_crossing == 1  ,:));
+    WWW_Behavior_table.cross1_acc_loc_cat_wherewhen(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_wherewhen(WWW_Trial_Data(si).main.boundary_crossing == 1 ,:));
+    WWW_Behavior_table.cross1_acc_loc_cat_whatwhere(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_whatwhere(WWW_Trial_Data(si).main.boundary_crossing == 1 ,:));
+    WWW_Behavior_table.cross1_acc_loc_cat_fullem(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_fullem(WWW_Trial_Data(si).main.boundary_crossing == 1 ,:));
+
+
+    WWW_Behavior_table.cross1_acc_wrong_loc_cat_where(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_where(WWW_Trial_Data(si).main.where == 0 &WWW_Trial_Data(si).main.boundary_crossing == 1  ,:));
+    WWW_Behavior_table.cross1_acc_wrong_loc_cat_wherewhen(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_wherewhen(WWW_Trial_Data(si).main.where == 0 &WWW_Trial_Data(si).main.boundary_crossing == 1 ,:));
+    WWW_Behavior_table.cross1_acc_wrong_loc_cat_whatwhere(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_whatwhere(WWW_Trial_Data(si).main.where == 0 &WWW_Trial_Data(si).main.boundary_crossing == 1 ,:));
+    WWW_Behavior_table.cross1_acc_wrong_loc_cat_fullem(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc_fullem(WWW_Trial_Data(si).main.where == 0 &WWW_Trial_Data(si).main.boundary_crossing == 1 ,:));
+
+
+
+    WWW_Behavior_table.cross1_acc_location_cat(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) ,:));
+
+    WWW_Behavior_table.cross1_wrong_cat(si) = nanmean(WWW_Trial_Data(si).main.location_catAcc(WWW_Trial_Data(si).main.where == 0 & WWW_Trial_Data(si).main.boundary_crossing == 1,:));    
+    
+
+    WWW_Behavior_table.cross1_rt_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) ,:));
+    WWW_Behavior_table.cross1_rt_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) ,:));
+    WWW_Behavior_table.cross1_rt_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) ,:));
+
+
+    WWW_Behavior_table.cross1_rt_right_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT(WWW_Trial_Data(si).main.fullem == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])));
+    WWW_Behavior_table.cross1_rt_right_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT(WWW_Trial_Data(si).main.animalAcc == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])));
+    WWW_Behavior_table.cross1_rt_right_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT(WWW_Trial_Data(si).main.locationAcc == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])));
+
+
+    WWW_Behavior_table.cross1_log_rt_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT_log(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) ,:));
+    WWW_Behavior_table.cross1_log_rt_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT_log(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) ,:));
+    WWW_Behavior_table.cross1_log_rt_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT_log(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) ,:));
+
+
+    WWW_Behavior_table.cross1_log_rt_right_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT_log(WWW_Trial_Data(si).main.fullem == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])));
+    WWW_Behavior_table.cross1_log_rt_right_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT_log(WWW_Trial_Data(si).main.animalAcc == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])));
+    WWW_Behavior_table.cross1_log_rt_right_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT_log(WWW_Trial_Data(si).main.locationAcc == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])));
+
+
+    WWW_Behavior_table.cross1_log_rt_trial1_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT_log(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) & WWW_Trial_Data(si).main.order == 1 ,:));
+    WWW_Behavior_table.cross1_log_rt_trial1_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT_log(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])  & WWW_Trial_Data(si).main.order == 1  ,:));
+    WWW_Behavior_table.cross1_log_rt_trial1_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT_log(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])  & WWW_Trial_Data(si).main.order == 1  ,:));
+
+
+    WWW_Behavior_table.cross1_log_rt_right_trial1_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT_log(WWW_Trial_Data(si).main.fullem == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])  & WWW_Trial_Data(si).main.order == 1 ));
+    WWW_Behavior_table.cross1_log_rt_right_trial1_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT_log(WWW_Trial_Data(si).main.animalAcc == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])  & WWW_Trial_Data(si).main.order == 1 ));
+    WWW_Behavior_table.cross1_log_rt_right_trial1_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT_log(WWW_Trial_Data(si).main.locationAcc == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) & WWW_Trial_Data(si).main.order == 1 ));
+
+
+
+    WWW_Behavior_table.cross1_log_rt_trial2_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT_log(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) & WWW_Trial_Data(si).main.order == 2 ,:));
+    WWW_Behavior_table.cross1_log_rt_trial2_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT_log(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])  & WWW_Trial_Data(si).main.order == 2  ,:));
+    WWW_Behavior_table.cross1_log_rt_trial2_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT_log(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])  & WWW_Trial_Data(si).main.order == 2  ,:));
+
+
+    WWW_Behavior_table.cross1_log_rt_right_trial2_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT_log(WWW_Trial_Data(si).main.fullem == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])  & WWW_Trial_Data(si).main.order == 2 ));
+    WWW_Behavior_table.cross1_log_rt_right_trial2_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT_log(WWW_Trial_Data(si).main.animalAcc == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])  & WWW_Trial_Data(si).main.order == 2 ));
+    WWW_Behavior_table.cross1_log_rt_right_trial2_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT_log(WWW_Trial_Data(si).main.locationAcc == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) & WWW_Trial_Data(si).main.order == 2 ));
+
+
+
+    WWW_Behavior_table.cross1_log_rt_trial3_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT_log(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) & WWW_Trial_Data(si).main.order == 3 ,:));
+    WWW_Behavior_table.cross1_log_rt_trial3_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT_log(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])  & WWW_Trial_Data(si).main.order == 3  ,:));
+    WWW_Behavior_table.cross1_log_rt_trial3_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT_log(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])  & WWW_Trial_Data(si).main.order == 3  ,:));
+
+
+    WWW_Behavior_table.cross1_log_rt_right_trial3_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT_log(WWW_Trial_Data(si).main.fullem == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])  & WWW_Trial_Data(si).main.order == 3 ));
+    WWW_Behavior_table.cross1_log_rt_right_trial3_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT_log(WWW_Trial_Data(si).main.animalAcc == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1])  & WWW_Trial_Data(si).main.order == 3 ));
+    WWW_Behavior_table.cross1_log_rt_right_trial3_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT_log(WWW_Trial_Data(si).main.locationAcc == 1 & ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) & WWW_Trial_Data(si).main.order == 3 ));
+
+
+    
+    
+    
+    
+    
+    
+
+    if sum(WWW_Trial_Data(si).main.categorical_Acc(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) ,:) == 2) + sum(WWW_Trial_Data(si).main.categorical_Acc(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) ,:) == 0) ~= 0
+        WWW_Behavior_table.cross1_loc_chunking(si) = sum(WWW_Trial_Data(si).main.categorical_Acc(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) ,:) == 2) / (sum(WWW_Trial_Data(si).main.categorical_Acc(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) ,:) == 2) + sum(WWW_Trial_Data(si).main.categorical_Acc(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1]) ,:) == 0));
+    else
+        WWW_Behavior_table.cross1_loc_chunking(si) = NaN;
+    end
+
+
+    WWW_Behavior_table.cross2_acc_what(si) = nanmean(WWW_Trial_Data(si).main.what(WWW_Trial_Data(si).main.boundary_crossing == 2 ,:));
+    WWW_Behavior_table.cross2_acc_whatwhen(si) = nanmean(WWW_Trial_Data(si).main.whatwhen(WWW_Trial_Data(si).main.boundary_crossing == 2 ,:));
+    WWW_Behavior_table.cross2_acc_where(si) = nanmean(WWW_Trial_Data(si).main.where(WWW_Trial_Data(si).main.boundary_crossing == 2  ,:));
+    WWW_Behavior_table.cross2_acc_wherewhen(si) = nanmean(WWW_Trial_Data(si).main.wherewhen(WWW_Trial_Data(si).main.boundary_crossing == 2 ,:));
+    WWW_Behavior_table.cross2_acc_whatwhere(si) = nanmean(WWW_Trial_Data(si).main.whatwhere(WWW_Trial_Data(si).main.boundary_crossing == 2 ,:));
+    WWW_Behavior_table.cross2_acc_fullem(si) = nanmean(WWW_Trial_Data(si).main.fullem(WWW_Trial_Data(si).main.boundary_crossing == 2 ,:));
+
+    WWW_Behavior_table.cross2_rt_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [ 2]) ,:));
+    WWW_Behavior_table.cross2_rt_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [ 2]) ,:));
+    WWW_Behavior_table.cross2_rt_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [ 2]) ,:));
+    
+
+
+    WWW_Behavior_table.cross0and2_acc_what(si) = nanmean(WWW_Trial_Data(si).main.what(ismember(WWW_Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    WWW_Behavior_table.cross0and2_acc_whatwhen(si) = nanmean(WWW_Trial_Data(si).main.whatwhen(ismember(WWW_Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    WWW_Behavior_table.cross0and2_acc_where(si) = nanmean(WWW_Trial_Data(si).main.where(ismember(WWW_Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    WWW_Behavior_table.cross0and2_acc_wherewhen(si) = nanmean(WWW_Trial_Data(si).main.wherewhen(ismember(WWW_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    WWW_Behavior_table.cross0and2_acc_whatwhere(si) = nanmean(WWW_Trial_Data(si).main.whatwhere(ismember(WWW_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    WWW_Behavior_table.cross0and2_acc_fullem(si) = nanmean(WWW_Trial_Data(si).main.fullem(ismember(WWW_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+
+    WWW_Behavior_table.cross0and2_rt_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    WWW_Behavior_table.cross0and2_rt_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    WWW_Behavior_table.cross0and2_rt_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+
+
+
+    WWW_Behavior_table.cross1and2_acc_what(si) = nanmean(WWW_Trial_Data(si).main.what(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    WWW_Behavior_table.cross1and2_acc_whatwhen(si) = nanmean(WWW_Trial_Data(si).main.whatwhen(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    WWW_Behavior_table.cross1and2_acc_where(si) = nanmean(WWW_Trial_Data(si).main.where(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    WWW_Behavior_table.cross1and2_acc_wherewhen(si) = nanmean(WWW_Trial_Data(si).main.wherewhen(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    WWW_Behavior_table.cross1and2_acc_whatwhere(si) = nanmean(WWW_Trial_Data(si).main.whatwhere(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    WWW_Behavior_table.cross1and2_acc_fullem(si) = nanmean(WWW_Trial_Data(si).main.fullem(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+
+    WWW_Behavior_table.cross1and2_rt_respond(si) = nanmean(WWW_Trial_Data(si).main.respondRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    WWW_Behavior_table.cross1and2_rt_animal(si) = nanmean(WWW_Trial_Data(si).main.animalRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    WWW_Behavior_table.cross1and2_rt_location(si) = nanmean(WWW_Trial_Data(si).main.locationRT(ismember(WWW_Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+
+
+
+
+end
+
+
+
+
+
+
+
+
+
+
+for si = 1:length(ctrl_sbj_data)
+    ctrl_Behavior_table.cross0(si) = sum(ctrl_Trial_Data(si).main.boundary_crossing == 0);
+    ctrl_Behavior_table.cross1(si) = sum(ctrl_Trial_Data(si).main.boundary_crossing == 1);
+    ctrl_Behavior_table.cross2(si) = sum(ctrl_Trial_Data(si).main.boundary_crossing == 2);
+    ctrl_Behavior_table.cross0_ABD(si) = sum(ctrl_Trial_Data(si).main.boundary_crossing == 0 & ctrl_Trial_Data(si).main.boundary == 0);
+    ctrl_Behavior_table.cross1_ABD(si) = sum(ctrl_Trial_Data(si).main.boundary_crossing == 1 & ctrl_Trial_Data(si).main.boundary == 0);
+    ctrl_Behavior_table.cross2_ABD(si) = sum(ctrl_Trial_Data(si).main.boundary_crossing == 2 & ctrl_Trial_Data(si).main.boundary == 0);
+    ctrl_Behavior_table.cross0_MBD(si) = sum(ctrl_Trial_Data(si).main.boundary_crossing == 0 & ctrl_Trial_Data(si).main.boundary == 1);
+    ctrl_Behavior_table.cross1_MBD(si) = sum(ctrl_Trial_Data(si).main.boundary_crossing == 1 & ctrl_Trial_Data(si).main.boundary == 1);
+    ctrl_Behavior_table.cross2_MBD(si) = sum(ctrl_Trial_Data(si).main.boundary_crossing == 2 & ctrl_Trial_Data(si).main.boundary == 1);    
+    % inter trial accuracy
+    ctrl_Behavior_table.inter_acc(si) = nanmean(ctrl_Trial_Data(si).inter.correct);
+    ctrl_Behavior_table.inter_acc_cat1(si) = nanmean(ctrl_Trial_Data(si).inter.correct(ctrl_Trial_Data(si).inter.condition == 1));
+    ctrl_Behavior_table.inter_acc_cat2(si) = nanmean(ctrl_Trial_Data(si).inter.correct(ctrl_Trial_Data(si).inter.condition == 2));
+    ctrl_Behavior_table.inter_bnd_use_index(si) = ctrl_Behavior_table.inter_acc_cat2(si) - ctrl_Behavior_table.inter_acc_cat1(si);
+    ctrl_Behavior_table.inter_bnd_user(si) = ctrl_Behavior_table.inter_acc_cat1(si) < ctrl_Behavior_table.inter_acc_cat2(si);
+
+    % yj method ( 1 location cat / 2 detail right / 0 really wrong)
+%     WWW_ctrl_Trial_Data(si).main.categorical_Acc = WWW_ctrl_Trial_Data(si).main.location_catAcc + WWW_ctrl_Trial_Data(si).main.locationAcc;
+    
+    if sum(ctrl_Trial_Data(si).main.categorical_Acc == 1) + sum(ctrl_Trial_Data(si).main.categorical_Acc == 0) ~= 0
+        ctrl_Behavior_table.loc_chunking(si) = sum(ctrl_Trial_Data(si).main.categorical_Acc == 1) / (sum(ctrl_Trial_Data(si).main.categorical_Acc == 1) + sum(ctrl_Trial_Data(si).main.categorical_Acc == 0));
+    else
+        ctrl_Behavior_table.loc_chunking(si) = NaN;
+    end
+
+    % accuracy
+    ctrl_Behavior_table.acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what);
+    ctrl_Behavior_table.acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen);
+    ctrl_Behavior_table.acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where);
+    ctrl_Behavior_table.acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen);
+    ctrl_Behavior_table.acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere);
+    ctrl_Behavior_table.acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem);
+
+
+    % accuracy - location categorically divided
+    ctrl_Behavior_table.acc_location_cat(si) = nanmean(ctrl_Trial_Data(si).main.location_catAcc);
+    ctrl_Behavior_table.acc_location_cat_only(si) = nanmean(ctrl_Trial_Data(si).main.location_catWhere);
+
+
+    % reaction time (right or wrong whole)
+    ctrl_Behavior_table.rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT);
+    ctrl_Behavior_table.rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT);
+    ctrl_Behavior_table.rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT);
+
+    ctrl_Behavior_table.log_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log);
+    ctrl_Behavior_table.log_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log);
+    ctrl_Behavior_table.log_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log);
+
+
+
+    %reaction time (right only)
+    ctrl_Behavior_table.rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.fullem == 1));
+    ctrl_Behavior_table.rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.animalAcc == 1));
+    ctrl_Behavior_table.rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.locationAcc == 1));
+
+    ctrl_Behavior_table.log_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log(ctrl_Trial_Data(si).main.fullem == 1));
+    ctrl_Behavior_table.log_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log(ctrl_Trial_Data(si).main.animalAcc == 1));
+    ctrl_Behavior_table.log_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log(ctrl_Trial_Data(si).main.locationAcc == 1));
+
+
+
+    % each trial (right & wrong)
+    ctrl_Behavior_table.rt_trial1_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.order == 1));
+    ctrl_Behavior_table.rt_trial1_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.order == 1));
+    ctrl_Behavior_table.rt_trial1_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.order == 1));
+
+    ctrl_Behavior_table.rt_trial2_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.order == 2));
+    ctrl_Behavior_table.rt_trial2_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.order == 2));
+    ctrl_Behavior_table.rt_trial2_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.order == 2));
+
+    ctrl_Behavior_table.rt_trial3_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.order == 3));
+    ctrl_Behavior_table.rt_trial3_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.order == 3));
+    ctrl_Behavior_table.rt_trial3_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.order == 3));
+
+
+    ctrl_Behavior_table.log_rt_trial1_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log(ctrl_Trial_Data(si).main.order == 1));
+    ctrl_Behavior_table.log_rt_trial1_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log(ctrl_Trial_Data(si).main.order == 1));
+    ctrl_Behavior_table.log_rt_trial1_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log(ctrl_Trial_Data(si).main.order == 1));
+
+    ctrl_Behavior_table.log_rt_trial2_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log(ctrl_Trial_Data(si).main.order == 2));
+    ctrl_Behavior_table.log_rt_trial2_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log(ctrl_Trial_Data(si).main.order == 2));
+    ctrl_Behavior_table.log_rt_trial2_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log(ctrl_Trial_Data(si).main.order == 2));
+
+    ctrl_Behavior_table.log_rt_trial3_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log(ctrl_Trial_Data(si).main.order == 3));
+    ctrl_Behavior_table.log_rt_trial3_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log(ctrl_Trial_Data(si).main.order == 3));
+    ctrl_Behavior_table.log_rt_trial3_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log(ctrl_Trial_Data(si).main.order == 3));
+
+
+
+
+    % a signle boundary only
+    ctrl_Behavior_table.all_ABD_across_acc(si) = nanmean(ctrl_Trial_Data(si).main_trial.across_acc(ctrl_Trial_Data(si).main_trial.boundary == 0,:))    
+    ctrl_Behavior_table.all_ABD_within_acc(si) = nanmean(ctrl_Trial_Data(si).main_trial.within_acc(ctrl_Trial_Data(si).main_trial.boundary == 0,:))    
+    ctrl_Behavior_table.all_ABD_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary == 0,:));
+    ctrl_Behavior_table.all_ABD_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary == 0,:));
+    ctrl_Behavior_table.all_ABD_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary == 0,:));
+    ctrl_Behavior_table.all_ABD_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary == 0,:));
+    ctrl_Behavior_table.all_ABD_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary == 0,:));
+    ctrl_Behavior_table.all_ABD_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary == 0,:));
+    ctrl_Behavior_table.all_ABD_acc_location_cat(si) = nanmean(ctrl_Trial_Data(si).main.location_catAcc(ctrl_Trial_Data(si).main.boundary == 0,:));
+
+    if sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 0,:) == 1) + sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 0,:) == 0) ~= 0
+        ctrl_Behavior_table.ABD_loc_chunking(si) = sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 0,:) == 1) / (sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 0,:) == 1) + sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 0,:) == 0));
+    else
+        ctrl_Behavior_table.ABD_loc_chunking(si) = NaN;
+    end
+
+
+    ctrl_Behavior_table.all_ABD_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 0,:));
+    ctrl_Behavior_table.all_ABD_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 0,:));
+    ctrl_Behavior_table.all_ABD_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 0,:));
+
+
+    ctrl_Behavior_table.all_ABD_log_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log(ctrl_Trial_Data(si).main.boundary == 0,:));
+    ctrl_Behavior_table.all_ABD_log_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log(ctrl_Trial_Data(si).main.boundary == 0,:));
+    ctrl_Behavior_table.all_ABD_log_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log(ctrl_Trial_Data(si).main.boundary == 0,:));
+
+
+    % right trials rt only
+    ctrl_Behavior_table.all_ABD_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(((ctrl_Trial_Data(si).main.boundary == 0) & (ctrl_Trial_Data(si).main.fullem == 1)) == 1,:));
+    ctrl_Behavior_table.all_ABD_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(((ctrl_Trial_Data(si).main.boundary == 0) & (ctrl_Trial_Data(si).main.animalAcc == 1)) == 1,:));
+    ctrl_Behavior_table.all_ABD_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(((ctrl_Trial_Data(si).main.boundary == 0) & (ctrl_Trial_Data(si).main.locationAcc == 1)) == 1,:));
+
+
+    ctrl_Behavior_table.all_ABD_log_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log(((ctrl_Trial_Data(si).main.boundary == 0) & (ctrl_Trial_Data(si).main.fullem == 1)) == 1,:));
+    ctrl_Behavior_table.all_ABD_log_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log(((ctrl_Trial_Data(si).main.boundary == 0) & (ctrl_Trial_Data(si).main.animalAcc == 1)) == 1,:));
+    ctrl_Behavior_table.all_ABD_log_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log(((ctrl_Trial_Data(si).main.boundary == 0) & (ctrl_Trial_Data(si).main.locationAcc == 1)) == 1,:));
+
+
+
+
+
+    % multiple boundary
+    ctrl_Behavior_table.all_MBD_across_acc(si) = nanmean(ctrl_Trial_Data(si).main_trial.across_acc(ctrl_Trial_Data(si).main_trial.boundary == 1,:))    
+    ctrl_Behavior_table.all_MBD_within_acc(si) = nanmean(ctrl_Trial_Data(si).main_trial.within_acc(ctrl_Trial_Data(si).main_trial.boundary == 1,:))        
+    ctrl_Behavior_table.all_MBD_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary == 1,:));
+    ctrl_Behavior_table.all_MBD_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary == 1,:));
+    ctrl_Behavior_table.all_MBD_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary == 1,:));
+    ctrl_Behavior_table.all_MBD_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary == 1,:));
+    ctrl_Behavior_table.all_MBD_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary == 1,:));
+    ctrl_Behavior_table.all_MBD_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary == 1,:));
+    ctrl_Behavior_table.all_MBD_acc_location_cat(si) = nanmean(ctrl_Trial_Data(si).main.location_catAcc(ctrl_Trial_Data(si).main.boundary == 1,:));
+
+    ctrl_Behavior_table.all_MBD_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 1,:));
+    ctrl_Behavior_table.all_MBD_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 1,:));
+    ctrl_Behavior_table.all_MBD_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 1,:));
+
+
+    ctrl_Behavior_table.all_MBD_log_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log(ctrl_Trial_Data(si).main.boundary == 1,:));
+    ctrl_Behavior_table.all_MBD_log_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log(ctrl_Trial_Data(si).main.boundary == 1,:));
+    ctrl_Behavior_table.all_MBD_log_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log(ctrl_Trial_Data(si).main.boundary == 1,:));
+
+
+
+
+    if sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 1,:) == 1) + sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 1,:) == 0) ~= 0
+        ctrl_Behavior_table.MBD_loc_chunking(si) = sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 1,:) == 1) / (sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 1,:) == 1) + sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 1,:) == 0));
+    else
+        ctrl_Behavior_table.MBD_loc_chunking(si) = NaN;
+    end
+
+    % right trials rt only
+    ctrl_Behavior_table.all_MBD_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(((ctrl_Trial_Data(si).main.boundary == 1) & (ctrl_Trial_Data(si).main.fullem == 1)) == 1,:));
+    ctrl_Behavior_table.all_MBD_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(((ctrl_Trial_Data(si).main.boundary == 1) & (ctrl_Trial_Data(si).main.animalAcc == 1)) == 1,:));
+    ctrl_Behavior_table.all_MBD_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(((ctrl_Trial_Data(si).main.boundary == 1) & (ctrl_Trial_Data(si).main.locationAcc == 1)) == 1,:));
+
+    ctrl_Behavior_table.all_MBD_log_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log(((ctrl_Trial_Data(si).main.boundary == 1) & (ctrl_Trial_Data(si).main.fullem == 1)) == 1,:));
+    ctrl_Behavior_table.all_MBD_log_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log(((ctrl_Trial_Data(si).main.boundary == 1) & (ctrl_Trial_Data(si).main.animalAcc == 1)) == 1,:));
+    ctrl_Behavior_table.all_MBD_log_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log(((ctrl_Trial_Data(si).main.boundary == 1) & (ctrl_Trial_Data(si).main.locationAcc == 1)) == 1,:));
+
+
+  
+
+    %selected (boundary crossing 1) - no right rt yet
+    ctrl_Behavior_table.select_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    ctrl_Behavior_table.select_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    ctrl_Behavior_table.select_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    ctrl_Behavior_table.select_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    ctrl_Behavior_table.select_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    ctrl_Behavior_table.select_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+
+    ctrl_Behavior_table.select_acc_location_cat(si) = nanmean(ctrl_Trial_Data(si).main.location_catAcc(ctrl_Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+
+    if sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) + sum(ctrl_Trial_Data(si).main.categorical_Acc( ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 0) ~= 0
+        ctrl_Behavior_table.select_loc_chunking(si) = sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) / (sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) + sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 0));
+    else
+        ctrl_Behavior_table.select_loc_chunking(si) = NaN;
+    end
+
+
+    ctrl_Behavior_table.select_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    ctrl_Behavior_table.select_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    ctrl_Behavior_table.select_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+
+    ctrl_Behavior_table.select_log_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log(ctrl_Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    ctrl_Behavior_table.select_log_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log(ctrl_Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    ctrl_Behavior_table.select_log_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log(ctrl_Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+
+
+    % right trials rt only
+    ctrl_Behavior_table.select_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(((ctrl_Trial_Data(si).main.fullem == 1)) == 1,:));
+    ctrl_Behavior_table.select_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(((ctrl_Trial_Data(si).main.animalAcc == 1)) == 1,:));
+    ctrl_Behavior_table.select_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(((ctrl_Trial_Data(si).main.locationAcc == 1)) == 1,:));
+
+    ctrl_Behavior_table.select_log_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log(((ctrl_Trial_Data(si).main.fullem == 1)) == 1,:));
+    ctrl_Behavior_table.select_log_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log(((ctrl_Trial_Data(si).main.animalAcc == 1)) == 1,:));
+    ctrl_Behavior_table.select_log_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log(((ctrl_Trial_Data(si).main.locationAcc == 1)) == 1,:));
+
+
+    if sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) + sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 0) ~= 0
+        ctrl_Behavior_table.select_ABD_loc_chunking(si) = sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) / (sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) + sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 0));
+    else
+        ctrl_Behavior_table.select_ABD_loc_chunking(si) = NaN;
+    end
+
+    ctrl_Behavior_table.select_ABD_across_acc(si) = nanmean(ctrl_Trial_Data(si).main_trial.across_acc(ctrl_Trial_Data(si).main_trial.boundary == 0  & ctrl_Trial_Data(si).main_trial.boundary_1cross_run > 0,:));    
+    ctrl_Behavior_table.select_ABD_within_acc(si) = nanmean(ctrl_Trial_Data(si).main_trial.within_acc(ctrl_Trial_Data(si).main_trial.boundary == 0 & ctrl_Trial_Data(si).main_trial.boundary_1cross_run > 0,:));      
+
+    ctrl_Behavior_table.select_ABD_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0 ,:));
+    ctrl_Behavior_table.select_ABD_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_ABD_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_ABD_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_ABD_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_ABD_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_ABD_acc_location_cat(si) = nanmean(ctrl_Trial_Data(si).main.location_catAcc(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+    ctrl_Behavior_table.select_ABD_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_ABD_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_ABD_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+    ctrl_Behavior_table.select_ABD_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0 & ctrl_Trial_Data(si).main.fullem == 1,:));
+    ctrl_Behavior_table.select_ABD_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0 & ctrl_Trial_Data(si).main.animalAcc == 1,:));
+    ctrl_Behavior_table.select_ABD_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0 & ctrl_Trial_Data(si).main.locationAcc == 1,:));
+
+    ctrl_Behavior_table.select_ABD_log_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_ABD_log_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_ABD_log_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+    ctrl_Behavior_table.select_ABD_log_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0 & ctrl_Trial_Data(si).main.fullem == 1,:));
+    ctrl_Behavior_table.select_ABD_log_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0 & ctrl_Trial_Data(si).main.animalAcc == 1,:));
+    ctrl_Behavior_table.select_ABD_log_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0 & ctrl_Trial_Data(si).main.locationAcc == 1,:));
+
+
+
+
+   if sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) + sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 0) ~= 0
+        ctrl_Behavior_table.select_MBD_loc_chunking(si) = sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) / (sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 1) + sum(ctrl_Trial_Data(si).main.categorical_Acc(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:) == 0));
+    else
+        ctrl_Behavior_table.select_MBD_loc_chunking(si) = NaN;
+   end
+
+
+    ctrl_Behavior_table.select_MBD_across_acc(si) = nanmean(ctrl_Trial_Data(si).main_trial.across_acc(ctrl_Trial_Data(si).main_trial.boundary == 1  & ctrl_Trial_Data(si).main_trial.boundary_1cross_run > 0,:));
+    ctrl_Behavior_table.select_MBD_within_acc(si) = nanmean(ctrl_Trial_Data(si).main_trial.within_acc(ctrl_Trial_Data(si).main_trial.boundary == 1 & ctrl_Trial_Data(si).main_trial.boundary_1cross_run > 0,:));    
+
+    ctrl_Behavior_table.select_MBD_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_MBD_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_MBD_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_MBD_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_MBD_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_MBD_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_MBD_acc_location_cat(si) = nanmean(ctrl_Trial_Data(si).main.location_catAcc(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+    ctrl_Behavior_table.select_MBD_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_MBD_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_MBD_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+
+    ctrl_Behavior_table.select_MBD_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0 & ctrl_Trial_Data(si).main.fullem == 1,:));
+    ctrl_Behavior_table.select_MBD_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0 & ctrl_Trial_Data(si).main.animalAcc == 1,:));
+    ctrl_Behavior_table.select_MBD_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0 & ctrl_Trial_Data(si).main.locationAcc == 1,:));
+
+
+    ctrl_Behavior_table.select_MBD_log_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_MBD_log_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+    ctrl_Behavior_table.select_MBD_log_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0,:));
+
+
+    ctrl_Behavior_table.select_MBD_log_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT_log(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0 & ctrl_Trial_Data(si).main.fullem == 1,:));
+    ctrl_Behavior_table.select_MBD_log_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT_log(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0 & ctrl_Trial_Data(si).main.animalAcc == 1,:));
+    ctrl_Behavior_table.select_MBD_log_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT_log(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_cat_okay > 0 & ctrl_Trial_Data(si).main.locationAcc == 1,:));
+
+
+
+    % crossing 0
+    ctrl_Behavior_table.cross0_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary_crossing == 0 ,:));
+    ctrl_Behavior_table.cross0_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary_crossing == 0 ,:));
+    ctrl_Behavior_table.cross0_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary_crossing == 0  ,:));
+    ctrl_Behavior_table.cross0_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary_crossing == 0 ,:));
+    ctrl_Behavior_table.cross0_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary_crossing == 0 ,:));
+    ctrl_Behavior_table.cross0_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary_crossing == 0 ,:));
+
+    ctrl_Behavior_table.cross0_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary_crossing == 0 ,:));
+    ctrl_Behavior_table.cross0_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary_crossing == 0 ,:));
+    ctrl_Behavior_table.cross0_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary_crossing == 0 ,:));
+
+    ctrl_Behavior_table.cross0_ABD_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 0 ,:));
+    ctrl_Behavior_table.cross0_ABD_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_ABD_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_ABD_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_ABD_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_ABD_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_ABD_acc_location_cat(si) = nanmean(ctrl_Trial_Data(si).main.location_catAcc(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+
+    ctrl_Behavior_table.cross0_ABD_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_ABD_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_ABD_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+
+    ctrl_Behavior_table.cross0_ABD_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 0 & ctrl_Trial_Data(si).main.fullem == 1,:));
+    ctrl_Behavior_table.cross0_ABD_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 0 & ctrl_Trial_Data(si).main.animalAcc == 1,:));
+    ctrl_Behavior_table.cross0_ABD_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 0 & ctrl_Trial_Data(si).main.locationAcc == 1,:));
+
+
+
+    ctrl_Behavior_table.cross0_MBD_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_MBD_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_MBD_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_MBD_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_MBD_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_MBD_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_MBD_acc_location_cat(si) = nanmean(ctrl_Trial_Data(si).main.location_catAcc(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+
+    ctrl_Behavior_table.cross0_MBD_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_MBD_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+    ctrl_Behavior_table.cross0_MBD_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 0,:));
+
+
+    ctrl_Behavior_table.cross0_MBD_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 0 & ctrl_Trial_Data(si).main.fullem == 1,:));
+    ctrl_Behavior_table.cross0_MBD_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 0 & ctrl_Trial_Data(si).main.animalAcc == 1,:));
+    ctrl_Behavior_table.cross0_MBD_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 0 & ctrl_Trial_Data(si).main.locationAcc == 1,:));
+
+
+    % bnd index 
+    ctrl_Behavior_table.cross0_MBD_ABD_acc_what(si) = ctrl_Behavior_table.cross0_MBD_acc_what(si) - ctrl_Behavior_table.cross0_ABD_acc_what(si);
+    ctrl_Behavior_table.cross0_MBD_ABD_acc_whatwhen(si) = ctrl_Behavior_table.cross0_MBD_acc_whatwhen(si) - ctrl_Behavior_table.cross0_ABD_acc_whatwhen(si);
+    ctrl_Behavior_table.cross0_MBD_ABD_acc_where(si) = ctrl_Behavior_table.cross0_MBD_acc_where(si) - ctrl_Behavior_table.cross0_ABD_acc_where(si);
+    ctrl_Behavior_table.cross0_MBD_ABD_acc_wherewhen(si) = ctrl_Behavior_table.cross0_MBD_acc_wherewhen(si) - ctrl_Behavior_table.cross0_ABD_acc_wherewhen(si);
+    ctrl_Behavior_table.cross0_MBD_ABD_acc_whatwhere(si) = ctrl_Behavior_table.cross0_MBD_acc_whatwhere(si) - ctrl_Behavior_table.cross0_ABD_acc_whatwhere(si);
+    ctrl_Behavior_table.cross0_MBD_ABD_acc_fullem(si) = ctrl_Behavior_table.cross0_MBD_acc_fullem(si) - ctrl_Behavior_table.cross0_ABD_acc_fullem(si);
+                        
+
+
+
+
+    % crossing 2
+
+    ctrl_Behavior_table.cross2_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary_crossing == 2 ,:));
+    ctrl_Behavior_table.cross2_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary_crossing == 2 ,:));
+    ctrl_Behavior_table.cross2_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary_crossing == 2 ,:));
+    ctrl_Behavior_table.cross2_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary_crossing == 2 ,:));
+    ctrl_Behavior_table.cross2_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary_crossing == 2 ,:));
+    ctrl_Behavior_table.cross2_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary_crossing == 2 ,:));
+
+    ctrl_Behavior_table.cross2_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary_crossing == 2 ,:));
+    ctrl_Behavior_table.cross2_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary_crossing == 2 ,:));
+    ctrl_Behavior_table.cross2_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary_crossing == 2 ,:));
+
+    ctrl_Behavior_table.cross2_ABD_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 2 ,:));
+    ctrl_Behavior_table.cross2_ABD_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_ABD_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_ABD_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_ABD_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_ABD_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_ABD_acc_location_cat(si) = nanmean(ctrl_Trial_Data(si).main.location_catAcc(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+
+    ctrl_Behavior_table.cross2_ABD_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_ABD_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_ABD_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+
+    ctrl_Behavior_table.cross2_ABD_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 2 & ctrl_Trial_Data(si).main.fullem == 1,:));
+    ctrl_Behavior_table.cross2_ABD_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 2 & ctrl_Trial_Data(si).main.animalAcc == 1,:));
+    ctrl_Behavior_table.cross2_ABD_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 0 & ctrl_Trial_Data(si).main.boundary_crossing == 2 & ctrl_Trial_Data(si).main.locationAcc == 1,:));
+
+
+
+    ctrl_Behavior_table.cross2_MBD_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_MBD_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_MBD_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_MBD_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_MBD_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_MBD_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_MBD_acc_location_cat(si) = nanmean(ctrl_Trial_Data(si).main.location_catAcc(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+
+    ctrl_Behavior_table.cross2_MBD_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_MBD_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+    ctrl_Behavior_table.cross2_MBD_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 2,:));
+
+
+    ctrl_Behavior_table.cross2_MBD_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 2 & ctrl_Trial_Data(si).main.fullem == 1,:));
+    ctrl_Behavior_table.cross2_MBD_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 2 & ctrl_Trial_Data(si).main.animalAcc == 1,:));
+    ctrl_Behavior_table.cross2_MBD_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 1 & ctrl_Trial_Data(si).main.boundary_crossing == 2 & ctrl_Trial_Data(si).main.locationAcc == 1,:));
+
+
+    % crossing 0 & 2
+    ctrl_Behavior_table.cross0and2_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    ctrl_Behavior_table.cross0and2_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    ctrl_Behavior_table.cross0and2_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    ctrl_Behavior_table.cross0and2_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+
+
+    ctrl_Behavior_table.cross0and2_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    ctrl_Behavior_table.cross0and2_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    ctrl_Behavior_table.cross0and2_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+
+    ctrl_Behavior_table.cross0and2_ABD_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]) ,:));
+    ctrl_Behavior_table.cross0and2_ABD_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_ABD_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_ABD_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_ABD_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_ABD_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_ABD_acc_location_cat(si) = nanmean(ctrl_Trial_Data(si).main.location_catAcc(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+
+    ctrl_Behavior_table.cross0and2_ABD_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_ABD_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_ABD_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+
+    ctrl_Behavior_table.cross0and2_ABD_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]) & ctrl_Trial_Data(si).main.fullem == 1,:));
+    ctrl_Behavior_table.cross0and2_ABD_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]) & ctrl_Trial_Data(si).main.animalAcc == 1,:));
+    ctrl_Behavior_table.cross0and2_ABD_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]) & ctrl_Trial_Data(si).main.locationAcc == 1,:));
+
+
+
+    ctrl_Behavior_table.cross0and2_MBD_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_MBD_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_MBD_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_MBD_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_MBD_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_MBD_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_MBD_acc_location_cat(si) = nanmean(ctrl_Trial_Data(si).main.location_catAcc(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+
+    ctrl_Behavior_table.cross0and2_MBD_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_MBD_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+    ctrl_Behavior_table.cross0and2_MBD_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]),:));
+
+
+    ctrl_Behavior_table.cross0and2_MBD_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]) & ctrl_Trial_Data(si).main.fullem == 1,:));
+    ctrl_Behavior_table.cross0and2_MBD_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]) & ctrl_Trial_Data(si).main.animalAcc == 1,:));
+    ctrl_Behavior_table.cross0and2_MBD_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [0, 2]) & ctrl_Trial_Data(si).main.locationAcc == 1,:));
+
+
+    % crossing 1 & 2
+    ctrl_Behavior_table.cross1and2_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    ctrl_Behavior_table.cross1and2_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    ctrl_Behavior_table.cross1and2_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    ctrl_Behavior_table.cross1and2_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+
+
+    ctrl_Behavior_table.cross1and2_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    ctrl_Behavior_table.cross1and2_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    ctrl_Behavior_table.cross1and2_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+
+
+    ctrl_Behavior_table.cross1and2_ABD_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]) ,:));
+    ctrl_Behavior_table.cross1and2_ABD_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_ABD_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_ABD_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_ABD_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_ABD_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_ABD_acc_location_cat(si) = nanmean(ctrl_Trial_Data(si).main.location_catAcc(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+
+    ctrl_Behavior_table.cross1and2_ABD_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_ABD_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_ABD_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+
+    ctrl_Behavior_table.cross1and2_ABD_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]) & ctrl_Trial_Data(si).main.fullem == 1,:));
+    ctrl_Behavior_table.cross1and2_ABD_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]) & ctrl_Trial_Data(si).main.animalAcc == 1,:));
+    ctrl_Behavior_table.cross1and2_ABD_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 0 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]) & ctrl_Trial_Data(si).main.locationAcc == 1,:));
+
+
+
+    ctrl_Behavior_table.cross1and2_MBD_acc_what(si) = nanmean(ctrl_Trial_Data(si).main.what(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_MBD_acc_whatwhen(si) = nanmean(ctrl_Trial_Data(si).main.whatwhen(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_MBD_acc_where(si) = nanmean(ctrl_Trial_Data(si).main.where(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_MBD_acc_wherewhen(si) = nanmean(ctrl_Trial_Data(si).main.wherewhen(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_MBD_acc_whatwhere(si) = nanmean(ctrl_Trial_Data(si).main.whatwhere(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_MBD_acc_fullem(si) = nanmean(ctrl_Trial_Data(si).main.fullem(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_MBD_acc_location_cat(si) = nanmean(ctrl_Trial_Data(si).main.location_catAcc(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+
+    ctrl_Behavior_table.cross1and2_MBD_rt_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_MBD_rt_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+    ctrl_Behavior_table.cross1and2_MBD_rt_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]),:));
+
+
+    ctrl_Behavior_table.cross1and2_MBD_rt_right_respond(si) = nanmean(ctrl_Trial_Data(si).main.respondRT(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]) & ctrl_Trial_Data(si).main.fullem == 1,:));
+    ctrl_Behavior_table.cross1and2_MBD_rt_right_animal(si) = nanmean(ctrl_Trial_Data(si).main.animalRT(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]) & ctrl_Trial_Data(si).main.animalAcc == 1,:));
+    ctrl_Behavior_table.cross1and2_MBD_rt_right_location(si) = nanmean(ctrl_Trial_Data(si).main.locationRT(ctrl_Trial_Data(si).main.boundary == 1 & ismember(ctrl_Trial_Data(si).main.boundary_crossing, [1, 2]) & ctrl_Trial_Data(si).main.locationAcc == 1,:));
+
+
+    % bnd index (multi - audio)
+    ctrl_Behavior_table.all_MBD_ABD_acc_what(si) = ctrl_Behavior_table.all_MBD_acc_what(si) - ctrl_Behavior_table.all_ABD_acc_what(si);
+    ctrl_Behavior_table.all_MBD_ABD_acc_whatwhen(si) = ctrl_Behavior_table.all_MBD_acc_whatwhen(si) - ctrl_Behavior_table.all_ABD_acc_whatwhen(si);
+    ctrl_Behavior_table.all_MBD_ABD_acc_where(si) = ctrl_Behavior_table.all_MBD_acc_where(si) - ctrl_Behavior_table.all_ABD_acc_where(si);
+    ctrl_Behavior_table.all_MBD_ABD_acc_wherewhen(si) = ctrl_Behavior_table.all_MBD_acc_wherewhen(si) - ctrl_Behavior_table.all_ABD_acc_wherewhen(si);
+    ctrl_Behavior_table.all_MBD_ABD_acc_whatwhere(si) = ctrl_Behavior_table.all_MBD_acc_whatwhere(si) - ctrl_Behavior_table.all_ABD_acc_whatwhere(si);
+    ctrl_Behavior_table.all_MBD_ABD_acc_fullem(si) = ctrl_Behavior_table.all_MBD_acc_fullem(si) - ctrl_Behavior_table.all_ABD_acc_fullem(si);
+                        
+
+    ctrl_Behavior_table.select_MBD_ABD_acc_what(si) = ctrl_Behavior_table.select_MBD_acc_what(si) - ctrl_Behavior_table.select_ABD_acc_what(si);
+    ctrl_Behavior_table.select_MBD_ABD_acc_whatwhen(si) = ctrl_Behavior_table.select_MBD_acc_whatwhen(si) - ctrl_Behavior_table.select_ABD_acc_whatwhen(si);
+    ctrl_Behavior_table.select_MBD_ABD_acc_where(si) = ctrl_Behavior_table.select_MBD_acc_where(si) - ctrl_Behavior_table.select_ABD_acc_where(si);
+    ctrl_Behavior_table.select_MBD_ABD_acc_wherewhen(si) = ctrl_Behavior_table.select_MBD_acc_wherewhen(si) - ctrl_Behavior_table.select_ABD_acc_wherewhen(si);
+    ctrl_Behavior_table.select_MBD_ABD_acc_whatwhere(si) = ctrl_Behavior_table.select_MBD_acc_whatwhere(si) - ctrl_Behavior_table.select_ABD_acc_whatwhere(si);
+    ctrl_Behavior_table.select_MBD_ABD_acc_fullem(si) = ctrl_Behavior_table.select_MBD_acc_fullem(si) - ctrl_Behavior_table.select_ABD_acc_fullem(si);
+                   
+    ctrl_Behavior_table.cross0_MBD_ABD_acc_what(si) = ctrl_Behavior_table.cross0_MBD_acc_what(si) - ctrl_Behavior_table.cross0_ABD_acc_what(si);
+    ctrl_Behavior_table.cross0_MBD_ABD_acc_whatwhen(si) = ctrl_Behavior_table.cross0_MBD_acc_whatwhen(si) - ctrl_Behavior_table.cross0_ABD_acc_whatwhen(si);
+    ctrl_Behavior_table.cross0_MBD_ABD_acc_where(si) = ctrl_Behavior_table.cross0_MBD_acc_where(si) - ctrl_Behavior_table.cross0_ABD_acc_where(si);
+    ctrl_Behavior_table.cross0_MBD_ABD_acc_wherewhen(si) = ctrl_Behavior_table.cross0_MBD_acc_wherewhen(si) - ctrl_Behavior_table.cross0_ABD_acc_wherewhen(si);
+    ctrl_Behavior_table.cross0_MBD_ABD_acc_whatwhere(si) = ctrl_Behavior_table.cross0_MBD_acc_whatwhere(si) - ctrl_Behavior_table.cross0_ABD_acc_whatwhere(si);
+    ctrl_Behavior_table.cross0_MBD_ABD_acc_fullem(si) = ctrl_Behavior_table.cross0_MBD_acc_fullem(si) - ctrl_Behavior_table.cross0_ABD_acc_fullem(si);
+                   
+                   
+    ctrl_Behavior_table.cross2_MBD_ABD_acc_what(si) = ctrl_Behavior_table.cross2_MBD_acc_what(si) - ctrl_Behavior_table.cross2_ABD_acc_what(si);
+    ctrl_Behavior_table.cross2_MBD_ABD_acc_whatwhen(si) = ctrl_Behavior_table.cross2_MBD_acc_whatwhen(si) - ctrl_Behavior_table.cross2_ABD_acc_whatwhen(si);
+    ctrl_Behavior_table.cross2_MBD_ABD_acc_where(si) = ctrl_Behavior_table.cross2_MBD_acc_where(si) - ctrl_Behavior_table.cross2_ABD_acc_where(si);
+    ctrl_Behavior_table.cross2_MBD_ABD_acc_wherewhen(si) = ctrl_Behavior_table.cross2_MBD_acc_wherewhen(si) - ctrl_Behavior_table.cross2_ABD_acc_wherewhen(si);
+    ctrl_Behavior_table.cross2_MBD_ABD_acc_whatwhere(si) = ctrl_Behavior_table.cross2_MBD_acc_whatwhere(si) - ctrl_Behavior_table.cross2_ABD_acc_whatwhere(si);
+    ctrl_Behavior_table.cross2_MBD_ABD_acc_fullem(si) = ctrl_Behavior_table.cross2_MBD_acc_fullem(si) - ctrl_Behavior_table.cross2_ABD_acc_fullem(si);
+                   
+                   
+    ctrl_Behavior_table.cross0and2_MBD_ABD_acc_what(si) = ctrl_Behavior_table.cross0and2_MBD_acc_what(si) - ctrl_Behavior_table.cross0and2_ABD_acc_what(si);
+    ctrl_Behavior_table.cross0and2_MBD_ABD_acc_whatwhen(si) = ctrl_Behavior_table.cross0and2_MBD_acc_whatwhen(si) - ctrl_Behavior_table.cross0and2_ABD_acc_whatwhen(si);
+    ctrl_Behavior_table.cross0and2_MBD_ABD_acc_where(si) = ctrl_Behavior_table.cross0and2_MBD_acc_where(si) - ctrl_Behavior_table.cross0and2_ABD_acc_where(si);
+    ctrl_Behavior_table.cross0and2_MBD_ABD_acc_wherewhen(si) = ctrl_Behavior_table.cross0and2_MBD_acc_wherewhen(si) - ctrl_Behavior_table.cross0and2_ABD_acc_wherewhen(si);
+    ctrl_Behavior_table.cross0and2_MBD_ABD_acc_whatwhere(si) = ctrl_Behavior_table.cross0and2_MBD_acc_whatwhere(si) - ctrl_Behavior_table.cross0and2_ABD_acc_whatwhere(si);
+    ctrl_Behavior_table.cross0and2_MBD_ABD_acc_fullem(si) = ctrl_Behavior_table.cross0and2_MBD_acc_fullem(si) - ctrl_Behavior_table.cross0and2_ABD_acc_fullem(si);
+                   
+    ctrl_Behavior_table.cross1and2_MBD_ABD_acc_what(si) = ctrl_Behavior_table.cross1and2_MBD_acc_what(si) - ctrl_Behavior_table.cross1and2_ABD_acc_what(si);
+    ctrl_Behavior_table.cross1and2_MBD_ABD_acc_whatwhen(si) = ctrl_Behavior_table.cross1and2_MBD_acc_whatwhen(si) - ctrl_Behavior_table.cross1and2_ABD_acc_whatwhen(si);
+    ctrl_Behavior_table.cross1and2_MBD_ABD_acc_where(si) = ctrl_Behavior_table.cross1and2_MBD_acc_where(si) - ctrl_Behavior_table.cross1and2_ABD_acc_where(si);
+    ctrl_Behavior_table.cross1and2_MBD_ABD_acc_wherewhen(si) = ctrl_Behavior_table.cross1and2_MBD_acc_wherewhen(si) - ctrl_Behavior_table.cross1and2_ABD_acc_wherewhen(si);
+    ctrl_Behavior_table.cross1and2_MBD_ABD_acc_whatwhere(si) = ctrl_Behavior_table.cross1and2_MBD_acc_whatwhere(si) - ctrl_Behavior_table.cross1and2_ABD_acc_whatwhere(si);
+    ctrl_Behavior_table.cross1and2_MBD_ABD_acc_fullem(si) = ctrl_Behavior_table.cross1and2_MBD_acc_fullem(si) - ctrl_Behavior_table.cross1and2_ABD_acc_fullem(si);
+                   
+
+    ctrl_Behavior_table.cross1_cross0_acc_what(si) = ctrl_Behavior_table.select_acc_what(si) - ctrl_Behavior_table.cross0_acc_what(si);
+    ctrl_Behavior_table.cross1_cross0_acc_whatwhen(si) = ctrl_Behavior_table.select_acc_whatwhen(si) - ctrl_Behavior_table.cross0_acc_whatwhen(si);
+    ctrl_Behavior_table.cross1_cross0_acc_where(si) = ctrl_Behavior_table.select_acc_where(si) - ctrl_Behavior_table.cross0_acc_where(si);
+    ctrl_Behavior_table.cross1_cross0_acc_wherewhen(si) = ctrl_Behavior_table.select_acc_wherewhen(si) - ctrl_Behavior_table.cross0_acc_wherewhen(si);
+    ctrl_Behavior_table.cross1_cross0_acc_whatwhere(si) = ctrl_Behavior_table.select_acc_whatwhere(si) - ctrl_Behavior_table.cross0_acc_whatwhere(si);
+    ctrl_Behavior_table.cross1_cross0_acc_fullem(si) = ctrl_Behavior_table.select_acc_fullem(si) - ctrl_Behavior_table.cross0_acc_fullem(si);
+        
+    ctrl_Behavior_table.cross1_cross0and2_acc_what(si) = ctrl_Behavior_table.select_acc_what(si) - ctrl_Behavior_table.cross0and2_acc_what(si);
+    ctrl_Behavior_table.cross1_cross0and2_acc_whatwhen(si) = ctrl_Behavior_table.select_acc_whatwhen(si) - ctrl_Behavior_table.cross0and2_acc_whatwhen(si);
+    ctrl_Behavior_table.cross1_cross0and2_acc_where(si) = ctrl_Behavior_table.select_acc_where(si) - ctrl_Behavior_table.cross0and2_acc_where(si);
+    ctrl_Behavior_table.cross1_cross0and2_acc_wherewhen(si) = ctrl_Behavior_table.select_acc_wherewhen(si) - ctrl_Behavior_table.cross0and2_acc_wherewhen(si);
+    ctrl_Behavior_table.cross1_cross0and2_acc_whatwhere(si) = ctrl_Behavior_table.select_acc_whatwhere(si) - ctrl_Behavior_table.cross0and2_acc_whatwhere(si);
+    ctrl_Behavior_table.cross1_cross0and2_acc_fullem(si) = ctrl_Behavior_table.select_acc_fullem(si) - ctrl_Behavior_table.cross0and2_acc_fullem(si);
+        
+    ctrl_Behavior_table.cross1and2_cross0_acc_what(si) = ctrl_Behavior_table.cross1and2_acc_what(si) - ctrl_Behavior_table.cross0_acc_what(si);
+    ctrl_Behavior_table.cross1and2_cross0_acc_whatwhen(si) = ctrl_Behavior_table.cross1and2_acc_whatwhen(si) - ctrl_Behavior_table.cross0_acc_whatwhen(si);
+    ctrl_Behavior_table.cross1and2_cross0_acc_where(si) = ctrl_Behavior_table.cross1and2_acc_where(si) - ctrl_Behavior_table.cross0_acc_where(si);
+    ctrl_Behavior_table.cross1and2_cross0_acc_wherewhen(si) = ctrl_Behavior_table.cross1and2_acc_wherewhen(si) - ctrl_Behavior_table.cross0_acc_wherewhen(si);
+    ctrl_Behavior_table.cross1and2_cross0_acc_whatwhere(si) = ctrl_Behavior_table.cross1and2_acc_whatwhere(si) - ctrl_Behavior_table.cross0_acc_whatwhere(si);
+    ctrl_Behavior_table.cross1and2_cross0_acc_fullem(si) = ctrl_Behavior_table.cross1and2_acc_fullem(si) - ctrl_Behavior_table.cross0_acc_fullem(si);
+        
+    ctrl_Behavior_table.cross1_cross2_acc_what(si) = ctrl_Behavior_table.select_acc_what(si) - ctrl_Behavior_table.cross2_acc_what(si);
+    ctrl_Behavior_table.cross1_cross2_acc_whatwhen(si) = ctrl_Behavior_table.select_acc_whatwhen(si) - ctrl_Behavior_table.cross2_acc_whatwhen(si);
+    ctrl_Behavior_table.cross1_cross2_acc_where(si) = ctrl_Behavior_table.select_acc_where(si) - ctrl_Behavior_table.cross2_acc_where(si);
+    ctrl_Behavior_table.cross1_cross2_acc_wherewhen(si) = ctrl_Behavior_table.select_acc_wherewhen(si) - ctrl_Behavior_table.cross2_acc_wherewhen(si);
+    ctrl_Behavior_table.cross1_cross2_acc_whatwhere(si) = ctrl_Behavior_table.select_acc_whatwhere(si) - ctrl_Behavior_table.cross2_acc_whatwhere(si);
+    ctrl_Behavior_table.cross1_cross2_acc_fullem(si) = ctrl_Behavior_table.select_acc_fullem(si) - ctrl_Behavior_table.cross2_acc_fullem(si);
+    
+
+    ctrl_Behavior_table.cross1_cross0_ABD_acc_what(si) = ctrl_Behavior_table.select_ABD_acc_what(si) - ctrl_Behavior_table.cross0_ABD_acc_what(si);
+    ctrl_Behavior_table.cross1_cross0_ABD_acc_whatwhen(si) = ctrl_Behavior_table.select_ABD_acc_whatwhen(si) - ctrl_Behavior_table.cross0_ABD_acc_whatwhen(si);
+    ctrl_Behavior_table.cross1_cross0_ABD_acc_where(si) = ctrl_Behavior_table.select_ABD_acc_where(si) - ctrl_Behavior_table.cross0_ABD_acc_where(si);
+    ctrl_Behavior_table.cross1_cross0_ABD_acc_wherewhen(si) = ctrl_Behavior_table.select_ABD_acc_wherewhen(si) - ctrl_Behavior_table.cross0_ABD_acc_wherewhen(si);
+    ctrl_Behavior_table.cross1_cross0_ABD_acc_whatwhere(si) = ctrl_Behavior_table.select_ABD_acc_whatwhere(si) - ctrl_Behavior_table.cross0_ABD_acc_whatwhere(si);
+    ctrl_Behavior_table.cross1_cross0_ABD_acc_fullem(si) = ctrl_Behavior_table.select_ABD_acc_fullem(si) - ctrl_Behavior_table.cross0_ABD_acc_fullem(si);
+        
+    ctrl_Behavior_table.cross1_cross0and2_ABD_acc_what(si) = ctrl_Behavior_table.select_ABD_acc_what(si) - ctrl_Behavior_table.cross0and2_ABD_acc_what(si);
+    ctrl_Behavior_table.cross1_cross0and2_ABD_acc_whatwhen(si) = ctrl_Behavior_table.select_ABD_acc_whatwhen(si) - ctrl_Behavior_table.cross0and2_ABD_acc_whatwhen(si);
+    ctrl_Behavior_table.cross1_cross0and2_ABD_acc_where(si) = ctrl_Behavior_table.select_ABD_acc_where(si) - ctrl_Behavior_table.cross0and2_ABD_acc_where(si);
+    ctrl_Behavior_table.cross1_cross0and2_ABD_acc_wherewhen(si) = ctrl_Behavior_table.select_ABD_acc_wherewhen(si) - ctrl_Behavior_table.cross0and2_ABD_acc_wherewhen(si);
+    ctrl_Behavior_table.cross1_cross0and2_ABD_acc_whatwhere(si) = ctrl_Behavior_table.select_ABD_acc_whatwhere(si) - ctrl_Behavior_table.cross0and2_ABD_acc_whatwhere(si);
+    ctrl_Behavior_table.cross1_cross0and2_ABD_acc_fullem(si) = ctrl_Behavior_table.select_ABD_acc_fullem(si) - ctrl_Behavior_table.cross0and2_ABD_acc_fullem(si);
+        
+    ctrl_Behavior_table.cross1and2_cross0_ABD_acc_what(si) = ctrl_Behavior_table.cross1and2_ABD_acc_what(si) - ctrl_Behavior_table.cross0_ABD_acc_what(si);
+    ctrl_Behavior_table.cross1and2_cross0_ABD_acc_whatwhen(si) = ctrl_Behavior_table.cross1and2_ABD_acc_whatwhen(si) - ctrl_Behavior_table.cross0_ABD_acc_whatwhen(si);
+    ctrl_Behavior_table.cross1and2_cross0_ABD_acc_where(si) = ctrl_Behavior_table.cross1and2_ABD_acc_where(si) - ctrl_Behavior_table.cross0_ABD_acc_where(si);
+    ctrl_Behavior_table.cross1and2_cross0_ABD_acc_wherewhen(si) = ctrl_Behavior_table.cross1and2_ABD_acc_wherewhen(si) - ctrl_Behavior_table.cross0_ABD_acc_wherewhen(si);
+    ctrl_Behavior_table.cross1and2_cross0_ABD_acc_whatwhere(si) = ctrl_Behavior_table.cross1and2_ABD_acc_whatwhere(si) - ctrl_Behavior_table.cross0_ABD_acc_whatwhere(si);
+    ctrl_Behavior_table.cross1and2_cross0_ABD_acc_fullem(si) = ctrl_Behavior_table.cross1and2_ABD_acc_fullem(si) - ctrl_Behavior_table.cross0_ABD_acc_fullem(si);
+        
+    ctrl_Behavior_table.cross1_cross2_ABD_acc_what(si) = ctrl_Behavior_table.select_ABD_acc_what(si) - ctrl_Behavior_table.cross2_ABD_acc_what(si);
+    ctrl_Behavior_table.cross1_cross2_ABD_acc_whatwhen(si) = ctrl_Behavior_table.select_ABD_acc_whatwhen(si) - ctrl_Behavior_table.cross2_ABD_acc_whatwhen(si);
+    ctrl_Behavior_table.cross1_cross2_ABD_acc_where(si) = ctrl_Behavior_table.select_ABD_acc_where(si) - ctrl_Behavior_table.cross2_ABD_acc_where(si);
+    ctrl_Behavior_table.cross1_cross2_ABD_acc_wherewhen(si) = ctrl_Behavior_table.select_ABD_acc_wherewhen(si) - ctrl_Behavior_table.cross2_ABD_acc_wherewhen(si);
+    ctrl_Behavior_table.cross1_cross2_ABD_acc_whatwhere(si) = ctrl_Behavior_table.select_ABD_acc_whatwhere(si) - ctrl_Behavior_table.cross2_ABD_acc_whatwhere(si);
+    ctrl_Behavior_table.cross1_cross2_ABD_acc_fullem(si) = ctrl_Behavior_table.select_ABD_acc_fullem(si) - ctrl_Behavior_table.cross2_ABD_acc_fullem(si);
+    
+
+
+    ctrl_Behavior_table.cross1_cross0_MBD_acc_what(si) = ctrl_Behavior_table.select_MBD_acc_what(si) - ctrl_Behavior_table.cross0_MBD_acc_what(si);
+    ctrl_Behavior_table.cross1_cross0_MBD_acc_whatwhen(si) = ctrl_Behavior_table.select_MBD_acc_whatwhen(si) - ctrl_Behavior_table.cross0_MBD_acc_whatwhen(si);
+    ctrl_Behavior_table.cross1_cross0_MBD_acc_where(si) = ctrl_Behavior_table.select_MBD_acc_where(si) - ctrl_Behavior_table.cross0_MBD_acc_where(si);
+    ctrl_Behavior_table.cross1_cross0_MBD_acc_wherewhen(si) = ctrl_Behavior_table.select_MBD_acc_wherewhen(si) - ctrl_Behavior_table.cross0_MBD_acc_wherewhen(si);
+    ctrl_Behavior_table.cross1_cross0_MBD_acc_whatwhere(si) = ctrl_Behavior_table.select_MBD_acc_whatwhere(si) - ctrl_Behavior_table.cross0_MBD_acc_whatwhere(si);
+    ctrl_Behavior_table.cross1_cross0_MBD_acc_fullem(si) = ctrl_Behavior_table.select_MBD_acc_fullem(si) - ctrl_Behavior_table.cross0_MBD_acc_fullem(si);
+        
+    ctrl_Behavior_table.cross1_cross0and2_MBD_acc_what(si) = ctrl_Behavior_table.select_MBD_acc_what(si) - ctrl_Behavior_table.cross0and2_MBD_acc_what(si);
+    ctrl_Behavior_table.cross1_cross0and2_MBD_acc_whatwhen(si) = ctrl_Behavior_table.select_MBD_acc_whatwhen(si) - ctrl_Behavior_table.cross0and2_MBD_acc_whatwhen(si);
+    ctrl_Behavior_table.cross1_cross0and2_MBD_acc_where(si) = ctrl_Behavior_table.select_MBD_acc_where(si) - ctrl_Behavior_table.cross0and2_MBD_acc_where(si);
+    ctrl_Behavior_table.cross1_cross0and2_MBD_acc_wherewhen(si) = ctrl_Behavior_table.select_MBD_acc_wherewhen(si) - ctrl_Behavior_table.cross0and2_MBD_acc_wherewhen(si);
+    ctrl_Behavior_table.cross1_cross0and2_MBD_acc_whatwhere(si) = ctrl_Behavior_table.select_MBD_acc_whatwhere(si) - ctrl_Behavior_table.cross0and2_MBD_acc_whatwhere(si);
+    ctrl_Behavior_table.cross1_cross0and2_MBD_acc_fullem(si) = ctrl_Behavior_table.select_MBD_acc_fullem(si) - ctrl_Behavior_table.cross0and2_MBD_acc_fullem(si);
+        
+    ctrl_Behavior_table.cross1and2_cross0_MBD_acc_what(si) = ctrl_Behavior_table.cross1and2_MBD_acc_what(si) - ctrl_Behavior_table.cross0_MBD_acc_what(si);
+    ctrl_Behavior_table.cross1and2_cross0_MBD_acc_whatwhen(si) = ctrl_Behavior_table.cross1and2_MBD_acc_whatwhen(si) - ctrl_Behavior_table.cross0_MBD_acc_whatwhen(si);
+    ctrl_Behavior_table.cross1and2_cross0_MBD_acc_where(si) = ctrl_Behavior_table.cross1and2_MBD_acc_where(si) - ctrl_Behavior_table.cross0_MBD_acc_where(si);
+    ctrl_Behavior_table.cross1and2_cross0_MBD_acc_wherewhen(si) = ctrl_Behavior_table.cross1and2_MBD_acc_wherewhen(si) - ctrl_Behavior_table.cross0_MBD_acc_wherewhen(si);
+    ctrl_Behavior_table.cross1and2_cross0_MBD_acc_whatwhere(si) = ctrl_Behavior_table.cross1and2_MBD_acc_whatwhere(si) - ctrl_Behavior_table.cross0_MBD_acc_whatwhere(si);
+    ctrl_Behavior_table.cross1and2_cross0_MBD_acc_fullem(si) = ctrl_Behavior_table.cross1and2_MBD_acc_fullem(si) - ctrl_Behavior_table.cross0_MBD_acc_fullem(si);
+        
+    ctrl_Behavior_table.cross1_cross2_MBD_acc_what(si) = ctrl_Behavior_table.select_MBD_acc_what(si) - ctrl_Behavior_table.cross2_MBD_acc_what(si);
+    ctrl_Behavior_table.cross1_cross2_MBD_acc_whatwhen(si) = ctrl_Behavior_table.select_MBD_acc_whatwhen(si) - ctrl_Behavior_table.cross2_MBD_acc_whatwhen(si);
+    ctrl_Behavior_table.cross1_cross2_MBD_acc_where(si) = ctrl_Behavior_table.select_MBD_acc_where(si) - ctrl_Behavior_table.cross2_MBD_acc_where(si);
+    ctrl_Behavior_table.cross1_cross2_MBD_acc_wherewhen(si) = ctrl_Behavior_table.select_MBD_acc_wherewhen(si) - ctrl_Behavior_table.cross2_MBD_acc_wherewhen(si);
+    ctrl_Behavior_table.cross1_cross2_MBD_acc_whatwhere(si) = ctrl_Behavior_table.select_MBD_acc_whatwhere(si) - ctrl_Behavior_table.cross2_MBD_acc_whatwhere(si);
+    ctrl_Behavior_table.cross1_cross2_MBD_acc_fullem(si) = ctrl_Behavior_table.select_MBD_acc_fullem(si) - ctrl_Behavior_table.cross2_MBD_acc_fullem(si);
+    
+
+
+
+    % boundary 전 후 RT는 나중에
+    %     Behavior_table.rt_befBoundary(si) = NaN;
+    %     Behavior_table.rt_aftBoundary(si) = NaN;
+    %
+    %
+    %     response1 = []; response2 = []; respond_av1 = NaN; respond_av2 = NaN;
+    %     if sum(ismember(Trial_Data(si).main.boundary_cat, [1, 4]))
+    %         response1 = Trial_Data(si).main.respondRT(ismember(Trial_Data(si).main.boundary_cat, [1, 4]),:);
+    %         a1 = length(response1); remainders = mod([1:1:a1], 3);
+    %
+    %     elseif sum(ismember(Trial_Data(si).main.boundary_cat, [3, 6]))
+    %         response2 = Trial_Data(si).main.respondRT(ismember(Trial_Data(si).main.boundary_cat, [3, 6]),:);
+    %         nanmean(Trial_Data(si).main.locationRT);
+    %
+    %     end
+
+
+
+end
+
+
+% Total_table = [Behavior_table; WWW_Behavior_table];
+% writetable(Total_table,'Total_table.csv')
+
+
+
+
+% www_group_select = zeros(size(WWW_Behavior_table.ID));
+% group_select = zeros(size(Behavior_table.ID));
+%
+%
+% www_group_select(WWW_Behavior_table.age > 0) = 1;
+% group_select(Behavior_table.age > 0) = 1;
+
+% age_curve = struct2table(age_curve)

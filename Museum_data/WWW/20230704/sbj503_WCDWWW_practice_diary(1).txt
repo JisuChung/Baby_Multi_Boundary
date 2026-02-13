@@ -1,0 +1,160 @@
+
+** Encoding **
+Animal: [5 2 3], Location: [2 1 4], Context: 1
+
+** interference **
+Current run: 1, Current trial: 1
+Word:4 2 1 7 5 8 6 3 9 
+Category:0 0 0 0 0 0 0 0 0 
+** interference test starts **
+Current trial: 1, Current image: 5
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 2, Current image: 7
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 3, Current image: 8
+Response: 2, RT: 4.377091e-01, Correct: 0
+
+Current trial: 4, Current image: 9
+Response: 1, RT: 1.874070e-02, Correct: 1
+
+Current trial: 5, Current image: 6
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 6, Current image: 4
+Response: 99, RT: 99, Correct: 99
+
+** retrieval **
+** retrieval **
+Context: 1
+
+** reenactment **
+Order: 1
+Animal: 5, Response: 3, Correct: 0
+
+--------------------------------------------------------------------------------
+             Access violation detected at 2023-07-04 16:14:19 +0900
+--------------------------------------------------------------------------------
+
+Configuration:
+  Crash Decoding           : Disabled - No sandbox or build area path
+  Crash Mode               : continue (default)
+  Default Encoding         : KSC_5601
+  Deployed                 : false
+  Graphics Driver          : Unknown hardware 
+  Graphics card 1          : Intel Corporation ( 0x8086 ) Intel(R) Iris(R) Xe Graphics Version 31.0.101.4314 (2023-4-18)
+  JAWT Patch Status:       : Patch applied
+  Java Version             : Java 1.8.0_202-b08 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
+  MATLAB Architecture      : win64
+  MATLAB Entitlement ID    : 2489961
+  MATLAB Root              : C:\Program Files\MATLAB\R2021a
+  MATLAB Version           : 9.10.0.2198249 (R2021a) Update 8
+  OpenGL                   : hardware
+  Operating System         : Microsoft Windows 11 Education
+  Process ID               : 4020
+  Processor ID             : x86 Family 6 Model 186 Stepping 2, GenuineIntel
+  Session Key              : d61a6b83-6693-4174-adaa-209733a548ea
+  Window System            : Version 10.0 (Build 22621)
+
+Fault Count: 1
+
+
+Abnormal termination:
+Access violation
+
+Current Thread: 'MCR 0 interpreter thread' id 8064
+
+Register State (from fault):
+  RAX = 0000000000000000  RBX = 00007ffc36c81c50
+  RCX = 0000000000000000  RDX = 000001f3d2fdb440
+  RSP = 00000059f30f8620  RBP = 00000059f30f8720
+  RSI = 0000000000000000  RDI = 00000000000166a1
+ 
+   R8 = 000001f3d3008183   R9 = 000001f3d2ff1ae1
+  R10 = 000001f3d301e823  R11 = 00000000000166a1
+  R12 = 0000000000000020  R13 = 00000059f30f9500
+  R14 = 0000000000000000  R15 = 0000000000000001
+ 
+  RIP = 00007ffc36c12558  EFL = 00010202
+ 
+   CS = 0033   FS = 0053   GS = 002b
+
+Stack Trace (from fault):
+[  0] 0x00007ffc36c12558 C:\toolbox\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\Screen.mexw64+00533848 mexFunction+00467944
+[  1] 0x00007ffc36ba0513 C:\toolbox\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\Screen.mexw64+00066835 mexFunction+00000931
+[  2] 0x00007ffc2f16eec9 C:\Program Files\MATLAB\R2021a\bin\win64\libmex.dll+00585417 mexfile::Inspector::needs_upgrade+00014585
+[  3] 0x00007ffc2f16ffc2 C:\Program Files\MATLAB\R2021a\bin\win64\libmex.dll+00589762 MexRetrieveVersion+00003074
+[  4] 0x00007ffc2f170137 C:\Program Files\MATLAB\R2021a\bin\win64\libmex.dll+00590135 MexRetrieveVersion+00003447
+[  5] 0x00007ffc2f1702e7 C:\Program Files\MATLAB\R2021a\bin\win64\libmex.dll+00590567 MexRetrieveVersion+00003879
+[  6] 0x00007ffc2f150542 C:\Program Files\MATLAB\R2021a\bin\win64\libmex.dll+00460098 mexUnlock_800+00025874
+[  7] 0x00007ffc2f6eee80                     bin\win64\pgo\m_dispatcher.dll+00585344 Mfh_file::dispatch_file_common+00000164
+[  8] 0x00007ffc2f6ee63e                     bin\win64\pgo\m_dispatcher.dll+00583230 Mfh_error::lookup+00003386
+[  9] 0x00007ffc2f6eedd5                     bin\win64\pgo\m_dispatcher.dll+00585173 Mfh_file::dispatch+00000045
+[ 10] 0x00007ffc2c736acd                            bin\win64\pgo\m_lxe.dll+00355021
+[ 11] 0x00007ffc2c73636f                            bin\win64\pgo\m_lxe.dll+00353135
+[ 12] 0x00007ffc2c735ca1                            bin\win64\pgo\m_lxe.dll+00351393
+[ 13] 0x00007ffc2c73e413                            bin\win64\pgo\m_lxe.dll+00386067 MathWorks::lxe::initializeFcn+00024291
+[ 14] 0x00007ffc2c8975e6                            bin\win64\pgo\m_lxe.dll+01799654 mwboost::archive::detail::oserializer<mwboost::archive::binaryTerm_oarchive,MathWorks::lxe::ClosedAbstractionFunctionDescriptorOwningIrTree>::oserializer<mwboost::archive::binaryTerm_oarchive,MathWorks::lxe::ClosedAbstractionFunctionDescriptorOwningIrTree>+00003778
+[ 15] 0x00007ffc2c73dec9                            bin\win64\pgo\m_lxe.dll+00384713 MathWorks::lxe::initializeFcn+00022937
+[ 16] 0x00007ffc2c73c0eb                            bin\win64\pgo\m_lxe.dll+00377067 MathWorks::lxe::initializeFcn+00015291
+[ 17] 0x00007ffc2c73b136                            bin\win64\pgo\m_lxe.dll+00373046 MathWorks::lxe::initializeFcn+00011270
+[ 18] 0x00007ffc2c90214e                            bin\win64\pgo\m_lxe.dll+02236750 mwboost::archive::detail::oserializer<mwboost::archive::binaryTerm_oarchive,MathWorks::lxe::MatlabIrTree>::oserializer<mwboost::archive::binaryTerm_oarchive,MathWorks::lxe::MatlabIrTree>+00049818
+[ 19] 0x00007ffc2c7383da                            bin\win64\pgo\m_lxe.dll+00361434
+[ 20] 0x00007ffc2c8a18c5                            bin\win64\pgo\m_lxe.dll+01841349 mwboost::archive::detail::oserializer<mwboost::archive::binaryTerm_oarchive,MathWorks::lxe::ClosedAbstractionFunctionDescriptorOwningIrTree>::oserializer<mwboost::archive::binaryTerm_oarchive,MathWorks::lxe::ClosedAbstractionFunctionDescriptorOwningIrTree>+00045473
+[ 21] 0x00007ffc2f6eee80                     bin\win64\pgo\m_dispatcher.dll+00585344 Mfh_file::dispatch_file_common+00000164
+[ 22] 0x00007ffc2f6ee63e                     bin\win64\pgo\m_dispatcher.dll+00583230 Mfh_error::lookup+00003386
+[ 23] 0x00007ffc2f6eedd5                     bin\win64\pgo\m_dispatcher.dll+00585173 Mfh_file::dispatch+00000045
+[ 24] 0x00007ffc2c737115                            bin\win64\pgo\m_lxe.dll+00356629
+[ 25] 0x00007ffc2c784ede                            bin\win64\pgo\m_lxe.dll+00675550 MathWorks::lxe::initializeFcn+00313774
+[ 26] 0x00007ffc2c73636f                            bin\win64\pgo\m_lxe.dll+00353135
+[ 27] 0x00007ffc2c734431                            bin\win64\pgo\m_lxe.dll+00345137
+[ 28] 0x00007ffc2c7523c7                            bin\win64\pgo\m_lxe.dll+00467911 MathWorks::lxe::initializeFcn+00106135
+[ 29] 0x00007ffc2c751261                            bin\win64\pgo\m_lxe.dll+00463457 MathWorks::lxe::initializeFcn+00101681
+[ 30] 0x00007ffc2c750c72                            bin\win64\pgo\m_lxe.dll+00461938 MathWorks::lxe::initializeFcn+00100162
+[ 31] 0x00007ffc2c7553f3                            bin\win64\pgo\m_lxe.dll+00480243 MathWorks::lxe::initializeFcn+00118467
+[ 32] 0x00007ffc2c75509f                            bin\win64\pgo\m_lxe.dll+00479391 MathWorks::lxe::initializeFcn+00117615
+[ 33] 0x00007ffc2c73d2c0                            bin\win64\pgo\m_lxe.dll+00381632 MathWorks::lxe::initializeFcn+00019856
+[ 34] 0x00007ffc2c73c0eb                            bin\win64\pgo\m_lxe.dll+00377067 MathWorks::lxe::initializeFcn+00015291
+[ 35] 0x00007ffc2c73b136                            bin\win64\pgo\m_lxe.dll+00373046 MathWorks::lxe::initializeFcn+00011270
+[ 36] 0x00007ffc2c814296                            bin\win64\pgo\m_lxe.dll+01262230 MathWorks::lxe::ShutdownLxeEngine+00031034
+[ 37] 0x00007ffc2c8140c2                            bin\win64\pgo\m_lxe.dll+01261762 MathWorks::lxe::ShutdownLxeEngine+00030566
+[ 38] 0x00007ffc2c81363b                            bin\win64\pgo\m_lxe.dll+01259067 MathWorks::lxe::ShutdownLxeEngine+00027871
+[ 39] 0x00007ffc2c8135f2                            bin\win64\pgo\m_lxe.dll+01258994 MathWorks::lxe::ShutdownLxeEngine+00027798
+[ 40] 0x00007ffc2e34ac5a                            bin\win64\pgo\m_lxe.dll+29797466 mwboost::archive::detail::pointer_oserializer<mwboost::archive::xml_oarchive,MathWorks::lxe::PreLineExecutionEvent>::save_object_ptr+00299002
+[ 41] 0x00007ffc2f20a3a9 C:\Program Files\MATLAB\R2021a\bin\win64\libmwbridge.dll+00172969 mnGetPrompt+00027097
+[ 42] 0x00007ffc2f9b2266   C:\Program Files\MATLAB\R2021a\bin\win64\iqm.dll+00467558
+[ 43] 0x00007ffc2fa08773   C:\Program Files\MATLAB\R2021a\bin\win64\iqm.dll+00821107
+[ 44] 0x00007ffc2f9d66ac   C:\Program Files\MATLAB\R2021a\bin\win64\iqm.dll+00616108
+[ 45] 0x00007ffc2f9e106a   C:\Program Files\MATLAB\R2021a\bin\win64\iqm.dll+00659562
+[ 46] 0x00007ffc2f9a7720   C:\Program Files\MATLAB\R2021a\bin\win64\iqm.dll+00423712
+[ 47] 0x00007ffc2f1f8eaf C:\Program Files\MATLAB\R2021a\bin\win64\libmwbridge.dll+00102063 ioReadLine+00000463
+[ 48] 0x00007ffc2f1f8ca5 C:\Program Files\MATLAB\R2021a\bin\win64\libmwbridge.dll+00101541 ioReadLine+00000165
+[ 49] 0x00007ffc2f20a761 C:\Program Files\MATLAB\R2021a\bin\win64\libmwbridge.dll+00173921 mnGetCommandLineBuffer+00000289
+[ 50] 0x00007ffc2f20abb7 C:\Program Files\MATLAB\R2021a\bin\win64\libmwbridge.dll+00175031 mnParser+00000487
+[ 51] 0x00007ffc2f813d86   C:\Program Files\MATLAB\R2021a\bin\win64\mcr.dll+00540038
+[ 52] 0x00007ffc2f7af5d3   C:\Program Files\MATLAB\R2021a\bin\win64\mcr.dll+00128467
+[ 53] 0x00007ffc2f7cb550   C:\Program Files\MATLAB\R2021a\bin\win64\mcr.dll+00243024
+[ 54] 0x00007ffc2fa039ea   C:\Program Files\MATLAB\R2021a\bin\win64\iqm.dll+00801258
+[ 55] 0x00007ffc2f80e1ed   C:\Program Files\MATLAB\R2021a\bin\win64\mcr.dll+00516589
+[ 56] 0x00007ffc2f9d66ac   C:\Program Files\MATLAB\R2021a\bin\win64\iqm.dll+00616108
+[ 57] 0x00007ffc2f9a84bc   C:\Program Files\MATLAB\R2021a\bin\win64\iqm.dll+00427196
+[ 58] 0x00007ffc2f9a7c32   C:\Program Files\MATLAB\R2021a\bin\win64\iqm.dll+00425010
+[ 59] 0x00007ffc2f7e58fc   C:\Program Files\MATLAB\R2021a\bin\win64\mcr.dll+00350460
+[ 60] 0x00007ffc2f7e64ac   C:\Program Files\MATLAB\R2021a\bin\win64\mcr.dll+00353452
+[ 61] 0x00007ffc2f7e3ac0   C:\Program Files\MATLAB\R2021a\bin\win64\mcr.dll+00342720
+[ 62] 0x00007ffc90ea9b9a C:\Program Files\MATLAB\R2021a\bin\win64\mwboost_thread-vc142-mt-x64-1_72.dll+00039834
+[ 63] 0x00007ffcc5719363                   C:\WINDOWS\System32\ucrtbase.dll+00168803
+[ 64] 0x00007ffcc73e26ad                   C:\WINDOWS\System32\KERNEL32.DLL+00075437
+[ 65] 0x00007ffcc80ea9f8                      C:\WINDOWS\SYSTEM32\ntdll.dll+00371192
+
+
+This error was detected while a MEX-file was running. If the MEX-file
+is not an official MathWorks function, please examine its source code
+for errors. Please consult the External Interfaces Guide for information
+on debugging MEX-files.
+** This crash report has been saved to disk as C:\Users\LEELAB~1\AppData\Local\Temp\matlab_crash_dump.4020-1 **
+
+
+
+MATLAB is exiting because of fatal error

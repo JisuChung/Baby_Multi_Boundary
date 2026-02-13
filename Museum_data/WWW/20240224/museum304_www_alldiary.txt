@@ -1,0 +1,1818 @@
+
+PsychStartup: Adding path of installed GStreamer runtime to library path. [C:\gstreamer\1.0\msvc_x86_64\bin]
+>> boundary_museum_v2_1002
+ 
+ %%% INPUT SUBJECT INFORMATION TO START %%% 
+Sbj Number: 101
+M/F: m
+Experimenter: 
+
+ --- enter to start from the run #1 ---  
+ or did you RESTART after run #__ done? (1 or 2 or 3) : 
+
+---
+ready? (enter) : 
+
+
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.17 - Build date: Apr 13 2021).
+PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO: For information about paid priority support, community membership and commercial services, please type
+PTB-INFO: 'PsychPaidSupportAndServices'.
+
+PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
+PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
+PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
+PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
+PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
+PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
+
+
+PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) Iris(R) Xe Graphics :: 4.6.0 - Build 27.20.100.9415
+PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
+PTB-INFO: Measured monitor refresh interval from beamposition = 16.667218 ms [59.998014 Hz].
+PTB-INFO: Will use beamposition query for accurate Flip time stamping.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 16.671740 ms [59.981742 Hz]. (50 valid samples taken, stddev=0.161868 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-INFO: ==============================================================================================================================
+PTB-INFO: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE. On this Windows-10 or later system, Psychtoolbox can no longer reliably detect if
+PTB-INFO: this will cause trouble for timing and integrity of visual stimuli or not. You might be just fine, or you could be in trouble.
+PTB-INFO: Use external measurement equipment and independent procedures to verify reliability of timing if you care about proper timing.
+PTB-INFO: ==============================================================================================================================
+
+
+PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 5479410.660850 secs, which would indicate that
+PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 5479410.675871 secs).
+
+PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 5479410.676672, scanline = 1024
+PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 971, line_post_swaprequest = 980, time_post_swaprequest = 5479410.676009
+PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 0, preflip_vbltimestamp = 5479410.660881
+PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
+
+PTB-ERROR: This error can be due to either of the following causes:
+PTB-ERROR: Very unlikely: Something is broken in your systems beamposition timestamping. I've disabled high precision
+PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate.
+
+PTB-ERROR: The most likely cause would be that Synchronization of stimulus onset (buffer swap) to the
+PTB-ERROR: vertical blank interval VBL is not working properly, or swap completion signalling to PTB is broken.
+PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
+PTB-ERROR: is futile. Also run OSXCompositorIdiocyTest on macOS. Also read 'help SyncTrouble' !
+
+run starts!
+
+
+ ** Video start ** 
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 스피커(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Movie playback had to drop 1 frames of movie 0 to keep playback in sync.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 스피커(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+* Press space bar to continue ** Press ESC to stop *
+
+continue...
+
+1
+new touch  1614  970
+position 1?: 0
+position 2?: 0
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4797e+06
+
+new touch  1669  926
+position 1?: 0
+position 2?: 0
+position 3?: 0
+position 4?: 1
+
+ans =
+
+   5.4797e+06
+
+2
+new touch  778  903
+position 1?: 0
+position 2?: 1
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4797e+06
+
+3
+new touch  1160  853
+position 1?: 0
+position 2?: 0
+position 3?: 1
+position 4?: 0
+
+ans =
+
+   5.4797e+06
+
+4
+new touch  369  865
+position 1?: 1
+position 2?: 0
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4797e+06
+
+1
+new touch  380  814
+position 1?: 1
+position 2?: 0
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4797e+06
+
+2
+new touch  1199  854
+position 1?: 0
+position 2?: 0
+position 3?: 1
+position 4?: 0
+
+ans =
+
+   5.4797e+06
+
+3
+new touch  1215  792
+position 1?: 0
+position 2?: 0
+position 3?: 1
+position 4?: 0
+
+ans =
+
+   5.4797e+06
+
+new touch  779  867
+position 1?: 0
+position 2?: 1
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4797e+06
+
+4
+new touch  1728  791
+position 1?: 0
+position 2?: 0
+position 3?: 0
+position 4?: 1
+
+ans =
+
+   5.4797e+06
+
+1
+     0
+
+new touch  759  505
+position 1?: 1
+position 2?: 0
+2
+     0
+
+new touch  1330  512
+position 1?: 0
+position 2?: 1
+3
+     0
+
+new touch  1340  500
+position 1?: 0
+position 2?: 1
+4
+     0
+
+new touch  1478  534
+position 1?: 0
+position 2?: 1
+1
+     0
+
+new touch  1404  500
+position 1?: 0
+position 2?: 1
+2
+     0
+
+new touch  1600  633
+position 1?: 0
+position 2?: 1
+3
+     0
+
+new touch  1445  626
+position 1?: 0
+position 2?: 1
+4
+     0
+
+new touch  622  560
+position 1?: 1
+position 2?: 0
+
+run starts!
+
+
+ ** Video start ** 
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 스피커(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 스피커(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+* Press space bar to continue ** Press ESC to stop *
+
+continue...
+
+1
+new touch  261  727
+position 1?: 0
+position 2?: 0
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4801e+06
+
+new touch  236  782
+position 1?: 1
+position 2?: 0
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4801e+06
+
+2
+new touch  1233  794
+position 1?: 0
+position 2?: 0
+position 3?: 1
+position 4?: 0
+
+ans =
+
+   5.4801e+06
+
+3
+new touch  844  823
+position 1?: 0
+position 2?: 1
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4801e+06
+
+4
+new touch  1683  834
+position 1?: 0
+position 2?: 0
+position 3?: 0
+position 4?: 1
+
+ans =
+
+   5.4801e+06
+
+1
+new touch  1224  839
+position 1?: 0
+position 2?: 0
+position 3?: 1
+position 4?: 0
+
+ans =
+
+   5.4801e+06
+
+2
+new touch  1659  818
+position 1?: 0
+position 2?: 0
+position 3?: 0
+position 4?: 1
+
+ans =
+
+   5.4801e+06
+
+3
+new touch  385  802
+position 1?: 1
+position 2?: 0
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4801e+06
+
+4
+new touch  801  779
+position 1?: 0
+position 2?: 1
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4801e+06
+
+1
+     0
+
+new touch  1526  625
+position 1?: 0
+position 2?: 1
+2
+     0
+
+new touch  1310  611
+position 1?: 0
+position 2?: 1
+3
+     0
+
+new touch  1456  664
+position 1?: 0
+position 2?: 1
+4
+     0
+
+new touch  731  606
+position 1?: 1
+position 2?: 0
+1
+     0
+
+new touch  721  572
+position 1?: 1
+position 2?: 0
+2
+     0
+
+new touch  1450  621
+position 1?: 0
+position 2?: 1
+3
+     0
+
+new touch  1454  636
+position 1?: 0
+position 2?: 1
+4
+     0
+
+new touch  1510  544
+position 1?: 0
+position 2?: 1
+
+run starts!
+
+
+ ** Video start ** 
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 스피커(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 스피커(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+* Press space bar to continue ** Press ESC to stop *
+
+continue...
+
+1
+new touch  388  777
+position 1?: 1
+position 2?: 0
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4804e+06
+
+2
+new touch  871  748
+position 1?: 0
+position 2?: 1
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4804e+06
+
+3
+new touch  1652  773
+position 1?: 0
+position 2?: 0
+position 3?: 0
+position 4?: 1
+
+ans =
+
+   5.4804e+06
+
+4
+new touch  1216  821
+position 1?: 0
+position 2?: 0
+position 3?: 1
+position 4?: 0
+
+ans =
+
+   5.4804e+06
+
+1
+new touch  348  821
+position 1?: 1
+position 2?: 0
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4804e+06
+
+2
+new touch  1629  855
+position 1?: 0
+position 2?: 0
+position 3?: 0
+position 4?: 1
+
+ans =
+
+   5.4804e+06
+
+3
+new touch  1214  827
+position 1?: 0
+position 2?: 0
+position 3?: 1
+position 4?: 0
+
+ans =
+
+   5.4804e+06
+
+4
+new touch  826  786
+position 1?: 0
+position 2?: 1
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4804e+06
+
+1
+     0
+
+new touch  645  508
+position 1?: 1
+position 2?: 0
+2
+     0
+
+new touch  502  522
+position 1?: 1
+position 2?: 0
+3
+     0
+
+new touch  431  567
+position 1?: 1
+position 2?: 0
+4
+     0
+
+new touch  1280  561
+position 1?: 0
+position 2?: 1
+1
+     0
+
+new touch  470  509
+position 1?: 1
+position 2?: 0
+2
+     0
+
+new touch  525  557
+position 1?: 1
+position 2?: 0
+3
+     0
+
+new touch  675  556
+position 1?: 1
+position 2?: 0
+4
+     0
+
+new touch  1366  668
+position 1?: 0
+position 2?: 1
+
+run starts!
+
+
+ ** Video start ** 
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 스피커(Realtek(R) Audio)
+PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 182.000000 msecs.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 스피커(Realtek(R) Audio)
+PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 182.000000 msecs.
+
+* Press space bar to continue ** Press ESC to stop *
+
+continue...
+
+1
+new touch  1190  795
+position 1?: 0
+position 2?: 0
+position 3?: 1
+position 4?: 0
+
+ans =
+
+   5.4808e+06
+
+2
+new touch  1579  763
+position 1?: 0
+position 2?: 0
+position 3?: 0
+position 4?: 1
+
+ans =
+
+   5.4808e+06
+
+3
+new touch  758  813
+position 1?: 0
+position 2?: 1
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4808e+06
+
+4
+new touch  341  844
+position 1?: 1
+position 2?: 0
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4808e+06
+
+1
+new touch  751  803
+position 1?: 0
+position 2?: 1
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4808e+06
+
+2
+new touch  349  882
+position 1?: 1
+position 2?: 0
+position 3?: 0
+position 4?: 0
+
+ans =
+
+   5.4808e+06
+
+3
+new touch  1633  837
+position 1?: 0
+position 2?: 0
+position 3?: 0
+position 4?: 1
+
+ans =
+
+   5.4808e+06
+
+4
+new touch  1325  778
+position 1?: 0
+position 2?: 0
+position 3?: 1
+position 4?: 0
+
+ans =
+
+   5.4808e+06
+
+1
+     0
+
+new touch  732  514
+position 1?: 1
+position 2?: 0
+2
+     0
+
+new touch  748  479
+position 1?: 1
+position 2?: 0
+3
+     0
+
+new touch  757  528
+position 1?: 1
+position 2?: 0
+4
+     0
+
+new touch  772  473
+position 1?: 1
+position 2?: 0
+1
+     0
+
+new touch  701  596
+position 1?: 1
+position 2?: 0
+2
+     0
+
+new touch  1441  507
+position 1?: 0
+position 2?: 1
+3
+     0
+
+new touch  727  590
+position 1?: 1
+position 2?: 0
+4
+     0
+
+new touch  1447  481
+position 1?: 0
+position 2?: 1
+End for all videos
+
+
+PTB-INFO: There are still 213 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+
+
+ Sequence accuracy: 93.8, TOJ accuracy: (within) 93.8, (across) 87.5-- file saved --
+
+
+ Sequence accuracy: 93.8, TOJ accuracy: (within) 93.8, (across) 87.5>> boundary_recognition_museum_v2_1002
+ 
+ %%% INPUT SUBJECT INFORMATION TO START %%% 
+Sbj Number: 101
+
+---
+ready? (enter) : 
+
+
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.17 - Build date: Apr 13 2021).
+PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO: For information about paid priority support, community membership and commercial services, please type
+PTB-INFO: 'PsychPaidSupportAndServices'.
+
+PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
+PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
+PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
+PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
+PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
+PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
+
+
+PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) Iris(R) Xe Graphics :: 4.6.0 - Build 27.20.100.9415
+PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
+PTB-INFO: Measured monitor refresh interval from beamposition = 16.667631 ms [59.996530 Hz].
+PTB-INFO: Beamposition queries are supported, but disabled. Using basic timestamping as fallback:
+PTB-INFO: Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 16.669078 ms [59.991320 Hz]. (50 valid samples taken, stddev=0.137206 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-INFO: ==============================================================================================================================
+PTB-INFO: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE. On this Windows-10 or later system, Psychtoolbox can no longer reliably detect if
+PTB-INFO: this will cause trouble for timing and integrity of visual stimuli or not. You might be just fine, or you could be in trouble.
+PTB-INFO: Use external measurement equipment and independent procedures to verify reliability of timing if you care about proper timing.
+PTB-INFO: ==============================================================================================================================
+new touch  657  862
+position 1?: 1
+position 2?: 0
+new touch  1254  849
+position 1?: 0
+position 2?: 1
+new touch  710  807
+position 1?: 1
+position 2?: 0
+new touch  1242  804
+position 1?: 0
+position 2?: 1
+new touch  1234  913
+position 1?: 0
+position 2?: 1
+new touch  694  853
+position 1?: 1
+position 2?: 0
+new touch  1279  827
+position 1?: 0
+position 2?: 1
+new touch  1253  881
+position 1?: 0
+position 2?: 1
+new touch  1244  913
+position 1?: 0
+position 2?: 1
+new touch  686  860
+position 1?: 1
+position 2?: 0
+new touch  1254  880
+position 1?: 0
+position 2?: 1
+new touch  671  871
+position 1?: 1
+position 2?: 0
+new touch  708  888
+position 1?: 1
+position 2?: 0
+new touch  1288  857
+position 1?: 0
+position 2?: 1
+new touch  1252  854
+position 1?: 0
+position 2?: 1
+new touch  699  932
+position 1?: 1
+position 2?: 0
+
+
+PTB-INFO: There are still 19 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+
+
+ Sequence accuracy: 93.8, TOJ accuracy: (within) 93.8, (across) 87.5
+ Recog accuracy; 93.8 
+-- file saved --
+
+
+ Sequence accuracy: 93.8 (or 97.9), TOJ accuracy: (within) 93.8, (across) 87.5
+ Recog accuracy; 93.8 
+>> wcd_practice_em_museum_obj3_v2
+Sbj Number: 304
+Experimenter: HJA
+
+
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.17 - Build date: Apr 13 2021).
+PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO: For information about paid priority support, community membership and commercial services, please type
+PTB-INFO: 'PsychPaidSupportAndServices'.
+
+PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
+PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
+
+
+PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) Iris(R) Xe Graphics :: 4.6.0 - Build 27.20.100.9415
+PTB-INFO: VBL startline = 1080 , VBL Endline = -1
+PTB-INFO: Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
+PTB-INFO: Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 0.000000 ms [inf Hz]. (0 valid samples taken, stddev=0.000000 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING: ==============================================================================================================================
+PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING: ==============================================================================================================================
+PTB-INFO: All display tests and calibrations disabled. Assuming a refresh interval of 60.000000 Hz. Timing will be inaccurate!
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+** Encoding **
+Animal: [3 4 2], Location: [3 5 4], Context: 1
+
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 1
+Word:3 5 9 1 4 6 2 7 8 
+Category:0 0 0 0 0 0 0 0 0 
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference test starts **
+Current trial: 1, Current image: 9
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 2, Current image: 8
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 3, Current image: 5
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 4, Current image: 4
+Response: 2, RT: 1.443103e+00, Correct: 0
+
+Current trial: 5, Current image: 6
+Response: 1, RT: 2.695022e+00, Correct: 1
+
+Current trial: 6, Current image: 7
+Response: 99, RT: 99, Correct: 99
+
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+** retrieval **
+Context: 1
+
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 3, Response: 2, Correct: 0
+Location: 3, Response: 5, Correct: 0
+
+Order: 2
+Animal: 4, Response: 4, Correct: 1
+Location: 5, Response: 3, Correct: 0
+
+Order: 3
+Animal: 2, Response: 5, Correct: 0
+Location: 4, Response: 4, Correct: 1
+
+***  PRACTICE END ***
+
+
+
+PTB-INFO: There are still 70696 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO: a total of 40 times out of a total of 14273 flips during this session.
+
+INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO: If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO: of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO: deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO: examples in the PDF presentation in PsychDocumentation/Psychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+
+ 
+ Sbj retrieval accuracy: animal - 0.33, location - 0.33
+Sbj interference accuracy: interference - 0.50, no response - 4
+
+-- file saved --
+>> wcd_em_museum_obj3_v3
+ 
+ %%% INPUT SUBJECT INFORMATION TO START %%% 
+Sbj Number: 304
+Experimenter: HJA
+M/F: F
+
+Animal preference(N N N N N): 12345
+
+Animal preference(N N N N N): 1 2 3 4 5
+
+---
+ready? (enter) : 
+
+
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.17 - Build date: Apr 13 2021).
+PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO: For information about paid priority support, community membership and commercial services, please type
+PTB-INFO: 'PsychPaidSupportAndServices'.
+
+PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
+PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
+
+
+PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) Iris(R) Xe Graphics :: 4.6.0 - Build 27.20.100.9415
+PTB-INFO: VBL startline = 1080 , VBL Endline = -1
+PTB-INFO: Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
+PTB-INFO: Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 0.000000 ms [inf Hz]. (0 valid samples taken, stddev=0.000000 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING: ==============================================================================================================================
+PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING: ==============================================================================================================================
+PTB-INFO: All display tests and calibrations disabled. Assuming a refresh interval of 60.000000 Hz. Timing will be inaccurate!
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+0
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 1 Start -
+
+** Encoding **
+Current run: 1, Current trial: 1
+Animal: [1 5 2], Location: [5 2 4], Context: 1
+
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 1
+Condition: OX, Number of category: 1, Category 2 2 
+Word:9 3 6 5 1 8 4 2 7 
+Category:2 2 2 2 2 2 2 2 2 
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 6
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 2, Current image: 5
+Response: 2, RT: 7.427317e-01, Correct: 0
+
+Current trial: 3, Current image: 9
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 4, Current image: 8
+Response: 2, RT: 5.653272e-01, Correct: 1
+
+Current trial: 5, Current image: 4
+Response: 2, RT: 1.779584e+00, Correct: 0
+
+Current trial: 6, Current image: 7
+Response: 2, RT: 2.119334e+00, Correct: 1
+
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 1, Current trial: 1
+
+** retrieval **
+Context: 1
+
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 1, Response: 3, Correct: 0
+Location: 5, Response: 3, Correct: 0
+
+Order: 2
+Animal: 5, Response: 2, Correct: 0
+Location: 2, Response: 2, Correct: 1
+
+Order: 3
+Animal: 2, Response: 1, Correct: 0
+Location: 4, Response: 5, Correct: 0
+
+- Trial 1 End -
+
+Trial retrieval accuracy: animal - 0, location - 3.333333e-01
+Trial interference accuracy: interference - 5.000000e-01, no response - 2
+
+
+13951
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 2 Start -
+
+** Encoding **
+Current run: 1, Current trial: 2
+Animal: [2 5 4], Location: [3 4 1], Context: 2
+
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 2
+Condition: XO, Number of category: 2, Category 6 11 
+Word:5 6 2 4 7 7 3 2 6 
+Category:6 6 11 11 11 6 6 6 11 
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 5
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 2, Current image: 9
+Response: 1, RT: 1.389859e+00, Correct: 1
+
+Current trial: 3, Current image: 7
+Response: 1, RT: 1.159789e+00, Correct: 1
+
+Current trial: 4, Current image: 6
+Response: 1, RT: 1.233139e+00, Correct: 0
+
+Current trial: 5, Current image: 4
+Response: 1, RT: 1.793886e+00, Correct: 0
+
+Current trial: 6, Current image: 8
+Response: 1, RT: 1.370990e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 1, Current trial: 2
+
+** retrieval **
+Context: 2
+
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 2, Response: 4, Correct: 0
+Location: 3, Response: 3, Correct: 1
+
+Order: 2
+Animal: 5, Response: 5, Correct: 1
+Location: 4, Response: 4, Correct: 1
+
+Order: 3
+Animal: 4, Response: 3, Correct: 0
+Location: 1, Response: 5, Correct: 0
+
+- Trial 2 End -
+
+Trial retrieval accuracy: animal - 3.333333e-01, location - 6.666667e-01
+Trial interference accuracy: interference - 5.555556e-01, no response - 3
+
+
+*** EXPERIMENT END ***
+
+Sbj retrieval accuracy: animal - 0.17, location - 0.50
+Sbj interference accuracy: interference - 0.53, no response - 5
+
+
+
+PTB-INFO: There are still 12876 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO: a total of 2 times out of a total of 5686 flips during this session.
+
+INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO: If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO: of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO: deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO: examples in the PDF presentation in PsychDocumentation/Psychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+-- file saved --
+animal: 66.7, animal order: 16.7, location: 66.7, location order: 50.0, ani-loc: 33.3 
+
+
+ same category: 50.0, RT 1.3 sec, difforder: 60.0, RT 1.4 sec 
+
+ >> wcd_em_museum_obj3_v3
+ 
+ %%% INPUT SUBJECT INFORMATION TO START %%% 
+Sbj Number: 304
+Experimenter: HJA
+M/F: F
+
+Animal preference(N N N N N): 1 2 3 4 5
+
+---
+ready? (enter) : 
+
+
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.17 - Build date: Apr 13 2021).
+PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO: For information about paid priority support, community membership and commercial services, please type
+PTB-INFO: 'PsychPaidSupportAndServices'.
+
+PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
+PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
+
+
+PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) Iris(R) Xe Graphics :: 4.6.0 - Build 27.20.100.9415
+PTB-INFO: VBL startline = 1080 , VBL Endline = -1
+PTB-INFO: Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
+PTB-INFO: Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 0.000000 ms [inf Hz]. (0 valid samples taken, stddev=0.000000 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING: ==============================================================================================================================
+PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING: ==============================================================================================================================
+PTB-INFO: All display tests and calibrations disabled. Assuming a refresh interval of 60.000000 Hz. Timing will be inaccurate!
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+0
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 1 Start -
+
+** Encoding **
+Current run: 1, Current trial: 1
+Animal: [4 2 3], Location: [3 4 6], Context: 2
+
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 1
+Condition: OX, Number of category: 2, Category 3 4 
+Word:7 8 9 6 5 3 1 4 2 
+Category:3 3 4 4 4 3 3 3 4 
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 7
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 2, Current image: 4
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 3, Current image: 5
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 4, Current image: 6
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 5, Current image: 9
+Response: 2, RT: 1.200000e-04, Correct: 1
+
+Current trial: 6, Current image: 8
+Response: 1, RT: 2.344255e+00, Correct: 0
+
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 1, Current trial: 1
+
+** retrieval **
+Context: 2
+
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 4, Response: 5, Correct: 0
+Location: 3, Response: 1, Correct: 0
+
+Order: 2
+Animal: 2, Response: 2, Correct: 1
+Location: 4, Response: 3, Correct: 0
+
+Order: 3
+Animal: 3, Response: 1, Correct: 0
+Location: 6, Response: 6, Correct: 1
+
+- Trial 1 End -
+
+Trial retrieval accuracy: animal - 3.333333e-01, location - 3.333333e-01
+Trial interference accuracy: interference - 5.000000e-01, no response - 4
+
+
+15481
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 2 Start -
+
+** Encoding **
+Current run: 1, Current trial: 2
+Animal: [2 5 3], Location: [6 2 5], Context: 1
+
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 2
+Condition: XO, Number of category: 1, Category 1 1 
+Word:7 2 4 8 6 3 1 5 9 
+Category:1 1 1 1 1 1 1 1 1 
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 8
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 2, Current image: 6
+Response: 2, RT: 7.100031e-05, Correct: 1
+
+Current trial: 3, Current image: 7
+Response: 2, RT: 8.319740e-01, Correct: 0
+
+Current trial: 4, Current image: 4
+Response: 2, RT: 6.991132e-01, Correct: 1
+
+Current trial: 5, Current image: 9
+Response: 1, RT: 2.114905e+00, Correct: 1
+
+Current trial: 6, Current image: 5
+Response: 2, RT: 1.597289e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 1, Current trial: 2
+
+** retrieval **
+Context: 1
+
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 2, Response: 3, Correct: 0
+Location: 6, Response: 6, Correct: 1
+
+Order: 2
+Animal: 5, Response: 2, Correct: 0
+Location: 2, Response: 6, Correct: 0
+
+Order: 3
+Animal: 3, Response: 1, Correct: 0
+Location: 5, Response: 3, Correct: 0
+
+- Trial 2 End -
+
+Trial retrieval accuracy: animal - 0, location - 3.333333e-01
+Trial interference accuracy: interference - 7.142857e-01, no response - 5
+
+
+*** EXPERIMENT END ***
+
+Sbj retrieval accuracy: animal - 0.17, location - 0.33
+Sbj interference accuracy: interference - 0.61, no response - 9
+
+
+
+PTB-INFO: There are still 16511 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO: a total of 2 times out of a total of 6716 flips during this session.
+
+INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO: If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO: of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO: deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO: examples in the PDF presentation in PsychDocumentation/Psychtoolbox3-Slides.pdf for more info and timing tips.
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+-- file saved --
+animal: 50.0, animal order: 16.7, location: 50.0, location order: 33.3, ani-loc: 16.7 
+
+
+ same category: 80.0, RT 1.0 sec, difforder: 50.0, RT 1.2 sec 
+
+ >> wcd_em_museum_obj3_v3
+ 
+ %%% INPUT SUBJECT INFORMATION TO START %%% 
+Sbj Number:  304
+Experimenter: HJA
+M/F: F
+
+Animal preference(N N N N N): 1 2 3 4 5
+
+---
+ready? (enter) : 
+
+
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.17 - Build date: Apr 13 2021).
+PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO: For information about paid priority support, community membership and commercial services, please type
+PTB-INFO: 'PsychPaidSupportAndServices'.
+
+PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
+PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
+
+
+PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) Iris(R) Xe Graphics :: 4.6.0 - Build 27.20.100.9415
+PTB-INFO: VBL startline = 1080 , VBL Endline = -1
+PTB-INFO: Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
+PTB-INFO: Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 0.000000 ms [inf Hz]. (0 valid samples taken, stddev=0.000000 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING: ==============================================================================================================================
+PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING: ==============================================================================================================================
+PTB-INFO: All display tests and calibrations disabled. Assuming a refresh interval of 60.000000 Hz. Timing will be inaccurate!
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+0
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+run starts!
+
+
+- Trial 1 Start -
+
+** Encoding **
+Current run: 1, Current trial: 1
+Animal: [1 3 5], Location: [5 4 1], Context: 1
+
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 1
+Condition: OX, Number of category: 1, Category 11 11 
+Word:2 6 5 4 1 3 8 7 9 
+Category:11 11 11 11 11 11 11 11 11 
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 7
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 2, Current image: 5
+Response: 2, RT: 7.554797e-01, Correct: 0
+
+Current trial: 3, Current image: 9
+Response: 2, RT: 2.949520e+00, Correct: 1
+
+Current trial: 4, Current image: 4
+Response: 2, RT: 7.969979e-05, Correct: 0
+
+Current trial: 5, Current image: 6
+Response: 99, RT: 99, Correct: 99
+
+Current trial: 6, Current image: 8
+Response: 99, RT: 99, Correct: 99
+
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 1, Current trial: 1
+
+** retrieval **
+Context: 1
+
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 1, Response: 1, Correct: 1
+Location: 5, Response: 4, Correct: 0
+
+Order: 2
+Animal: 3, Response: 5, Correct: 0
+Location: 4, Response: 5, Correct: 0
+
+Order: 3
+Animal: 5, Response: 4, Correct: 0
+Location: 1, Response: 3, Correct: 0
+
+- Trial 1 End -
+
+Trial retrieval accuracy: animal - 3.333333e-01, location - 0
+Trial interference accuracy: interference - 3.333333e-01, no response - 3
+
+
+6791
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+- Trial 2 Start -
+
+** Encoding **
+Current run: 1, Current trial: 2
+Animal: [5 3 2], Location: [5 2 1], Context: 2
+
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+interference starts!
+
+** interference **
+Current run: 1, Current trial: 2
+Condition: XO, Number of category: 2, Category 4 9 
+Word:5 9 1 5 3 3 8 4 4 
+Category:4 4 9 9 9 4 4 4 9 
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+
+ inter ret starts!
+
+** interference test starts **
+Current trial: 1, Current image: 4
+Response: 2, RT: 2.943200e+00, Correct: 1
+
+Current trial: 2, Current image: 7
+Response: 1, RT: 2.133867e+00, Correct: 1
+
+Current trial: 3, Current image: 8
+Response: 1, RT: 2.231708e+00, Correct: 1
+
+Current trial: 4, Current image: 5
+Response: 2, RT: 1.177179e+00, Correct: 1
+
+Current trial: 5, Current image: 9
+Response: 1, RT: 1.434584e+00, Correct: 1
+
+Current trial: 6, Current image: 6
+Response: 2, RT: 1.052365e+00, Correct: 1
+
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** retrieval **
+Current run: 1, Current trial: 2
+
+** retrieval **
+Context: 2
+
+PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
+PTB-INFO: For 1 channels Playback: Audio subsystem is MME, Audio device name is 헤드폰(Realtek(R) Audio)
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 0.000000 msecs, Output latency 180.317460 msecs.
+** reenactment **
+Order: 1
+Animal: 5, Response: 5, Correct: 1
+Location: 5, Response: 3, Correct: 0
+
+Order: 2
+Animal: 3, Response: 4, Correct: 0
+Location: 2, Response: 3, Correct: 0
+
+Order: 3
+Animal: 2, Response: 1, Correct: 0
+Location: 1, Response: 4, Correct: 0
+
+- Trial 2 End -
+
+Trial retrieval accuracy: animal - 3.333333e-01, location - 0
+Trial interference accuracy: interference - 7.777778e-01, no response - 3
+
+
+*** EXPERIMENT END ***
+
+Sbj retrieval accuracy: animal - 0.33, location - 0.00
+Sbj interference accuracy: interference - 0.56, no response - 6
+
+
+
+PTB-INFO: There are still 6696 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 2).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+-- file saved --
+animal: 50.0, animal order: 33.3, location: 33.3, location order: 0.0, ani-loc: 0.0 
+
+
+ same category: 33.3, RT 1.2 sec, difforder: 100.0, RT 1.8 sec 
+
+ >> n_trial
+
+n_trial =
+
+     2
+
+>> interOrder
+
+interOrder =
+
+    11    12    22    21
+
+>> size(interOrder,2)
+
+ans =
+
+     4
+
+>> n_trials
+
+n_trials =
+
+     6
+
+>> i_currTrial
+
+i_currTrial =
+
+     6
+
+>> i_currTrial
+
+i_currTrial =
+
+     6
+
+>> n_trials
+
+n_trials =
+
+     6
+
+>> length(whatAnimalOrder)
+
+ans =
+
+     5
+
+>> size(Data.trial.interRet,2)
+
+ans =
+
+    12
+
+>> diary museum304_www_alldiary
+>> diary museum304_www_alldiary
+>> 
